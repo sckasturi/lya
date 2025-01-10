@@ -15,7 +15,7 @@ function Header() {
 					<HeaderLogo />
 					<div className="menu-block-wrapper">
 						<DesktopNav>
-							{/*<NavItem dropdown title="Demo">
+							<NavItem dropdown title="Demo">
 								<Dropdown>
 									<DropdownItem url="/">Design Agency</DropdownItem>
 									<DropdownItem url="home-two">Startup Agency</DropdownItem>
@@ -25,7 +25,7 @@ function Header() {
 									<DropdownItem url="home-six">Interior Design Agency</DropdownItem>
 									<DropdownItem url="home-seven">Advertising agency</DropdownItem>
 								</Dropdown>
-							</NavItem>*/}
+							</NavItem>
 							<NavItem url="about-us">About Us</NavItem>
 							<NavItem dropdown title="Pages">
 								<Dropdown>

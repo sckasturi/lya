@@ -9,15 +9,19 @@ import SeoSteps from "../../components/home-three/seo-steps";
 import Services from "../../components/home-three/services";
 import Teams from "../../components/home-three/teams";
 import Testimonial from "../../components/home-three/testimonial";
-import WhyChooseUs from "../../components/home-three/why-choose-us";
+import OurOfferings from "../../components/home-three/our-offerings";
+import Projects from "../../components/home-three/projects";
 
 function HomeThree() {
 	return (
 		<div className="aximo-all-section bg-light3">
 			<Hero />
 			<About />
+			{/*<Teams />
+						<Projects />*/}
+			<OurOfferings />
 			<Testimonial />
-			<WhyChooseUs />
+
 			{/*<Services />
 			<SeoSteps />
 			<AutoSlider />

@@ -3,6 +3,13 @@ import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/Fade
 import { PopupButton } from "react-calendly";
 
 function HeroContent() {
+	const scrollToSection = () => {
+		const target = document.getElementById("contact-us");
+		if (target) {
+			target.scrollIntoView({ behavior: "smooth" }); // Smooth scroll animation
+		}
+	};
+
 	return (
 		<FadeInStaggerTwo className="aximo-hero-content3">
 			<FadeInStaggerTwoChildren>
@@ -17,7 +24,11 @@ function HeroContent() {
 				<div className="aximo-hero-subscription">
 					<p>Schedule a FREE 20 minutes coaching consultation to see if we are a good fit for each other.</p>
 						
-						<button id="aximo-hero-subscription-btn" type="submit">
+						<button 
+						id="aximo-hero-subscription-btn" 
+						type="button" 
+						onClick={scrollToSection}
+					>
 							<span className="aximo-label-up">Get started</span>
 							<span className="aximo-label-up">Get started</span>
 						</button>

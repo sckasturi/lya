@@ -36,7 +36,6 @@
 	--light-color4: #fffcf2;
 	--light-color5: #f3ede8;
 	--light-color6: #f8fcdd;
-	--dark-bg: #000000;
 	--dark-bg2: #2c2c2c;
 	--dark-bg3: #0b1040;
 	--white-bg: #ffffff;
@@ -46,7 +45,6 @@
 	--yellow-bg: #ffe757;
 	--corn-bg: #f4b905;
 	--blue-bg: #0000ff;
-	--light-bg1: #fffff5;
 	--light-bg2: #f6f5ef;
 	--light-bg3: #fefcfb;
 	--light-bg4: #fff7ea;
@@ -57,6 +55,12 @@
 	--green-bg: #073d30;
 	--green-bg2: #02854c;
 	--cornflower-bg: rgb(201, 217, 223);
+
+	--dark-bg: rgb(27, 38, 44);
+	--light-bg1: rgb(255, 249, 233);
+	--cream: rgb(255, 249, 233);
+	--teal: rgb(92, 144, 148);
+	--yellow: rgb(228, 197, 125);
 }
 
 /*1.0 base css*/
@@ -1882,6 +1886,10 @@ blockquote {
 	background-color: var(--dark-bg) !important;
 }
 
+.accent-bg {
+	background-color: var(--accent-bg) !important;
+}
+
 .dark-bg2 {
 	background-color: var(--dark-bg2) !important;
 }
@@ -1898,8 +1906,9 @@ blockquote {
 	background-color: var(--green-bg2) !important;
 }
 
-.cornflower-bg {
+.teal-bg {
 	background-color: var(--cornflower-bg) !important;
+	
 }
 
 .bg-light1 {
@@ -3922,6 +3931,7 @@ h1.post__title {
 }
 @media (max-width: 991px) {
 	.aximo-hero-thumb3 {
+		display: none;
 		left: 0;
 	}
 }
@@ -3929,6 +3939,7 @@ h1.post__title {
 	.aximo-hero-thumb3 {
 		border: none;
 		border-radius: 0;
+		display: none;
 	}
 }
 
@@ -7219,6 +7230,7 @@ img.aximo-video-circle {
 }
 .aximo-project-data p {
 	color: var(--white-smoke);
+	font-size: 21px;
 }
 .aximo-project-icon {
 	flex: 0 0 15%;
@@ -7250,6 +7262,7 @@ img.aximo-video-circle {
 @media (max-width: 991px) {
 	.aximo-project-slider .swiper-pagination {
 		margin-top: 60px;
+		aspect-ratio: 16/9;
 	}
 }
 @media (max-width: 767px) {
@@ -7271,6 +7284,21 @@ img.aximo-video-circle {
 .aximo-project-slider .swiper-pagination-bullet-active {
 	background-color: var(--accent-bg);
 }
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3/2; /* Adjust to your desired ratio */
+  object-fit: cover; /* Ensures the image covers the container */
+}
+
 
 .aximo-project-section {
 	border-radius: 20px;
@@ -7324,7 +7352,7 @@ img.aximo-video-circle {
 .aximo-project-data2 h3 {
 	margin-bottom: 15px;
 	color: var(--light-color3);
-	font-family: "Arimo", sans-serif;
+	font-family: "Quasimoda", sans-serif;
 }
 @media (max-width: 767px) {
 	.aximo-project-data2 h3 {

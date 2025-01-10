@@ -6,19 +6,17 @@ import StarShapeImg from "../../../assets/images/v3/star-shape.png";
 import FadeInRight from "../../animation/FadeInRight";
 function HeroThumb() {
 	return (
-		<div className="aximo-hero-thumb3-wrap">
+		<div className="aximo-hero-thumb3-wrap visible-lg">
 			<div className="aximo-hero-thumb3">
 				<LazyLoadImage src={ThumbImg} alt=" Thumb" effect="blur" />
 				
-				<div className="aximo-hero-thumb-shape3">
-					<img src={ShapeAynaImg} alt="ShapeAynaImg" />
-				</div>
+				
 			</div>
-			<div className="aximo-hero-thumb-shape1">
+			{/*<div className="aximo-hero-thumb-shape1">
 				<FadeInRight>
 					<img src={StarShapeImg} alt="StarShapeImg" />
 				</FadeInRight>
-			</div>
+			</div>*/}
 		</div>
 	);
 }

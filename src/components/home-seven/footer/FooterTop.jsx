@@ -5,7 +5,7 @@ function FooterTop() {
 		<div className="row">
 			<div className="col-lg-7">
 				<h2>
-					Let your brand rise to new heights
+					Leverage Your ADHD to live your best life.
 					<span className="aximo-title-shape">
 						<img src={TitleShapImg} alt="title shape" />
 					</span>
