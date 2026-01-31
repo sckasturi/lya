@@ -13,24 +13,23 @@ function HeroContent() {
 	return (
 		<FadeInStaggerTwo className="aximo-hero-content3">
 			<FadeInStaggerTwoChildren>
-				<h1>Hi! I'm Sudhita</h1>
+				<h1>Leverage Your ADHD</h1>
 			</FadeInStaggerTwoChildren>
+			{/*<FadeInStaggerTwoChildren>
+			<br/><h1>I’m Sudhita</h1>
+			</FadeInStaggerTwoChildren>*/}
 			<FadeInStaggerTwoChildren>
-				<h2>
-					I help you Leverage Your ADHD to live your best life.
-				</h2>
-			</FadeInStaggerTwoChildren>
-			<FadeInStaggerTwoChildren>
-				<div className="aximo-hero-subscription">
-					<p>Schedule a FREE 20 minutes coaching consultation to see if we are a good fit for each other.</p>
-						
+
+				<h2>Hi, I'm Sudhita Kasturi.</h2>				<br/>
+				<h3>Navigate your ADHD dilemmas in partnership with me, a certified and credentialed ADHD Life Coach, dedicated to helping you live authentically.</h3>
+				<div className="aximo-hero-subscription">	
 						<button 
 						id="aximo-hero-subscription-btn" 
 						type="button" 
 						onClick={scrollToSection}
 					>
-							<span className="aximo-label-up">Get started</span>
-							<span className="aximo-label-up">Get started</span>
+							<span className="aximo-label-up">Start your journey</span>
+							<span className="aximo-label-up">Start your journey</span>
 						</button>
 					
 				</div>

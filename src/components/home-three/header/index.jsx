@@ -9,13 +9,13 @@ import HeaderLogo from "./HeaderLogo";
 
 function Header() {
 	return (
-		<header className="site-header aximo-header-section aximo-header3 bg-light3" id="sticky-menu">
+		<header className="site-header aximo-header-section aximo-header3 teal-bg" id="sticky-menu">
 			<div className="container">
 				<nav className="navbar site-navbar">
 					<HeaderLogo />
 					<div className="menu-block-wrapper">
 						<DesktopNav>
-							<NavItem dropdown title="Demo">
+							{/*<NavItem dropdown title="Demo">
 								<Dropdown>
 									<DropdownItem url="/">Design Agency</DropdownItem>
 									<DropdownItem url="home-two">Startup Agency</DropdownItem>
@@ -81,7 +81,7 @@ function Header() {
 									<DropdownItem url="single-blog">Blog Details</DropdownItem>
 								</Dropdown>
 							</NavItem>
-							<NavItem url="contact-us">Contact Us</NavItem>
+							<NavItem url="contact-us">Contact Us</NavItem>*/}
 						</DesktopNav>
 					</div>
 					<HeaderButton />

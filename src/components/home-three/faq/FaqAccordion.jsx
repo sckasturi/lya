@@ -1,7 +1,7 @@
 function FaqAccordion({ faq: {ques, ans, id}}) {
 	return (
 
-			<div className="accordion-item">
+			<div className="accordion-item  cream-bg">
 				<button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#${id}`}>
 					{ques}
 				</button>

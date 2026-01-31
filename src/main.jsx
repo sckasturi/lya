@@ -10,11 +10,6 @@ import "react-modal-video/css/modal-video.css";
 // blur css
 import "react-lazy-load-image-component/src/effects/blur.css";
 
-// fonts
-import "./assets/css/fontawesome.css";
-import "./assets/css/icomoon.css";
-import "./font.js";
-
 //  Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -22,6 +17,7 @@ import "swiper/css/mousewheel";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import "./assets/css/fontawesome.css";
 
 // main css
 import "./assets/css/app.css";

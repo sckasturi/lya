@@ -1,6 +1,6 @@
 function TestimonialCard({ testimonial: { rating, title, description, author, designation, img } }) {
 	return (
-		<div className="aximo-testimonial-wrap">
+		<div className="aximo-testimonial-wrap cream-bg">
 			{/*<div className="aximo-testimonial-rating">
 				<ul>
 					{[...Array(rating)].map(() => (
@@ -15,9 +15,9 @@ function TestimonialCard({ testimonial: { rating, title, description, author, de
 				<p>{description}</p>
 			</div>
 			<div className="aximo-testimonial-author">
-				{/*<div className="aximo-testimonial-author-thumb">
+				<div className="aximo-testimonial-author-thumb">
 					<img src={img} alt={title} />
-				</div>*/}
+				</div>
 				<div className="aximo-testimonial-author-data">
 					<p>
 						{author} <span>{designation}</span>

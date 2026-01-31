@@ -33,15 +33,15 @@ const faqData = [
 
 function Faq() {
 	return (
-		<div className="section aximo-section-padding6">
+		<div className="section aximo-section-padding">
 			<div className="container">
-				<div className="aximo-section-title center familjen-grotesk">
+				<div className="aximo-section-title center ">
 					<h2>Any questions about ADHD?</h2>
 				</div>
 				<div className="row">
 				  <div className="col-lg-6">
 				    <FadeInUp>
-				      <div className="accordion aximo-accordion-wrap4" id="aximo-accordion">
+				      <div className="accordion aximo-accordion-wrap4 " id="aximo-accordion">
 				        {faqData.slice(0, Math.ceil(faqData.length / 2)).map((faq) => (
 				          <FaqAccordion faq={faq} key={faq.id} />
 				        ))}

@@ -7,24 +7,23 @@ import { PopupWidget } from "react-calendly";
 
 function Contact() {
 	return (
-		<div id="contact-us" className="section dark-bg aximo-section-padding2 position-relative overflow-hidden">
+		<div id="contact-us" className="section aximo-section-padding2 position-relative overflow-hidden  navy-bg">
 			<div className="container">
 				<FadeInStaggerTwo className="row">
 					<FadeInStaggerTwoChildren className="col-lg-7">
-						<div className="aximo-default-content familjen-grotesk light m-right-gap">
-							<h2>FREE Coaching Consultations</h2>
-							<p>This is a great opportunity for us to meet before we enter a coaching relationship.</p> 
-							<p>There is no charge for this call and no obligation to move forward with me as a coach. We will meet over the phone or zoom to understand the specific ADHD-related issues you are dealing with.</p>
-
-<p>I will share how coaching can support you and what a strengths- and mindfulness-based approach looks like.</p>
-
-<p>If we are a good fit for each other we can discuss the next steps for you</p>
+						<div className="aximo-default-content familjen-grotesk m-right-gap">
+							<h2 className="navy-bg">Coaching is a partnership.</h2>
+							<br/>
+							<p>We’ll collaborate to understand how ADHD affects you. You’re the expert in your life; my job is not to tell you what to do. </p> 
+							<p>My approach is grounded in transformational coaching principles to guide you as you identify your challenges, strengths, and goals. </p>
 							
-							<div className="aximo-contact-info">
-								<h3>Contact me directly:</h3>
+							<p>Together, we’ll understand how your brain is wired and design practical solutions to amplify your inherent strengths. </p>
+
+							{/*<div className="aximo-contact-info">
+								
 								<ul>
 									<li>
-										<a href="tel:088-234-6849">
+										<a href="tel:571-376-8033">
 											<i className="icon-phone"></i>
 											571-376-8033
 										</a>
@@ -32,15 +31,15 @@ function Contact() {
 									<li>
 										<a href="mailto:example@gmail.com">
 											<i className="icon-message"></i>
-											sudhita@leverageyouradhd.com
+											hello@leverageyouradhd.com
 										</a>
 									</li>
 								</ul>
-							</div>
+							</div>*/}
 						</div>
 					</FadeInStaggerTwoChildren>
 					<FadeInStaggerTwoChildren className="col-lg-5">
-						<div className="aximo-form-wrap2">
+						<div className="aximo-form-wrap2 white-bg">
 							<InlineWidget url="https://calendly.com/leverageyouradhd/30min" styles={{
   height: '600px'
 }} />

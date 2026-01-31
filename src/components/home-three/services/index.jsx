@@ -1,58 +1,102 @@
-import Icon1Img from "../../../assets/images/v3/icon1.svg";
-import Icon2Img from "../../../assets/images/v3/icon2.svg";
-import Icon3Img from "../../../assets/images/v3/icon3.svg";
-import Icon4Img from "../../../assets/images/v3/icon4.svg";
-import StarShapeHalfImg from "../../../assets/images/v3/star-shape-half.png";
-import FadeInStagger from "../../animation/FadeInStagger";
+import StarImg from "../../../assets/images/v2/shape-star.png";
+import Thumb1Img from "../../../assets/images/v2/h-thumb1.png";
+import Thumb2Img from "../../../assets/images/v2/h-thumb2.png";
+import Thumb3Img from "../../../assets/images/v2/h-thumb3.png";
+import Thumb4Img from "../../../assets/images/v2/h-thumb4.png";
+import Thumb5Img from "../../../assets/images/v2/h-thumb5.png";
 import ServiceCard from "./ServiceCard";
+import lawyer from "../../../assets/images/lya/lawyer.jpg";
+import professional from "../../../assets/images/lya/professional.jpg";
+import executive from "../../../assets/images/lya/executive.jpg";
+import doctor from "../../../assets/images/lya/doctor.jpg";
+import college from "../../../assets/images/lya/college.jpg";
+
 const servicesData = [
 	{
 		id: crypto.randomUUID(),
-		title: "On-Page SEO",
+		title: "Product Development",
 		description:
-			"On-page SEO aims to improve users website content and structure to improve its ranking on search engine results pages.",
-		img: Icon1Img,
+			"We are focused on developing innovative products services. We research and development to create new solutions.",
+		img: Thumb1Img,
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "Technical SEO",
+		title: "Consulting & Advisory",
 		description:
-			"Technical SEO helps search engines crawl & index a site more effectively. Its performance and accessibility to search engines.",
-		img: Icon2Img,
+			"Our expertise in various fields, such as management, finance, marketing, or technology, to help businesses solve problems.",
+		img: Thumb2Img,
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "Keyword Research",
+		title: "Investment and Equity",
 		description:
-			"We perform keyword research to identify the most relevant and high-traffic keywords and phrases for a client's industry.",
-		img: Icon3Img,
+			"We invest in startups or take an equity stake in exchange or direct investment or have their own seed funds to support.",
+		img: Thumb3Img,
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "Content Creation",
+		title: "Co-Working Spaces",
 		description:
-			"Content can take many forms, including blog posts, articles, videos, infographics & high-quality and informative content.",
-		img: Icon4Img,
+			"We provide co-working spaces or office facilities for startups can work, collaborate, and access essential resources.",
+		img: Thumb4Img,
+	},
+	{
+		id: crypto.randomUUID(),
+		title: "Legal & Administrative",
+		description:
+			"Offer legal and administrative assistance, helping startups with tasks like business registration, intellectual property etc.",
+		img: Thumb5Img,
 	},
 ];
+
+const projectsData = [
+	{
+		id: crypto.randomUUID(),
+		title: "Working Professional",
+		description: "Wanting to organize your work, meet more deadlines, and improve your work-life balance",
+		img: professional,
+	},
+	{
+		id: crypto.randomUUID(),
+		title: "Aspiring Executive",
+		description: "Seeking mobility in your career trajectory or looking to switch careers",
+		img: executive,
+	},
+	{
+		id: crypto.randomUUID(),
+		title: "College Student",
+		description: "Struggling academically, perhaps even on academic probation",
+		img: college,
+	},
+	{
+		id: crypto.randomUUID(),
+		title: "Medical Students, Residents & Physicians",
+		description: "Passing the various steps of the USMLE and navigating a clinical setting",
+		img: doctor,
+	},
+	{
+		id: crypto.randomUUID(),
+		title: "Law Students & Attorneys",
+		description: "Studying for the UBE and managing workflow",
+		img: lawyer,
+	},
+];
+
 function Services() {
 	return (
-		<div className="section aximo-section-padding dark-bg overflow-hidden position-relative">
+		<div className="section  aximo-section-padding position-relative">
 			<div className="container">
-				<div className="aximo-section-title center familjen-grotesk light">
-					<h2>Our professional SEO services for you</h2>
-				</div>
-				<div className="aximo-iconbox-column">
-					{servicesData.map((service, index) => (
-						<FadeInStagger key={service.id} index={index}>
-							<ServiceCard service={service} />
-						</FadeInStagger>
-					))}
+				<div className="aximo-section-title center clash-grotesk">
+					<h2>People I can help</h2>
 				</div>
 			</div>
-
-			<div className="aximo-iconbox-shape">
-				<img src={StarShapeHalfImg} alt="StarShapeHalfImg" />
+			<div className="aximo-increase-shape">
+				<img src={StarImg} alt="StarImg" />
+			</div>
+			<div className="aximo-service-increase-wrap">
+				{projectsData.map((service) => (
+					<ServiceCard key={service.id} service={service} />
+				))}
 			</div>
 		</div>
 	);

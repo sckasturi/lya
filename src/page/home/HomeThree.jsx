@@ -14,21 +14,24 @@ import Projects from "../../components/home-three/projects";
 
 function HomeThree() {
 	return (
-		<div className="aximo-all-section bg-light3">
+		<div className="aximo-all-section cream-bg">
 			<Hero />
-			<About />
-			{/*<Teams />
-						<Projects />*/}
+			<Contact />
+			
+			{/*<Teams />*/}
+			<Projects />
 			<OurOfferings />
+			<Services />{
 			<Testimonial />
 
-			{/*<Services />
+			/*
 			<SeoSteps />
 			<AutoSlider />
 			<Teams />*/}
+			<About />
 			<Faq />
 
-			<Contact />
+			
 		</div>
 	);
 }

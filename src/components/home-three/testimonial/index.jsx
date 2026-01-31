@@ -51,10 +51,10 @@ const testimonialsData = [
 
 function Testimonial() {
 	return (
-		<div className="section aximo-section-padding3">
+		<div className="section aximo-section-padding3 teal-bg">
 			<div className="container">
 				<div className="aximo-section-title center">
-					<h2>
+					<h2 className="teal-bg"> 
 						What clients say!
 					</h2>
 				</div>
