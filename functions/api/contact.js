@@ -9,6 +9,42 @@ function jsonResponse(body, status = 200) {
 	});
 }
 
+async function appendToGoogleSheet(env, payload) {
+	if (!env.GOOGLE_SHEETS_WEBHOOK_URL) {
+		return;
+	}
+
+	const response = await fetch(env.GOOGLE_SHEETS_WEBHOOK_URL, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify({
+			secret: env.GOOGLE_SHEETS_WEBHOOK_SECRET || "",
+			...payload,
+		}),
+	});
+
+	if (!response.ok) {
+		const responseBody = await response.text();
+		throw new Error(`Google Sheets logging failed: ${responseBody}`);
+	}
+
+	let responseJson = null;
+	try {
+		responseJson = await response.json();
+	} catch {
+		// Some webhooks return empty body on success.
+		return;
+	}
+
+	if (responseJson && responseJson.ok === false) {
+		throw new Error(
+			`Google Sheets logging failed: ${responseJson.error || "Unknown webhook error"}`
+		);
+	}
+}
+
 export async function onRequestPost(context) {
 	try {
 		const { request, env } = context;
@@ -52,6 +88,16 @@ export async function onRequestPost(context) {
 				500
 			);
 		}
+
+		await appendToGoogleSheet(env, {
+			type: "contact",
+			name,
+			email,
+			phone,
+			reason: reason || "Not provided",
+			message,
+			timestamp: new Date().toISOString(),
+		});
 
 		return jsonResponse({ ok: true });
 	} catch (error) {
