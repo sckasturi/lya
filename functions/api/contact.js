@@ -1,4 +1,4 @@
-{"error":"Google Sheets logging failed: Unauthorized"}const RESEND_ENDPOINT = "https://api.resend.com/emails";
+const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const DEFAULT_FROM = "sudhita@leverageyouradhd.com";
 const DEFAULT_TO = "sudhita@leverageyouradhd.com";
 
