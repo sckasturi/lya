@@ -1,8 +1,3 @@
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
-
-const PDF_PATH = join(process.cwd(), "public", "assets", "pdfs", "freebie.pdf");
-
 async function verifyRecaptcha(secret, token) {
 	const body = new URLSearchParams();
 	body.set("secret", secret);
@@ -19,13 +14,30 @@ async function verifyRecaptcha(secret, token) {
 async function appendToGoogleSheet(env, payload) {
 	const url = env.GOOGLE_SHEETS_WEBHOOK_URL;
 	const secret = env.GOOGLE_SHEETS_WEBHOOK_SECRET;
-	if (!url || !secret) return;
+	if (!url) return;
 
-	await fetch(url, {
+	const res = await fetch(url, {
 		method: "POST",
 		headers: { "Content-Type": "application/json" },
-		body: JSON.stringify({ ...payload, secret }),
+		body: JSON.stringify({ ...payload, secret: secret || "" }),
 	});
+
+	if (!res.ok) {
+		const text = await res.text();
+		throw new Error(`Google Sheets logging failed: ${text}`);
+	}
+
+	let json = null;
+	try {
+		json = await res.json();
+	} catch {
+		return;
+	}
+	if (json && json.ok === false) {
+		throw new Error(
+			`Google Sheets logging failed: ${json.error || "Unknown webhook error"}`,
+		);
+	}
 }
 
 export async function onRequestPost(context) {
@@ -88,16 +100,19 @@ export async function onRequestPost(context) {
 		});
 	}
 
-	let attachmentContent;
-	try {
-		const fileBuffer = await readFile(PDF_PATH);
-		attachmentContent = fileBuffer.toString("base64");
-	} catch {
+	// Fetch PDF from static assets (Cloudflare Pages ASSETS binding)
+	const { origin } = new URL(request.url);
+	const pdfRes = await fetch(`${origin}/assets/pdfs/freebie.pdf`);
+	if (!pdfRes.ok) {
 		return new Response(JSON.stringify({ error: "Attachment missing." }), {
 			status: 500,
 			headers: { "Content-Type": "application/json" },
 		});
 	}
+	const pdfBuffer = await pdfRes.arrayBuffer();
+	const pdfBase64 = btoa(
+		String.fromCharCode(...new Uint8Array(pdfBuffer)),
+	);
 
 	const resendPayload = {
 		from,
@@ -108,7 +123,7 @@ export async function onRequestPost(context) {
 		attachments: [
 			{
 				filename: "Leverage-Your-ADHD-Free-Guide.pdf",
-				content: attachmentContent,
+				content: pdfBase64,
 			},
 		],
 	};
@@ -130,12 +145,16 @@ export async function onRequestPost(context) {
 		);
 	}
 
-	await appendToGoogleSheet(env, {
-		type: "freebie",
-		name,
-		email,
-		timestamp: new Date().toISOString(),
-	});
+	try {
+		await appendToGoogleSheet(env, {
+			type: "freebie",
+			name,
+			email,
+			timestamp: new Date().toISOString(),
+		});
+	} catch {
+		// Non-fatal — email already sent
+	}
 
 	return new Response(JSON.stringify({ ok: true }), {
 		status: 200,
