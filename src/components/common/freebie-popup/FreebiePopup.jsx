@@ -112,55 +112,69 @@ export default function FreebiePopup() {
 						>
 							×
 						</button>
-						<h3 id="freebie-popup-title">Get the free ADHD guide</h3>
-						<p>
-							Enter your name and email and we&apos;ll send the PDF to your
-							inbox.
-						</p>
-						<form className="freebie-popup-form" onSubmit={handleSubmit}>
-							<input
-								type="text"
-								name="name"
-								placeholder="Your name"
-								value={name}
-								onChange={(e) => setName(e.target.value)}
-								autoComplete="name"
-								disabled={status === "loading" || status === "success"}
-							/>
-							<input
-								type="email"
-								name="email"
-								placeholder="Your email"
-								value={email}
-								onChange={(e) => setEmail(e.target.value)}
-								autoComplete="email"
-								disabled={status === "loading" || status === "success"}
-							/>
-							{siteKey ? (
-								<div className="freebie-popup-recaptcha">
-									<ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
+
+						{status === "success" ? (
+							<div className="freebie-popup-success">
+								<div className="freebie-popup-success-icon" aria-hidden="true">
+									✓
 								</div>
-							) : (
-								<p className="freebie-popup-recaptcha-hint">
-									Add{" "}
-									<code>VITE_RECAPTCHA_SITE_KEY</code> to enable reCAPTCHA.
+								<h3 id="freebie-popup-title">Check your inbox!</h3>
+								<p>
+									The free guide is on its way to <strong>{email}</strong>.
+									Check your spam folder if you don&apos;t see it in a minute.
 								</p>
-							)}
-							<button
-								type="submit"
-								disabled={status === "loading" || status === "success"}
-							>
-								{status === "loading" ? "Sending..." : "Send me the guide"}
-							</button>
-						</form>
-						{message && (
-							<div
-								className={`freebie-popup-message ${
-									status === "success" ? "success" : "error"
-								}`}
-							>
-								{message}
+								<button
+									type="button"
+									className="freebie-popup-done-btn"
+									onClick={closePopup}
+								>
+									Done
+								</button>
 							</div>
+						) : (
+							<>
+								<h3 id="freebie-popup-title">Get the free ADHD guide</h3>
+								<p>
+									Enter your name and email and we&apos;ll send the PDF to your
+									inbox.
+								</p>
+								<form className="freebie-popup-form" onSubmit={handleSubmit}>
+									<input
+										type="text"
+										name="name"
+										placeholder="Your name"
+										value={name}
+										onChange={(e) => setName(e.target.value)}
+										autoComplete="name"
+										disabled={status === "loading"}
+									/>
+									<input
+										type="email"
+										name="email"
+										placeholder="Your email"
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										autoComplete="email"
+										disabled={status === "loading"}
+									/>
+									{siteKey ? (
+										<div className="freebie-popup-recaptcha">
+											<ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
+										</div>
+									) : (
+										<p className="freebie-popup-recaptcha-hint">
+											Add <code>VITE_RECAPTCHA_SITE_KEY</code> to enable
+											reCAPTCHA.
+										</p>
+									)}
+									<button type="submit" disabled={status === "loading"}>
+										{status === "loading" ? "Sending..." : "Send me the guide"}
+									</button>
+								</form>
+								{message && (
+									<div className="freebie-popup-message error">{message}</div>
+								)}
+							</>
 						)}
 					</motion.div>
 				</motion.div>

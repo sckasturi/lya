@@ -1,4 +1,4 @@
-const RESEND_ENDPOINT = "https://api.resend.com/emails";
+{"error":"Google Sheets logging failed: Unauthorized"}const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const DEFAULT_FROM = "sudhita@leverageyouradhd.com";
 const DEFAULT_TO = "sudhita@leverageyouradhd.com";
 
@@ -89,15 +89,17 @@ export async function onRequestPost(context) {
 			);
 		}
 
-		await appendToGoogleSheet(env, {
-			type: "contact",
-			name,
-			email,
-			phone,
-			reason: reason || "Not provided",
-			message,
-			timestamp: new Date().toISOString(),
-		});
+		context.waitUntil(
+			appendToGoogleSheet(env, {
+				type: "contact",
+				name,
+				email,
+				phone,
+				reason: reason || "Not provided",
+				message,
+				timestamp: new Date().toISOString(),
+			}).catch(() => {}),
+		);
 
 		return jsonResponse({ ok: true });
 	} catch (error) {

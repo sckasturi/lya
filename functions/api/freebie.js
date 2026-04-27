@@ -115,7 +115,7 @@ export async function onRequestPost(context) {
 	);
 
 	const resendPayload = {
-		from,
+		from: `Sudhita Kasturi <${from}>`,
 		to: [email],
 		subject: "Your free ADHD guide",
 		html: `<p>Hi ${name},</p><p>Thanks for requesting the free guide. The PDF is attached.</p><p>— Sudhita</p>`,
@@ -145,16 +145,14 @@ export async function onRequestPost(context) {
 		);
 	}
 
-	try {
-		await appendToGoogleSheet(env, {
+	context.waitUntil(
+		appendToGoogleSheet(env, {
 			type: "freebie",
 			name,
 			email,
 			timestamp: new Date().toISOString(),
-		});
-	} catch {
-		// Non-fatal — email already sent
-	}
+		}).catch(() => {}),
+	);
 
 	return new Response(JSON.stringify({ ok: true }), {
 		status: 200,
