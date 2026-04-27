@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import ContactThumb from "../../assets/images/contact/contact-thumb.png";
 import Star2Img from "../../assets/images/v1/star2.png";
 import FadeInRight from "../animation/FadeInRight";
@@ -7,10 +8,31 @@ function ContactForm() {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm();
-	const submitForm = (formData) => {
-		console.log("Submite Form Data = ", formData);
+
+	const [status, setStatus] = useState("idle");
+
+	const submitForm = async (formData) => {
+		setStatus("submitting");
+		try {
+			const response = await fetch("/api/contact", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(formData),
+			});
+			const data = await response.json();
+
+			if (!response.ok || !data?.ok) {
+				throw new Error(data?.error || "Could not send your message.");
+			}
+
+			setStatus("success");
+			reset();
+		} catch {
+			setStatus("error");
+		}
 	};
 	return (
 		<div className="section aximo-section-padding">
@@ -71,11 +93,24 @@ function ContactForm() {
 									</Field>
 								</div>
 								<div className="aximo-main-field">
-									<label>Write your message here...</label>
-									<textarea name="textarea"></textarea>
+									<Field label="Write your message here..." error={errors.message}>
+										<textarea
+											{...register("message", { required: "Message is required." })}
+											name="message"
+											id="message"
+										></textarea>
+									</Field>
 								</div>
-								<button id="aximo-main-btn" type="submit">
-									Send Message
+								{status === "success" && (
+									<p className="text-success mb-3">Message sent successfully.</p>
+								)}
+								{status === "error" && (
+									<p className="text-danger mb-3">
+										Something went wrong. Please try again.
+									</p>
+								)}
+								<button id="aximo-main-btn" type="submit" disabled={status === "submitting"}>
+									{status === "submitting" ? "Sending..." : "Send Message"}
 								</button>
 							</form>
 						</div>
