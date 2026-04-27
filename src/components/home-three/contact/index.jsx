@@ -12,11 +12,11 @@ function Contact() {
 				<FadeInStaggerTwo className="row">
 					<FadeInStaggerTwoChildren className="col-lg-7">
 						<div className="aximo-default-content familjen-grotesk m-right-gap">
-							<h2 className="navy-bg">Coaching is a partnership.</h2>
+							<h2 className="navy-bg">Coaching is a partnership</h2>
 							<br/>
 							<p>We’ll collaborate to understand how ADHD affects you. You’re the expert in your life; my job is not to tell you what to do. </p> 
 							<p>My approach is grounded in transformational coaching principles to guide you as you identify your challenges, strengths, and goals. </p>
-							
+							<p>I can work with you, with or without, a formal diagnosis of ADHD.</p>
 							<p>Together, we’ll understand how your brain is wired and design practical solutions to amplify your inherent strengths. </p>
 
 							{/*<div className="aximo-contact-info">

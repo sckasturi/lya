@@ -20,7 +20,7 @@ function HeroContent() {
 			</FadeInStaggerTwoChildren>*/}
 			<FadeInStaggerTwoChildren>
 
-				<h2>Hi, I'm Sudhita Kasturi.</h2>				<br/>
+				<h2>Hi, I'm Sudhita Kasturi</h2>				<br/>
 				<h3>Navigate your ADHD dilemmas in partnership with me, a certified and credentialed ADHD Life Coach, dedicated to helping you live authentically.</h3>
 				<div className="aximo-hero-subscription">	
 						<button 

@@ -14,9 +14,10 @@ const animationVariants = {
 	},
 };
 
-function FadeInRight({ children, className = "" }) {
+function FadeInRight({ children, className = "", as = "div" }) {
+	const MotionComponent = motion[as] || motion.div;
 	return (
-		<motion.div
+		<MotionComponent
 			variants={animationVariants}
 			initial="initial"
 			whileInView="animate"
@@ -24,7 +25,7 @@ function FadeInRight({ children, className = "" }) {
 			// viewport={{ once: true }}
 		>
 			{children}
-		</motion.div>
+		</MotionComponent>
 	);
 }
 

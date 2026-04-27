@@ -9,8 +9,29 @@
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" />
 		<!--- End favicon-->
 
+		<!-- Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V7B1YRQQZ0"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-V7B1YRQQZ0', { send_page_view: false });
+		</script>
+
 		<!-- Adobe Font -->
 		<link rel="stylesheet" href="https://use.typekit.net/meh4ylb.css">
+
+		<!-- GitHub Pages SPA redirect restore -->
+		<script>
+			(function() {
+				var p = window.location.search.slice(1).split('&')
+					.filter(function(s) { return s.startsWith('p='); })[0];
+				if (p) {
+					var path = decodeURIComponent(p.slice(2));
+					window.history.replaceState(null, null, path);
+				}
+			})();
+		</script>
 	</head>
 	<body className="light">
 		<div id="root"></div>

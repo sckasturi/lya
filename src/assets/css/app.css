@@ -115,7 +115,7 @@ body {
 	text-rendering: optimizeLegibility;
 	font-weight: 400;
 	overflow-x: hidden;
-	background-color: var(--verylightblue);
+	background-color: #ffffff;
 	counter-reset: my-sec-counter;
 	font-size: 22px;
 	line-height: 30px;
@@ -1901,8 +1901,10 @@ blockquote {
 
 .navy-bg {
 	background-color: var(--navy) !important;
-	color: var(--white) !important;
-
+	color: var(--cream) !important;
+}
+.navy-bg a {
+	color: var(--cream) !important;
 }
 
 .teal-bg {
@@ -1944,7 +1946,7 @@ header.aximo-header-section.sticky-menu {
 }
 
 header.aximo-header-section.aximo-header3 {
-	border-bottom: 1px solid var(--navy);
+	border-bottom: none;
 }
 
 header.aximo-header-section.aximo-header3.sticky-menu {
@@ -5358,6 +5360,11 @@ a.aximo-service-icon:hover {
 	font-weight: 600;
 	color: var(--navy);
 	padding: 0;
+	display: inline;
+	white-space: normal;
+}
+.aximo-accordion-wrap .accordion-button .accordion-subtext {
+	font-weight: 400;
 }
 .aximo-accordion-wrap .accordion-body {
 	padding: 0;
@@ -5578,6 +5585,435 @@ a.aximo-service-icon:hover {
 		font-size: 18px;
 	}
 }
+
+/* ── LYA FAQ redesign ─────────────────────────────── */
+.lya-faq-header {
+	text-align: center;
+	margin-bottom: 64px;
+}
+.lya-faq-eyebrow {
+	font-family: proxima-nova, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--teal);
+	margin-bottom: 16px;
+}
+.lya-faq-header h2 {
+	color: var(--navy);
+	max-width: 640px;
+	margin: 0 auto;
+}
+.lya-faq-list {
+	max-width: 860px;
+	margin: 0 auto;
+}
+.lya-faq-item {
+	border-bottom: 1px solid rgba(24, 45, 56, 0.15);
+}
+.lya-faq-item:first-child {
+	border-top: 1px solid rgba(24, 45, 56, 0.15);
+}
+.lya-faq-question {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 28px 0;
+	background: none;
+	border: none;
+	text-align: left;
+	cursor: pointer;
+	color: var(--navy);
+	transition: color 0.2s ease;
+}
+.lya-faq-question:hover {
+	color: var(--teal);
+}
+.lya-faq-question:hover .lya-faq-icon {
+	color: var(--teal);
+}
+.lya-faq-number {
+	font-family: proxima-nova, sans-serif;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: var(--teal);
+	min-width: 28px;
+	flex-shrink: 0;
+}
+.lya-faq-question-text {
+	flex: 1;
+	font-family: proxima-nova, sans-serif;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+.lya-faq-icon {
+	font-size: 28px;
+	font-weight: 300;
+	color: var(--navy);
+	min-width: 28px;
+	text-align: right;
+	line-height: 1;
+	transition: transform 0.35s ease, color 0.2s ease;
+	flex-shrink: 0;
+}
+.lya-faq-item.open .lya-faq-icon {
+	transform: rotate(45deg);
+}
+.lya-faq-answer {
+	overflow: hidden;
+	transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.lya-faq-answer-inner {
+	padding-bottom: 32px;
+	padding-left: 48px;
+	color: var(--navy);
+	font-family: proxima-nova, sans-serif;
+	font-size: 16px;
+	line-height: 1.75;
+	opacity: 0.8;
+}
+.lya-faq-answer-inner p {
+	margin-bottom: 12px;
+}
+.lya-faq-answer-inner p:last-child {
+	margin-bottom: 0;
+}
+.lya-faq-answer-inner b {
+	color: var(--navy);
+	font-weight: 600;
+	opacity: 1;
+}
+@media (max-width: 767px) {
+	.lya-faq-question-text {
+		font-size: 17px;
+	}
+	.lya-faq-answer-inner {
+		padding-left: 0;
+		font-size: 15px;
+	}
+	.lya-faq-header {
+		margin-bottom: 40px;
+	}
+}
+/* ── end LYA FAQ ───────────────────────────────────── */
+
+/* ── LYA Contact Form ─────────────────────────────── */
+.lya-contact-header {
+	text-align: center;
+	margin-bottom: 56px;
+}
+.lya-contact-eyebrow {
+	font-family: proxima-nova, sans-serif;
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--teal);
+	margin-bottom: 16px;
+}
+.lya-contact-header h2 {
+	color: var(--cream);
+	margin-bottom: 16px;
+}
+.lya-contact-subtext {
+	color: var(--verylightblue);
+	font-size: 17px;
+	margin: 0;
+}
+.lya-contact-form {
+	max-width: 720px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+.lya-contact-row {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 24px;
+}
+@media (max-width: 600px) {
+	.lya-contact-row {
+		grid-template-columns: 1fr;
+	}
+}
+.lya-contact-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.lya-contact-field label {
+	font-family: proxima-nova, sans-serif;
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--verylightblue);
+}
+.lya-contact-field input,
+.lya-contact-field textarea {
+	background: rgba(255, 255, 255, 0.07);
+	border: 1px solid rgba(252, 245, 227, 0.25);
+	border-radius: 10px;
+	padding: 14px 18px;
+	color: var(--cream);
+	font-family: proxima-nova, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	transition: border-color 0.2s ease, background 0.2s ease;
+	outline: none;
+	width: 100%;
+}
+.lya-contact-field input::placeholder,
+.lya-contact-field textarea::placeholder {
+	color: rgba(252, 245, 227, 0.35);
+}
+.lya-contact-field input:focus,
+.lya-contact-field textarea:focus {
+	border-color: var(--teal);
+	background: rgba(255, 255, 255, 0.11);
+}
+.lya-contact-field textarea {
+	resize: vertical;
+	min-height: 140px;
+}
+.lya-contact-error {
+	color: #f87171;
+	font-size: 14px;
+	text-align: center;
+	margin: 0;
+}
+.lya-contact-submit {
+	align-self: center;
+	background-color: var(--red);
+	color: var(--cream);
+	border: 2px solid var(--red);
+	border-radius: 999px;
+	padding: 16px 48px;
+	font-family: proxima-nova, sans-serif;
+	font-size: 17px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.lya-contact-submit:hover:not(:disabled) {
+	background-color: transparent;
+	border-color: var(--red);
+	color: var(--red);
+}
+.lya-contact-submit:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+.lya-contact-success {
+	max-width: 480px;
+	margin: 0 auto;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 16px;
+}
+.lya-contact-success-icon {
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background-color: var(--teal);
+	color: var(--cream);
+	font-size: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.lya-contact-success h3 {
+	color: var(--cream);
+	margin: 0;
+}
+.lya-contact-success p {
+	color: var(--verylightblue);
+	margin: 0;
+}
+.lya-contact-reset {
+	background: none;
+	border: 1px solid rgba(252, 245, 227, 0.4);
+	border-radius: 999px;
+	color: var(--cream);
+	font-family: proxima-nova, sans-serif;
+	font-size: 15px;
+	padding: 10px 28px;
+	cursor: pointer;
+	transition: border-color 0.2s ease;
+}
+.lya-contact-reset:hover {
+	border-color: var(--teal);
+	color: var(--teal);
+}
+/* select styling */
+.lya-contact-field select {
+	background: rgba(255, 255, 255, 0.07);
+	border: 1px solid rgba(252, 245, 227, 0.25);
+	border-radius: 10px;
+	padding: 14px 18px;
+	color: var(--cream);
+	font-family: proxima-nova, sans-serif;
+	font-size: 16px;
+	line-height: 1.5;
+	transition: border-color 0.2s ease, background 0.2s ease;
+	outline: none;
+	width: 100%;
+	cursor: pointer;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FCF5E3' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 16px center;
+	padding-right: 40px;
+}
+.lya-contact-field select:focus {
+	border-color: var(--teal);
+	background-color: rgba(255, 255, 255, 0.11);
+}
+.lya-contact-field select.lya-select-placeholder {
+	color: rgba(252, 245, 227, 0.35);
+}
+.lya-contact-field select option {
+	background-color: var(--navy);
+	color: var(--cream);
+}
+
+/* offerings CTA buttons */
+.aximo-offerings-cta {
+	display: inline-block;
+	margin-top: 16px;
+	padding: 10px 28px;
+	border-radius: 999px;
+	border: 2px solid var(--red);
+	background: var(--red);
+	color: var(--cream);
+	font-family: proxima-nova, sans-serif;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.aximo-offerings-cta:hover {
+	background-color: transparent;
+	border-color: var(--red);
+	color: var(--red);
+}
+
+.lya-offerings-left .aximo-accordion-wrap {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.lya-offerings-title .aximo-default-content,
+.lya-offerings-title .aximo-default-content h2 {
+	text-align: center;
+	max-width: none;
+	margin: 0 0 40px;
+}
+
+.lya-offerings-form-panel {
+	background: var(--white);
+	border-radius: 20px;
+	border: 2px solid var(--navy);
+	box-shadow: 3px 3px 0 0 var(--navy);
+	padding: 48px 40px;
+}
+
+@media (min-width: 992px) {
+	.lya-offerings-form-panel {
+		position: sticky;
+		top: 100px;
+	}
+}
+
+@media (max-width: 575px) {
+	.lya-offerings-form-panel {
+		padding: 32px 24px;
+	}
+}
+
+/* Light-background overrides for the embedded form */
+.lya-offerings-form-panel .lya-contact-header {
+	text-align: left;
+	margin-bottom: 32px;
+}
+
+.lya-offerings-form-panel .lya-contact-header h3 {
+	color: var(--navy);
+	font-weight: 600;
+	font-size: 30px;
+	margin-bottom: 0;
+}
+
+.lya-offerings-form-panel .lya-contact-field label {
+	color: var(--navy);
+}
+
+.lya-offerings-form-panel .lya-contact-field input,
+.lya-offerings-form-panel .lya-contact-field textarea {
+	background: var(--cream);
+	border: 1px solid rgba(0, 14, 58, 0.2);
+	color: var(--navy);
+}
+
+.lya-offerings-form-panel .lya-contact-field input::placeholder,
+.lya-offerings-form-panel .lya-contact-field textarea::placeholder {
+	color: rgba(0, 14, 58, 0.35);
+}
+
+.lya-offerings-form-panel .lya-contact-field input:focus,
+.lya-offerings-form-panel .lya-contact-field textarea:focus {
+	border-color: var(--teal);
+	background: var(--cream);
+}
+
+.lya-offerings-form-panel .lya-contact-field select {
+	background-color: var(--cream);
+	border: 1px solid rgba(0, 14, 58, 0.4);
+	color: var(--navy);
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000E3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+
+.lya-offerings-form-panel .lya-contact-field select:focus {
+	border-color: var(--teal);
+	background-color: var(--cream);
+}
+
+.lya-offerings-form-panel .lya-contact-field select.lya-select-placeholder {
+	color: rgba(0, 14, 58, 0.35);
+}
+
+.lya-offerings-form-panel .lya-contact-field select option {
+	background-color: var(--cream);
+	color: var(--navy);
+}
+
+.lya-offerings-form-panel .lya-contact-success h3 {
+	color: var(--navy);
+}
+
+.lya-offerings-form-panel .lya-contact-success p {
+	color: var(--navy);
+}
+
+.lya-offerings-form-panel .lya-contact-reset {
+	border-color: rgba(0, 14, 58, 0.4);
+	color: var(--navy);
+}
+
+.lya-offerings-form-panel .lya-contact-reset:hover {
+	border-color: var(--teal);
+	color: var(--teal);
+}
+
+/* ── end LYA Contact Form ─────────────────────────── */
 
 .aximo-accordion-normal-item {
 	display: flex;
@@ -6878,14 +7314,49 @@ img.aximo-video-circle {
 	border: 2px solid var(--dark-bg);
 }
 
+#table-price-value > div {
+	display: flex;
+}
 .aximo-pricing-wrap2 {
 	border-radius: 20px;
 	margin-bottom: 30px;
 	padding: 30px 26px 30px 28px;
 	border: 2px solid var(--navy);
+	background-color: #ffffff;
+	flex: 1;
 }
 .aximo-pricing-header2 {
 	margin-bottom: 20px;
+}
+.aximo-pricing-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-bottom: 16px;
+	justify-content: center;
+}
+.aximo-pricing-tab {
+	border: 2px solid var(--navy);
+	border-radius: 999px;
+	padding: 12px 22px;
+	background-color: transparent;
+	color: var(--navy);
+	font-weight: 600;
+	font-size: 20px;
+	line-height: 1.2;
+	transition: background-color 0.3s ease, color 0.3s ease;
+}
+.aximo-pricing-tab h3 {
+	margin: 0;
+	color: inherit;
+	font-weight: 600;
+}
+.aximo-pricing-tab.active {
+	background-color: var(--navy);
+	color: var(--cream);
+}
+.aximo-pricing-description {
+	font-weight: 600;
 }
 .aximo-pricing-price2 {
 	display: flex;
@@ -6920,7 +7391,7 @@ img.aximo-video-circle {
 .aximo-pricing-btn2 {
 	width: 100%;
 	height: 60px;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: 600;
 	display: flex;
 	align-items: center;
@@ -6934,8 +7405,8 @@ img.aximo-video-circle {
 	box-shadow: 0px 4px 0px 0px #fdfde1;
 }
 .aximo-pricing-btn2:hover {
-	color: var(--navy) !important;
-	background-color: var(--accent-bg);
+	color: var(--verylightblue) !important;
+	background-color: var(--navy);
 }
 .aximo-pricing-btn2.active {
 	color: var(--navy) !important;
@@ -6943,7 +7414,7 @@ img.aximo-video-circle {
 }
 .aximo-pricing-btn2.active:hover {
 	color: var(--verylightblue) !important;
-	background-color: var(--dark-bg);
+	background-color: var(--navy);
 	border: 2px solid var(--accent-bg);
 }
 
@@ -7994,6 +8465,7 @@ img.swipeimage {
 	font-size: 38px;
 	color: var(--light-color6);
 	font-family: proxima-nova, sans-serif;
+	font-weight: 600;
 }
 @media (max-width: 991px) {
 	.aximo-service7-title h3 {
@@ -8012,6 +8484,15 @@ img.swipeimage {
 .aximo-service7-description p {
 	font-size: 21px;
 	color: var(--light-color6);
+}
+.service7-text-hover {
+	display: none;
+}
+.aximo-service7-wrap:hover .service7-text-default {
+	display: none;
+}
+.aximo-service7-wrap:hover .service7-text-hover {
+	display: inline;
 }
 @media (max-width: 991px) {
 	.aximo-service7-description p {
@@ -9094,7 +9575,6 @@ a.aximo-connect-login img {
 	overflow: hidden;
 	gap: 24px;
 }
-
 .aximo-image-resizing-item {
 	flex: 1 0 auto;
 	min-height: 550px;
@@ -9165,6 +9645,10 @@ a.aximo-connect-login img {
 .aximo-image-resizing-content p {
 	color: var(--light-color6);
 }
+.aximo-image-resizing-content h4,
+.aximo-image-resizing-content .projectsv3-description {
+	color: var(--cream);
+}
 
 .aximo-service-details-thumb {
 	border-radius: 20px;
@@ -9229,6 +9713,9 @@ a.aximo-connect-login img {
 .aximo-pricing-title {
 	text-align: center;
 	margin-bottom: 50px;
+}
+.aximo-pricing-title h2 {
+	font-weight: 600;
 }
 
 @media (max-width: 991px) {
@@ -9350,6 +9837,7 @@ a.aximo-connect-login img {
 	overflow: hidden;
 	margin-bottom: 24px;
 	border: 5px solid var(--navy);
+	position: relative;
 }
 .aximo-story-thumb img {
 	width: 100%;
@@ -9360,6 +9848,47 @@ a.aximo-connect-login img {
 }
 .aximo-story-thumb:hover img {
 	transform: scale(1.05);
+}
+.aximo-story-thumb-text {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: flex-start;
+	justify-content: flex-end;
+	flex-direction: column;
+	gap: 6px;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.80) 100%);
+	color: var(--verylightblue);
+	font-size: 36px;
+	font-weight: 600;
+	font-family: proxima-nova, sans-serif;
+	text-align: left;
+	padding: 16px;
+	transition: opacity 0.3s ease;
+}
+.aximo-story-thumb:hover .aximo-story-thumb-text {
+	background-color: rgba(0, 0, 0, 0.35);
+}
+.aximo-story-thumb-text-default,
+.aximo-story-thumb-text-hover {
+	transition: opacity 0.3s ease;
+}
+.aximo-story-thumb-text-hover {
+	opacity: 0;
+	font-weight: 400;
+	position: absolute;
+	inset: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-size: 24px;
+}
+.aximo-story-thumb:hover .aximo-story-thumb-text-default {
+	opacity: 0;
+}
+.aximo-story-thumb:hover .aximo-story-thumb-text-hover {
+	opacity: 1;
 }
 @media (max-width: 991px) {
 	.aximo-story-content {
@@ -10348,3 +10877,345 @@ button#aximo-notified-btn {
 
 /*1.4 themes css*/
 /*# sourceMappingURL=app.css.map */
+
+/* ── LYA Handout / Print One-Pager ─────────────────────────── */
+.lya-handout {
+	background: #ffffff;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 32px 16px;
+	font-family: proxima-nova, sans-serif;
+}
+
+.lya-handout-print-btn {
+	margin-bottom: 20px;
+	background: var(--teal);
+	color: var(--cream);
+	border: none;
+	border-radius: 999px;
+	padding: 12px 32px;
+	font-family: proxima-nova, sans-serif;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+.lya-handout-print-btn:hover {
+	background: var(--navy);
+}
+
+.lya-handout-page {
+	background: #ffffff;
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+	width: 816px;
+	height: 1056px;
+	box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	flex-shrink: 0;
+}
+
+/* Header bar */
+.lya-handout-header {
+	background: var(--teal);
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 18px 44px;
+}
+.lya-handout-logo {
+	height: 40px;
+	filter: brightness(0) invert(1);
+}
+.lya-handout-url {
+	color: var(--cream);
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+}
+
+/* Hero strip */
+.lya-handout-hero {
+	background: var(--navy);
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 44px;
+	gap: 28px;
+}
+.lya-handout-hero-text {
+	flex: 1;
+}
+.lya-handout-hero h1 {
+	font-size: 38px;
+	font-weight: 700;
+	color: var(--cream);
+	margin: 0 0 6px;
+	line-height: 1.1;
+}
+.lya-handout-title {
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: rgba(252, 245, 227, 0.8);
+	margin: 0 0 14px;
+}
+.lya-handout-tagline {
+	font-size: 16px;
+	line-height: 1.55;
+	color: var(--cream);
+	margin: 0;
+	max-width: 440px;
+}
+.lya-handout-photo {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: top;
+	border: 3px solid rgba(252, 245, 227, 0.5);
+	flex-shrink: 0;
+}
+
+/* Body */
+.lya-handout-body {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0;
+	flex: 1;
+	min-height: 0;
+	overflow: hidden;
+}
+.lya-handout-col {
+	padding: 24px 36px;
+}
+.lya-handout-col-left {
+}
+
+/* Contact + QR horizontal band */
+.lya-handout-contact-band {
+	display: flex;
+	align-items: center;
+	gap: 40px;
+	padding: 16px 44px;
+	background: #ffffff;
+}
+.lya-handout-contact-details {
+	flex: 1;
+}
+.lya-handout-contact-details h2 {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--navy);
+	margin: 0 0 10px;
+	padding-bottom: 6px;
+	border-bottom: 2px solid var(--navy);
+}
+.lya-handout-contact-details ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	gap: 6px 32px;
+}
+.lya-handout-contact-details li {
+	font-size: 13.5px;
+	color: #2a2a2a;
+}
+.lya-handout-contact-details a {
+	color: var(--navy);
+	text-decoration: none;
+}
+.lya-handout-contact-divider {
+	display: none;
+}
+
+.lya-handout-section {
+	margin-bottom: 20px;
+}
+.lya-handout-section:last-child {
+	margin-bottom: 0;
+}
+.lya-handout-section h2 {
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--navy);
+	margin: 0 0 12px;
+	padding-bottom: 7px;
+	border-bottom: 2px solid var(--navy);
+}
+.lya-handout-section p {
+	font-size: 14px;
+	line-height: 1.65;
+	color: #2a2a2a;
+	margin: 0 0 10px;
+}
+.lya-handout-section p:last-child {
+	margin-bottom: 0;
+}
+
+/* Bullet list for Who I Work With */
+.lya-handout-bullets {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.lya-handout-bullets li {
+	font-size: 14px;
+	color: #2a2a2a;
+	line-height: 1.4;
+	padding-left: 18px;
+	position: relative;
+}
+.lya-handout-bullets li::before {
+	content: "–";
+	position: absolute;
+	left: 0;
+	color: var(--navy);
+	font-weight: 700;
+}
+
+/* Offerings */
+.lya-handout-offering {
+	margin-bottom: 20px;
+}
+.lya-handout-offering:last-child {
+	margin-bottom: 0;
+}
+.lya-handout-offering h3 {
+	font-size: 15px;
+	font-weight: 700;
+	color: #000000;
+	margin: 0 0 6px;
+	line-height: 1.3;
+}
+.lya-handout-offering p {
+	font-size: 13.5px;
+	line-height: 1.6;
+	color: #444;
+	margin: 0 0 6px;
+}
+.lya-handout-offering p:last-child {
+	margin-bottom: 0;
+}
+
+/* QR code block */
+.lya-handout-qr-section .lya-handout-qr-wrap {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+.lya-handout-qr-wrap svg {
+	flex-shrink: 0;
+	border: 2px solid #e0e0e0;
+	border-radius: 8px;
+	padding: 6px;
+}
+.lya-handout-qr-text {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.lya-handout-qr-label {
+	font-size: 15px !important;
+	font-weight: 700 !important;
+	color: #000000 !important;
+	margin: 0 0 2px !important;
+}
+.lya-handout-qr-text p {
+	font-size: 13px !important;
+	color: var(--navy) !important;
+	margin: 0 !important;
+}
+
+/* Contact block */
+.lya-handout-contact-block ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+.lya-handout-contact-block li {
+	font-size: 14px;
+	color: #2a2a2a;
+	line-height: 1.4;
+}
+.lya-handout-contact-block a {
+	color: var(--navy);
+	text-decoration: none;
+}
+
+/* Footer CTA */
+.lya-handout-footer {
+	background: var(--navy);
+	-webkit-print-color-adjust: exact;
+	print-color-adjust: exact;
+	padding: 18px 44px;
+	text-align: center;
+	flex-shrink: 0;
+}
+.lya-handout-footer p {
+	font-size: 15px;
+	color: var(--cream);
+	margin: 0;
+	line-height: 1.5;
+}
+.lya-handout-footer strong {
+	color: var(--cream);
+}
+
+/* Print styles */
+@media print {
+	@page {
+		size: 8.5in 11in;
+		margin: 0;
+	}
+
+	* {
+		-webkit-print-color-adjust: exact !important;
+		print-color-adjust: exact !important;
+		color-adjust: exact !important;
+	}
+
+	body {
+		margin: 0;
+		padding: 0;
+	}
+
+	.lya-handout {
+		background: none;
+		padding: 0;
+		display: block;
+	}
+
+	.lya-handout-print-btn {
+		display: none !important;
+	}
+
+	.lya-handout-page {
+		box-shadow: none;
+		width: 8.5in;
+		height: 11in;
+	}
+}
+/* ── end LYA Handout ─────────────────────────── */

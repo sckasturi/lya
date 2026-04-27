@@ -1,8 +1,13 @@
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/FadeInStaggerTwo";
 
 function Accordion() {
+	function scrollToContact() {
+		document.getElementById("contact-us")?.scrollIntoView({ behavior: "smooth" });
+	}
+
 	return (
 		<FadeInStaggerTwo className="accordion aximo-accordion-wrap" id="aximo-accordion">
+
 			<FadeInStaggerTwoChildren className="accordion-item">
 				<h3 className="accordion-header">
 					<button
@@ -11,34 +16,42 @@ function Accordion() {
 						data-bs-toggle="collapse"
 						data-bs-target="#collapseOne"
 					>
-						One-on-One Coaching
+						Personalized ADHD coaching
 					</button>
 				</h3>
 				<div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#aximo-accordion">
 					<div className="accordion-body">
-							Personalized, one-on-one coaching sessions address your ADHD-related challenges and leverage your unique strengths and talents to navigate these. Engage in a transformative journey that enhances your mindset, creates actionable strategies to help you thrive, and propels you toward success.
-
+						<p>One-on-one coaching sessions with Sudhita are tailored to your ADHD related challenges. Enhance your mindset and create actionable strategies to help you thrive and propel toward success.</p>
+						<button
+							type="button"
+							className="aximo-offerings-cta"
+							onClick={scrollToContact}
+						>
+							Start your journey
+						</button>
 					</div>
 				</div>
 			</FadeInStaggerTwoChildren>
+
 			<FadeInStaggerTwoChildren className="accordion-item">
-				<h3 className="accordion-header" id="headingOne">
+				<h3 className="accordion-header">
 					<button
-						className="accordion-button"
+						className="accordion-button collapsed"
 						type="button"
 						data-bs-toggle="collapse"
 						data-bs-target="#collapseTwo"
 					>
-						Coaching Cohorts for South Asian Professionals with ADHD
+						Group coaching for South Asian professionals with ADHD
 					</button>
 				</h3>
 				<div id="collapseTwo" className="accordion-collapse collapse" data-bs-parent="#aximo-accordion">
 					<div className="accordion-body">
-						Join a community of like-minded individuals in our dynamic group coaching sessions. This collaborative environment fosters learning, connection, accountability, and shared learning experiences to enhance both personal and professional growth.
+						<p>Our group coaching sessions are designed for South Asian professionals to navigate the challenges of ADHD in a dynamic and collaborative environment. Enhance your personal and professional growth through shared learning, connection and accountability.</p>
 					</div>
 				</div>
 			</FadeInStaggerTwoChildren>
-			{/*<FadeInStaggerTwoChildren className="accordion-item">
+
+			<FadeInStaggerTwoChildren className="accordion-item">
 				<h3 className="accordion-header">
 					<button
 						className="accordion-button collapsed"
@@ -46,32 +59,17 @@ function Accordion() {
 						data-bs-toggle="collapse"
 						data-bs-target="#collapseThree"
 					>
-						Ongoing Coaching Support for Former Coaching Clients
+						Speaking engagements
 					</button>
 				</h3>
 				<div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#aximo-accordion">
 					<div className="accordion-body">
-						Ongoing coaching support builds on your progress during coaching. It empowers you to navigate your ADHD challenges while fostering self-growth and resilience. These periodic checking is can can be bi-weekly or monthly, depending on your needs.
-					</div>
-				</div>
-			</FadeInStaggerTwoChildren>*/}
-			<FadeInStaggerTwoChildren className="accordion-item">
-				<h3 className="accordion-header">
-					<button
-						className="accordion-button collapsed"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#collapseFour"
-					>
-						Speaking Engagements
-					</button>
-				</h3>
-				<div id="collapseFour" className="accordion-collapse collapse" data-bs-parent="#aximo-accordion">
-					<div className="accordion-body">
-						Sudhita draws upon years of experience and knowledge to deliver an impactful experience designed to educate and empower. Whether it’s a corporate gathering, conference, panel, or workshop, Sudhita engages with her audience by weaving in her own lived experience with ADHD. Sudhita is an invited speaker at Sonos, United States Agency for Global Media, Bitcamp, Technica, Lorraine County Community College, and local and international panels. 
+						<p>Sudhita draws upon years of experience and knowledge to educate and empower audiences of all types. Whether it&apos;s a corporate gathering, conference, panel or workshop, Sudhita provides insight, inspiration and actionable strategies.</p>
+						<p>She has spoken at local and international events including Sonos, United States Agency for Global Media, Bitcamp, Technica and Lorain County Community College.</p>
 					</div>
 				</div>
 			</FadeInStaggerTwoChildren>
+
 		</FadeInStaggerTwo>
 	);
 }

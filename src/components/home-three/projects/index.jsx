@@ -7,6 +7,7 @@ import college from "../../../assets/images/lya/college.jpg";
 import ProjectCard from "./ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel, Autoplay } from "swiper/modules";
+import StoryPhotos from "../../about/story/StoryPhotos";
 
 const projectsData = [
 	{
@@ -81,8 +82,9 @@ function Projects() {
 						</span>*/}
 					</h2>
 				</div>
+				<StoryPhotos />
 			</div>
-			<div className="swiper aximo-project-slider center">
+			{/*<div className="swiper aximo-project-slider center">
 				<Swiper {...swiperSettings}>
 					{projectsData.map((project) => (
 						<SwiperSlide key={project.id}>
@@ -91,6 +93,7 @@ function Projects() {
 					))}
 				</Swiper>
 			</div>
+			*/}
 		</div>
 	);
 }

@@ -15,9 +15,10 @@ const animationVariants = {
 	}),
 };
 
-function FadeInStagger({ children, className = "", index, style }) {
+function FadeInStagger({ children, className = "", index, style, as = "div" }) {
+	const MotionComponent = motion[as] || motion.div;
 	return (
-		<motion.div
+		<MotionComponent
 			className={className}
 			variants={animationVariants}
 			initial="initial"
@@ -27,7 +28,7 @@ function FadeInStagger({ children, className = "", index, style }) {
 			style={style}
 		>
 			{children}
-		</motion.div>
+		</MotionComponent>
 	);
 }
 

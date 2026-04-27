@@ -11,27 +11,30 @@ import Teams from "../../components/home-three/teams";
 import Testimonial from "../../components/home-three/testimonial";
 import OurOfferings from "../../components/home-three/our-offerings";
 import Projects from "../../components/home-three/projects";
-
+import ProjectsV3 from "../../components/home-three/projectsv3";
+import Pricing from "../../components/pricing";
 function HomeThree() {
 	return (
 		<div className="aximo-all-section cream-bg">
 			<Hero />
 			<Contact />
 			
-			{/*<Teams />*/}
+			{/*<Teams />
 			<Projects />
-			<OurOfferings />
-			<Services />{
+			<ProjectsV3 />
+			
+			<Services />
+			<*/}
+			<Pricing />
+			
 			<Testimonial />
-
-			/*
+			<OurOfferings />
+			{/*
 			<SeoSteps />
 			<AutoSlider />
 			<Teams />*/}
 			<About />
 			<Faq />
-
-			
 		</div>
 	);
 }

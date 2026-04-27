@@ -1,4 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
+import Handout from "../page/Handout.jsx";
 import LayoutEight from "../components/layout/LayoutEight.jsx";
 import LayoutFive from "../components/layout/LayoutFive.jsx";
 import LayoutFour from "../components/layout/LayoutFour.jsx";
@@ -11,7 +12,6 @@ import Layout from "../components/layout/index.jsx";
 import ErrorPage from "../error-page";
 import AboutUs from "../page/AboutUs";
 import ContactUs from "../page/ContactUs";
-import Pricing from "../page/Pricing";
 import Reset from "../page/auth/ResetPassword.jsx";
 import SignIn from "../page/auth/SignIn";
 import SignUp from "../page/auth/SignUp";
@@ -37,6 +37,10 @@ import Faq from "../page/utility/Faq.jsx";
 import TestimonialPage from "../page/utility/Testimonial.jsx";
 
 export const router = createBrowserRouter([
+	{
+		path: "/handout",
+		element: <Handout />,
+	},
 	{
 		path: "/",
 		element: <Layout />,
@@ -67,10 +71,7 @@ export const router = createBrowserRouter([
 						element: <TestimonialPage />,
 					},
 
-					{
-						path: "/pricing",
-						element: <Pricing />,
-					},
+					
 					{
 						path: "/blog",
 						element: <BlogPage />,
@@ -110,6 +111,10 @@ export const router = createBrowserRouter([
 					{
 						path: "/single-portfolio",
 						element: <SinglePortfolio />,
+					},
+					{
+						path: "/home1",
+						element: <HomeThree />,
 					},
 					{
 						path: "*",

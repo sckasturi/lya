@@ -11,7 +11,7 @@ import APSARD from "../../../assets/images/lya/apsard.png"
 
 function Footer() {
 	return (
-		<footer className="aximo-footer-section7">
+		<footer className="aximo-footer-section7 cream-bg">
 			<div className="container">
 				<div className="aximo-footer-top7">
 					<div className="aximo-footer-info-column">
