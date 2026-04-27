@@ -1,93 +1,170 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
+import { OPEN_FREEBIE_POPUP_EVENT } from "../../../lib/openFreebiePopup";
 import "./freebie-popup.css";
 
-const POPUP_STORAGE_KEY = "lya-freebie-popup-dismissed";
-const API_ENDPOINT = import.meta.env.VITE_FREEBIE_API_URL || "/api/freebie";
+const STORAGE_KEY = "lya-freebie-popup-dismissed";
 
-function FreebiePopup() {
+export default function FreebiePopup() {
 	const [isOpen, setIsOpen] = useState(false);
+	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
-	const [isSubmitting, setIsSubmitting] = useState(false);
+	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
-	const [hasError, setHasError] = useState(false);
+	const recaptchaRef = useRef(null);
+	const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 	useEffect(() => {
-		const dismissed = localStorage.getItem(POPUP_STORAGE_KEY);
+		const dismissed = localStorage.getItem(STORAGE_KEY) === "1";
 		if (!dismissed) {
 			setIsOpen(true);
 		}
+		const onOpen = () => setIsOpen(true);
+		window.addEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
+		return () =>
+			window.removeEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
 	}, []);
 
 	const closePopup = () => {
-		localStorage.setItem(POPUP_STORAGE_KEY, "true");
 		setIsOpen(false);
+		localStorage.setItem(STORAGE_KEY, "1");
 	};
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
-		setIsSubmitting(true);
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 		setMessage("");
-		setHasError(false);
 
+		if (!name.trim()) {
+			setMessage("Please enter your name.");
+			return;
+		}
+
+		if (!email.trim()) {
+			setMessage("Please enter your email.");
+			return;
+		}
+
+		let recaptchaToken = "";
+		if (siteKey) {
+			recaptchaToken = recaptchaRef.current?.getValue() || "";
+			if (!recaptchaToken) {
+				setMessage("Please complete the reCAPTCHA.");
+				return;
+			}
+		}
+
+		setStatus("loading");
 		try {
-			const response = await fetch(API_ENDPOINT, {
+			const endpoint =
+				import.meta.env.VITE_FREEBIE_API_URL || "/api/freebie";
+			const res = await fetch(endpoint, {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify({ email }),
+				body: JSON.stringify({
+					name: name.trim(),
+					email: email.trim(),
+					recaptchaToken: recaptchaToken || undefined,
+				}),
 			});
-
-			const result = await response.json();
-
-			if (!response.ok) {
-				throw new Error(result?.error || "Could not send your free guide.");
+			const data = await res.json().catch(() => ({}));
+			if (!res.ok) {
+				throw new Error(data.error || "Something went wrong.");
 			}
-
-			setMessage("Success! Please check your inbox for your free guide.");
-			setEmail("");
-			localStorage.setItem(POPUP_STORAGE_KEY, "true");
-		} catch (error) {
-			setHasError(true);
-			setMessage(error.message || "Something went wrong. Please try again.");
-		} finally {
-			setIsSubmitting(false);
+			setStatus("success");
+			setMessage("Check your inbox for the free guide.");
+			recaptchaRef.current?.reset();
+		} catch (err) {
+			setStatus("error");
+			setMessage(err.message || "Something went wrong.");
+			recaptchaRef.current?.reset();
 		}
 	};
 
-	if (!isOpen) return null;
-
 	return (
-		<div className="freebie-popup-overlay" role="dialog" aria-modal="true">
-			<div className="freebie-popup-card">
-				<button
-					type="button"
-					className="freebie-popup-close"
-					aria-label="Close popup"
+		<AnimatePresence>
+			{isOpen && (
+				<motion.div
+					className="freebie-popup-overlay"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					exit={{ opacity: 0 }}
+					transition={{ duration: 0.22 }}
 					onClick={closePopup}
+					role="presentation"
 				>
-					&times;
-				</button>
-				<h3>Would you like to get your free guide to solving your ADHD brain dumps?</h3>
-				<form onSubmit={handleSubmit} className="freebie-popup-form">
-					<input
-						type="email"
-						required
-						value={email}
-						onChange={(event) => setEmail(event.target.value)}
-						placeholder="Enter your email"
-						aria-label="Email address"
-					/>
-					<button type="submit" disabled={isSubmitting}>
-						{isSubmitting ? "Sending..." : "Send My Free Guide"}
-					</button>
-				</form>
-				{message && (
-					<p className={`freebie-popup-message ${hasError ? "error" : "success"}`}>
-						{message}
-					</p>
-				)}
-			</div>
-		</div>
+					<motion.div
+						className="freebie-popup-card"
+						initial={{ opacity: 0, y: 12 }}
+						animate={{ opacity: 1, y: 0 }}
+						exit={{ opacity: 0, y: 8 }}
+						transition={{ duration: 0.22 }}
+						onClick={(e) => e.stopPropagation()}
+						role="dialog"
+						aria-modal="true"
+						aria-labelledby="freebie-popup-title"
+					>
+						<button
+							type="button"
+							className="freebie-popup-close"
+							onClick={closePopup}
+							aria-label="Close"
+						>
+							×
+						</button>
+						<h3 id="freebie-popup-title">Get the free ADHD guide</h3>
+						<p>
+							Enter your name and email and we&apos;ll send the PDF to your
+							inbox.
+						</p>
+						<form className="freebie-popup-form" onSubmit={handleSubmit}>
+							<input
+								type="text"
+								name="name"
+								placeholder="Your name"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+								autoComplete="name"
+								disabled={status === "loading" || status === "success"}
+							/>
+							<input
+								type="email"
+								name="email"
+								placeholder="Your email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								autoComplete="email"
+								disabled={status === "loading" || status === "success"}
+							/>
+							{siteKey ? (
+								<div className="freebie-popup-recaptcha">
+									<ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
+								</div>
+							) : (
+								<p className="freebie-popup-recaptcha-hint">
+									Add{" "}
+									<code>VITE_RECAPTCHA_SITE_KEY</code> to enable reCAPTCHA.
+								</p>
+							)}
+							<button
+								type="submit"
+								disabled={status === "loading" || status === "success"}
+							>
+								{status === "loading" ? "Sending..." : "Send me the guide"}
+							</button>
+						</form>
+						{message && (
+							<div
+								className={`freebie-popup-message ${
+									status === "success" ? "success" : "error"
+								}`}
+							>
+								{message}
+							</div>
+						)}
+					</motion.div>
+				</motion.div>
+			)}
+		</AnimatePresence>
 	);
 }
-
-export default FreebiePopup;

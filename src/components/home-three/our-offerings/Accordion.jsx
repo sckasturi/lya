@@ -1,4 +1,5 @@
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/FadeInStaggerTwo";
+import { openFreebiePopup } from "../../../lib/openFreebiePopup";
 
 function Accordion() {
 	function scrollToContact() {
@@ -22,13 +23,18 @@ function Accordion() {
 				<div id="collapseOne" className="accordion-collapse collapse show" data-bs-parent="#aximo-accordion">
 					<div className="accordion-body">
 						<p>One-on-one coaching sessions with Sudhita are tailored to your ADHD related challenges. Enhance your mindset and create actionable strategies to help you thrive and propel toward success.</p>
-						<button
-							type="button"
-							className="aximo-offerings-cta"
-							onClick={scrollToContact}
-						>
-							Start your journey
-						</button>
+						<div className="lya-cta-row" style={{ marginTop: 4 }}>
+							<button type="button" className="aximo-offerings-cta" onClick={scrollToContact}>
+								Start your journey
+							</button>
+							<button
+								type="button"
+								className="aximo-offerings-cta lya-offerings-cta--outline"
+								onClick={openFreebiePopup}
+							>
+								Get your free ADHD guide
+							</button>
+						</div>
 					</div>
 				</div>
 			</FadeInStaggerTwoChildren>

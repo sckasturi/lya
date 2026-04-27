@@ -1,128 +1,144 @@
-const RESEND_ENDPOINT = "https://api.resend.com/emails";
-const DEFAULT_FROM = "sudhita@leverageyouradhd.com";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-function jsonResponse(body, status = 200) {
-	return new Response(JSON.stringify(body), {
-		status,
-		headers: { "content-type": "application/json; charset=utf-8" },
+const PDF_PATH = join(process.cwd(), "public", "assets", "pdfs", "freebie.pdf");
+
+async function verifyRecaptcha(secret, token) {
+	const body = new URLSearchParams();
+	body.set("secret", secret);
+	body.set("response", token);
+	const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+		method: "POST",
+		headers: { "Content-Type": "application/x-www-form-urlencoded" },
+		body,
 	});
-}
-
-function toBase64(buffer) {
-	let binary = "";
-	const bytes = new Uint8Array(buffer);
-	for (let i = 0; i < bytes.byteLength; i += 1) {
-		binary += String.fromCharCode(bytes[i]);
-	}
-	return btoa(binary);
+	const data = await res.json();
+	return data.success === true;
 }
 
 async function appendToGoogleSheet(env, payload) {
-	if (!env.GOOGLE_SHEETS_WEBHOOK_URL) {
-		return;
-	}
+	const url = env.GOOGLE_SHEETS_WEBHOOK_URL;
+	const secret = env.GOOGLE_SHEETS_WEBHOOK_SECRET;
+	if (!url || !secret) return;
 
-	const response = await fetch(env.GOOGLE_SHEETS_WEBHOOK_URL, {
+	await fetch(url, {
 		method: "POST",
-		headers: {
-			"Content-Type": "application/json",
-		},
-		body: JSON.stringify({
-			secret: env.GOOGLE_SHEETS_WEBHOOK_SECRET || "",
-			...payload,
-		}),
+		headers: { "Content-Type": "application/json" },
+		body: JSON.stringify({ ...payload, secret }),
 	});
-
-	if (!response.ok) {
-		const responseBody = await response.text();
-		throw new Error(`Google Sheets logging failed: ${responseBody}`);
-	}
-
-	let responseJson = null;
-	try {
-		responseJson = await response.json();
-	} catch {
-		// Some webhooks return empty body on success.
-		return;
-	}
-
-	if (responseJson && responseJson.ok === false) {
-		throw new Error(
-			`Google Sheets logging failed: ${responseJson.error || "Unknown webhook error"}`
-		);
-	}
 }
 
 export async function onRequestPost(context) {
+	const { request, env } = context;
+
+	let body;
 	try {
-		const { request, env } = context;
-		const { email } = await request.json();
+		body = await request.json();
+	} catch {
+		return new Response(JSON.stringify({ error: "Invalid JSON" }), {
+			status: 400,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
 
-		if (!email || typeof email !== "string") {
-			return jsonResponse({ error: "A valid email is required." }, 400);
-		}
+	const name = typeof body.name === "string" ? body.name.trim() : "";
+	const email = typeof body.email === "string" ? body.email.trim() : "";
+	const recaptchaToken =
+		typeof body.recaptchaToken === "string" ? body.recaptchaToken.trim() : "";
 
-		if (!env.RESEND_API_KEY) {
-			return jsonResponse({ error: "Server email config is missing." }, 500);
-		}
+	if (!name) {
+		return new Response(JSON.stringify({ error: "Name is required." }), {
+			status: 400,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
 
-		const pdfUrl = new URL("/assets/pdfs/freebie.pdf", request.url).toString();
-		const pdfResponse = await fetch(pdfUrl);
-		if (!pdfResponse.ok) {
-			return jsonResponse(
-				{ error: "freebie.pdf not found at public/assets/pdfs/freebie.pdf" },
-				500
+	if (!email) {
+		return new Response(JSON.stringify({ error: "Email is required." }), {
+			status: 400,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
+
+	const secretKey = env.RECAPTCHA_SECRET_KEY;
+	if (secretKey) {
+		if (!recaptchaToken) {
+			return new Response(
+				JSON.stringify({ error: "reCAPTCHA verification required." }),
+				{ status: 400, headers: { "Content-Type": "application/json" } },
 			);
 		}
-
-		const pdfArrayBuffer = await pdfResponse.arrayBuffer();
-		const pdfBase64 = toBase64(pdfArrayBuffer);
-
-		const resendResponse = await fetch(RESEND_ENDPOINT, {
-			method: "POST",
-			headers: {
-				Authorization: `Bearer ${env.RESEND_API_KEY}`,
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({
-				from: env.MAIL_FROM || DEFAULT_FROM,
-				to: [email],
-				subject: "Your free ADHD brain dump guide",
-				html: "<p>Thanks for requesting your free guide. It is attached to this email.</p>",
-				text: "Thanks for requesting your free guide. It is attached to this email.",
-				attachments: [
-					{
-						filename: "freebie.pdf",
-						content: pdfBase64,
-					},
-				],
-			}),
-		});
-
-		if (!resendResponse.ok) {
-			const errorBody = await resendResponse.text();
-			return jsonResponse(
-				{ error: `Email provider rejected request: ${errorBody}` },
-				500
+		const ok = await verifyRecaptcha(secretKey, recaptchaToken);
+		if (!ok) {
+			return new Response(
+				JSON.stringify({ error: "reCAPTCHA verification failed." }),
+				{ status: 400, headers: { "Content-Type": "application/json" } },
 			);
 		}
+	}
 
-		await appendToGoogleSheet(env, {
-			type: "freebie",
-			email,
-			timestamp: new Date().toISOString(),
+	const apiKey = env.RESEND_API_KEY;
+	const from = env.MAIL_FROM;
+	const to = env.MAIL_TO;
+
+	if (!apiKey || !from || !to) {
+		return new Response(JSON.stringify({ error: "Email not configured." }), {
+			status: 500,
+			headers: { "Content-Type": "application/json" },
 		});
+	}
 
-		return jsonResponse({ ok: true });
-	} catch (error) {
-		return jsonResponse(
+	let attachmentContent;
+	try {
+		const fileBuffer = await readFile(PDF_PATH);
+		attachmentContent = fileBuffer.toString("base64");
+	} catch {
+		return new Response(JSON.stringify({ error: "Attachment missing." }), {
+			status: 500,
+			headers: { "Content-Type": "application/json" },
+		});
+	}
+
+	const resendPayload = {
+		from,
+		to: [email],
+		subject: "Your free ADHD guide",
+		html: `<p>Hi ${name},</p><p>Thanks for requesting the free guide. The PDF is attached.</p><p>— Sudhita</p>`,
+		text: `Hi ${name},\n\nThanks for requesting the free guide. The PDF is attached.\n\n— Sudhita`,
+		attachments: [
 			{
-				error:
-					error instanceof Error
-						? error.message
-						: "Unable to send email right now. Please try again shortly.",
+				filename: "Leverage-Your-ADHD-Free-Guide.pdf",
+				content: attachmentContent,
 			},
-			500
+		],
+	};
+
+	const resendResponse = await fetch("https://api.resend.com/emails", {
+		method: "POST",
+		headers: {
+			Authorization: `Bearer ${apiKey}`,
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(resendPayload),
+	});
+
+	if (!resendResponse.ok) {
+		const errorText = await resendResponse.text();
+		return new Response(
+			JSON.stringify({ error: "Failed to send email.", details: errorText }),
+			{ status: 502, headers: { "Content-Type": "application/json" } },
 		);
 	}
+
+	await appendToGoogleSheet(env, {
+		type: "freebie",
+		name,
+		email,
+		timestamp: new Date().toISOString(),
+	});
+
+	return new Response(JSON.stringify({ ok: true }), {
+		status: 200,
+		headers: { "Content-Type": "application/json" },
+	});
 }

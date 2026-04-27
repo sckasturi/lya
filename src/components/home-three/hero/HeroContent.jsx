@@ -1,6 +1,5 @@
-import StarImg from "../../../assets/images/v3/star.svg";
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/FadeInStaggerTwo";
-import { PopupButton } from "react-calendly";
+import { openFreebiePopup } from "../../../lib/openFreebiePopup";
 
 function HeroContent() {
 	const scrollToSection = () => {
@@ -22,16 +21,17 @@ function HeroContent() {
 
 				<h2>Hi, I'm Sudhita Kasturi</h2>				<br/>
 				<h3>Navigate your ADHD dilemmas in partnership with me, a certified and credentialed ADHD Life Coach, dedicated to helping you live authentically.</h3>
-				<div className="aximo-hero-subscription">	
-						<button 
-						id="aximo-hero-subscription-btn" 
-						type="button" 
-						onClick={scrollToSection}
+				<div className="aximo-hero-subscription lya-cta-row">
+					<button type="button" className="lya-hero-journey-btn" onClick={scrollToSection}>
+						Start your journey
+					</button>
+					<button
+						type="button"
+						className="lya-hero-freebie-btn"
+						onClick={openFreebiePopup}
 					>
-							<span className="aximo-label-up">Start your journey</span>
-							<span className="aximo-label-up">Start your journey</span>
-						</button>
-					
+						Get your free ADHD guide
+					</button>
 				</div>
 				{/*<div className="aximo-hero-rating">
 					<ul>

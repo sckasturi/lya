@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import { openFreebiePopup } from "../../../lib/openFreebiePopup";
+
 function HeaderButton() {
 	const scrollToSection = () => {
 		const target = document.getElementById("contact-us");
@@ -9,10 +10,20 @@ function HeaderButton() {
 
 	return (
 		<div className="header-btn header-btn-l1 ms-auto d-none d-xs-inline-flex">
-			<div className="aximo-header-wrap">
-				<button className="aximo-default-btn pill aximo-header-btn red-btn" onClick={scrollToSection}>
-					<span className="aximo-label-up">Start your journey</span>
-					<span className="aximo-label-up">Start your journey</span>
+			<div className="aximo-header-wrap lya-cta-row">
+				<button
+					type="button"
+					className="aximo-default-btn pill aximo-header-btn lya-header-journey-btn"
+					onClick={scrollToSection}
+				>
+					Start your journey
+				</button>
+				<button
+					type="button"
+					className="aximo-default-btn pill aximo-header-btn lya-header-freebie-btn"
+					onClick={openFreebiePopup}
+				>
+					Get your free ADHD guide
 				</button>
 			</div>
 		</div>
