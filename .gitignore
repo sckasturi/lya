@@ -2,4 +2,12 @@
 **/.DS_Store
 
 /LY_ADHD_Brand Guideline.pdf
-*.pdf
+
+node_modules/
+dist/
+.DS_Store
+*.psd
+node_modules/
+dist/
+.DS_Store
+*.psd
