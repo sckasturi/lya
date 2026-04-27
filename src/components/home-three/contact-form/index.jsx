@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-const WEB3FORMS_ACCESS_KEY = "56bc6255-832a-444f-97d5-fe2f527ab0f7";
-
 export const INQUIRY_OPTIONS = [
 	{ value: "", label: "Select a topic…" },
 	{ value: "general", label: "General information" },
@@ -39,22 +37,19 @@ export function ContactFormFields({ initialInquiry = "" }) {
 			INQUIRY_OPTIONS.find((o) => o.value === fields.reason)?.label || fields.reason;
 
 		try {
-			const res = await fetch("https://api.web3forms.com/submit", {
+			const res = await fetch("/api/contact", {
 				method: "POST",
-				headers: { "Content-Type": "application/json", Accept: "application/json" },
+				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({
-					access_key: WEB3FORMS_ACCESS_KEY,
 					name: fields.name,
 					email: fields.email,
-					subject: reasonLabel
-						? `[${reasonLabel}] Message from ${fields.name}`
-						: `Message from ${fields.name}`,
+					phone: "Not provided",
 					message: fields.message,
-					"Inquiry type": reasonLabel,
+					reason: reasonLabel,
 				}),
 			});
 			const data = await res.json();
-			if (data.success) {
+			if (res.ok && data?.ok) {
 				setStatus("success");
 				setFields({ name: "", email: "", reason: initialInquiry, message: "" });
 			} else {

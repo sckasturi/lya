@@ -12,7 +12,7 @@ function jsonResponse(body, status = 200) {
 export async function onRequestPost(context) {
 	try {
 		const { request, env } = context;
-		const { name, email, phone, message } = await request.json();
+		const { name, email, phone, message, reason } = await request.json();
 
 		if (!name || !email || !phone || !message) {
 			return jsonResponse({ error: "All fields are required." }, 400);
@@ -37,10 +37,11 @@ export async function onRequestPost(context) {
 					<p><strong>Name:</strong> ${name}</p>
 					<p><strong>Email:</strong> ${email}</p>
 					<p><strong>Phone:</strong> ${phone}</p>
+					<p><strong>Reason:</strong> ${reason || "Not provided"}</p>
 					<p><strong>Message:</strong></p>
 					<p>${message}</p>
 				`,
-				text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`,
+				text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nReason: ${reason || "Not provided"}\n\nMessage:\n${message}`,
 			}),
 		});
 
