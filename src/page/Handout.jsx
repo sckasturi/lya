@@ -94,7 +94,7 @@ function Handout() {
 						</section>
 						<section className="lya-handout-section">
 							<h2>Who I Work With</h2>
-							<ul className="lya-handout-bullets lya-handout-bullets--offering">
+							<ul className="lya-handout-bullets lya-handout-bullets--offering lya-handout-bullets--two-col">
 								<li>C-Suite Executives</li>
 								<li>Academics &amp; Post-Docs</li>
 								<li>Students on Academic Probation</li>
