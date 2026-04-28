@@ -11010,7 +11010,7 @@ button#aximo-notified-btn {
 	align-items: center;
 	justify-content: space-between;
 	gap: 14px;
-	padding: 18px 48px;
+	padding: 18px 36px;
 }
 .lya-handout-logo {
 	height: 40px;
@@ -11032,7 +11032,7 @@ button#aximo-notified-btn {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding: 24px 48px;
+	padding: 24px 44px;
 	gap: 28px;
 }
 .lya-handout-hero-text {
@@ -11080,16 +11080,16 @@ button#aximo-notified-btn {
 	overflow: hidden;
 }
 .lya-handout-col {
-	padding: 40px 48px 40px;
+	padding: 40px 36px 40px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 }
 .lya-handout-col-left {
-	padding-right: 24px;
+	padding-right: 18px;
 }
 .lya-handout-col-right {
-	padding-left: 24px;
+	padding-left: 18px;
 }
 
 /* Contact + QR horizontal band */
@@ -11290,7 +11290,7 @@ button#aximo-notified-btn {
 	-webkit-print-color-adjust: exact !important;
 	print-color-adjust: exact !important;
 	forced-color-adjust: none;
-	padding: 18px 48px;
+	padding: 18px 36px;
 	flex-shrink: 0;
 }
 .lya-handout-footer p {
