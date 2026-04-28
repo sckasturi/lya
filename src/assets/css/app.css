@@ -11069,6 +11069,9 @@ button#aximo-notified-btn {
 }
 .lya-handout-col {
 	padding: 40px 36px 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 .lya-handout-col-left {
 	padding-right: 18px;
