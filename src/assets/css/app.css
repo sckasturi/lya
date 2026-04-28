@@ -1973,6 +1973,18 @@ header.aximo-header-section.aximo-header7.sticky-menu {
 	align-items: center;
 }
 
+/* White buttons on teal header */
+.lya-header-journey-btn,
+.lya-header-freebie-btn {
+	color: #ffffff !important;
+	border-color: #ffffff !important;
+	background-color: transparent !important;
+}
+.lya-header-journey-btn:hover,
+.lya-header-freebie-btn:hover {
+	background-color: rgba(255,255,255,0.15) !important;
+}
+
 .aximo-sidemenu-wraper {
 	position: relative;
 }
