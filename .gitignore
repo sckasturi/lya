@@ -1,13 +1,25 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local environment / secrets
+.env
+.dev.vars
+
+# Cloudflare local dev state
+.wrangler/
+
+# macOS metadata
 .DS_Store
 **/.DS_Store
 
-/LY_ADHD_Brand Guideline.pdf
+# Design / scratch files
+*.psd
+src/assets/pdfs/
+src/assets/images/lya/test.jpg
+src/components/pricing/Untitled
 
-node_modules/
-dist/
-.DS_Store
-*.psd
-node_modules/
-dist/
-.DS_Store
-*.psd
+# Large source files
+/LY_ADHD_Brand Guideline.pdf
