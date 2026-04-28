@@ -11177,6 +11177,9 @@ button#aximo-notified-btn {
 	grid-template-columns: 1fr 1fr;
 	gap: 7px 16px;
 }
+.lya-handout-bullets--two-col li:last-child {
+	grid-column: 1 / -1;
+}
 .lya-handout-pills {
 	display: flex;
 	flex-wrap: wrap;
