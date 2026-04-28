@@ -1,8 +1,8 @@
 import Star2Img from "../../../assets/images/v1/star2.png";
-import Project1Img from "../../../assets/images/v1/project1.png";
-import Project2Img from "../../../assets/images/v1/project2.png";
-import Project3Img from "../../../assets/images/v1/project3.png";
-import Project4Img from "../../../assets/images/v1/project4.png";
+const Project1Img = null;
+const Project2Img = null;
+const Project3Img = null;
+const Project4Img = null;
 import ProjectCard from "./ProjectCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Mousewheel } from "swiper/modules";

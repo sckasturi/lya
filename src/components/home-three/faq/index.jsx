@@ -34,8 +34,7 @@ function Faq() {
 		<div className="section aximo-section-padding cream-bg">
 			<div className="container">
 				<div className="lya-faq-header">
-					<p className="lya-faq-eyebrow">Got questions?</p>
-					<h2>Everything you need to know about ADHD coaching</h2>
+					<h2>Any last questions?</h2>
 				</div>
 				<FadeInUp>
 					<div className="lya-faq-list">

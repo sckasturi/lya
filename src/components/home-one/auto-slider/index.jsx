@@ -1,4 +1,4 @@
-import Star3Img from "../../../assets/images/v1/star3.png";
+const Star3Img = null;
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
