@@ -23,8 +23,8 @@ function Handout() {
 						<h1>Sudhita Kasturi</h1>
 						<p className="lya-handout-title">Certified &amp; Credentialed ADHD Life Coach</p>
 						<p className="lya-handout-tagline">
-							Navigate your ADHD dilemmas in partnership with a coach dedicated to helping
-							you live authentically.
+						I partner with clients to navigate their ADHD and live authentically.
+
 						</p>
 					</div>
 					<img src={PhotoImg} alt="Sudhita Kasturi" className="lya-handout-photo" />
@@ -52,22 +52,20 @@ function Handout() {
 								mitigate the difficulties of ADHD. I can work with you with or without a
 								formal diagnosis.
 							</p>*/}
-							<p>I coach high-potential professionals and academics globally, leveraging my experience as an educator, entrepreneur, and program director. My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. I partner with them to embrace their ADHD and live happy, productive, and fulfilled lives.</p>
-<p>As the founder of Leverage Your ADHD, I am committed to raising awareness about ADHD, especially in underserved populations. I facilitate the Attention Deficit Disorder Association’s (ADDA) South Asian Virtual Peer Support Group and am the Diversity, Equity, Inclusion & Belonging (DEIB) Chair on the Board of the ADHD Coaches Organization (ACO).</p>
-
+							<p>I coach high-potential professionals and academics globally, leveraging my experience as an educator, entrepreneur, and program director. </p>
+								<p>My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. </p>
+								<p>I partner with them to embrace their ADHD and live happy, productive, and fulfilled lives.</p>
+<p>As the founder of Leverage Your ADHD, I am committed to raising awareness about ADHD, especially in underserved populations.</p>
 						</section>
 
 						<section className="lya-handout-section">
-							<h2>Who I Work With</h2>
-							<ul className="lya-handout-bullets">
-								<li>C-Suite Executives</li>
-								<li>Academics &amp; Post-Docs</li>
-								<li>College Students on Probation</li>
-								<li>Medical &amp; Law Students</li>
-								<li>Parents of Neurodiverse Children</li>
+							<h2>Curriculum Vitae</h2>
+							<ul className="lya-handout-bullets lya-handout-bullets--sm">
+								<li>Facilitator, ADDA South Asian Virtual Peer Support Group</li>
+								<li>DEIB Chair, ADHD Coaches Organization (ACO) Board</li>
+								<li>Speaker: Sonos, US Agency for Global Media, Bitcamp, Technica, Lorain County Community College</li>
 							</ul>
 						</section>
-
 					</div>
 
 					{/* Right column */}
@@ -94,13 +92,14 @@ function Handout() {
 							<p>I draw upon my experience and knowledge to educate and empower audiences.</p>
 							</div>
 						</section>
-
 						<section className="lya-handout-section">
-							<h2>Curriculum Vitae</h2>
-							<ul className="lya-handout-bullets lya-handout-bullets--sm">
-								<li>Facilitator, ADDA South Asian Virtual Peer Support Group</li>
-								<li>DEIB Chair, ADHD Coaches Organization (ACO) Board</li>
-								<li>Speaker: Sonos, US Agency for Global Media, Bitcamp, Technica, Lorain County Community College</li>
+							<h2>Who I Work With</h2>
+							<ul className="lya-handout-bullets lya-handout-bullets--two-col">
+								<li>C-Suite Executives</li>
+								<li>Academics &amp; Post-Docs</li>
+								<li>Students on Academic Probation</li>
+								<li>Medical &amp; Law Students</li>
+								<li>Parents of Neurodiverse Children</li>
 							</ul>
 						</section>
 
