@@ -9,7 +9,7 @@ function HeaderButton() {
 	};
 
 	return (
-		<div className="header-btn header-btn-l1 ms-auto d-none d-xs-inline-flex">
+		<div className="header-btn header-btn-l1 ms-auto d-none d-lg-inline-flex">
 			<div className="aximo-header-wrap lya-cta-row">
 				<button
 					type="button"

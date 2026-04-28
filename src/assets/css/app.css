@@ -3820,6 +3820,7 @@ h1.post__title {
 
 .aximo-hero-section3 {
 	padding-top: 91px;
+	overflow: hidden;
 }
 @media (max-width: 991px) {
 	.aximo-hero-section3 {
@@ -3887,9 +3888,7 @@ h1.post__title {
 	}
 }
 .aximo-hero-thumb3 {
-	left: 3px;
 	overflow: hidden;
-	margin-left: 20px;
 	position: relative;
 	border-radius: 0 0 0 425px;
 	border-left: 3px solid #000;
@@ -3908,23 +3907,12 @@ h1.post__title {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-}
-@media (max-width: 1199px) {
-	.aximo-hero-thumb3 {
-		margin-left: 0;
-	}
+	display: block;
 }
 @media (max-width: 991px) {
 	.aximo-hero-thumb3 {
-		display: none;
-		left: 0;
-	}
-}
-@media (max-width: 767px) {
-	.aximo-hero-thumb3 {
+		border-radius: 16px;
 		border: none;
-		border-radius: 0;
-		display: none;
 	}
 }
 
@@ -5852,6 +5840,10 @@ a.aximo-service-icon:hover {
 	border-color: var(--teal);
 	color: var(--teal);
 }
+.lya-contact-recaptcha {
+	display: flex;
+	justify-content: center;
+}
 /* select styling */
 .lya-contact-field select {
 	background: rgba(255, 255, 255, 0.07);
@@ -5976,7 +5968,7 @@ a.aximo-service-icon:hover {
 
 .lya-offerings-form-panel .lya-contact-field select {
 	background-color: var(--cream);
-	border: 1px solid rgba(0, 14, 58, 0.4);
+	border: 1px solid rgba(0, 14, 58, 0.2);
 	color: var(--navy);
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23000E3A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
 }

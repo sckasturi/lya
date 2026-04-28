@@ -1,80 +1,81 @@
 /* eslint-disable react/prop-types */
-import { motion } from "framer-motion";
-import { useState } from "react";
-import NavItem from "./NavItem";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { openFreebiePopup } from "../../../../lib/openFreebiePopup";
 
-const MobileNavbar = ({ menuItemsData, title }) => {
-	const depthLevel = 0;
+const MobileNavbar = () => {
 	const [showMenu, setShowMenu] = useState(false);
+	const [menuTop, setMenuTop] = useState(72);
+	const wrapRef = useRef(null);
 
-	function handleOpenMobileMenu() {
-		setShowMenu((prev) => !prev);
-	}
+	useEffect(() => {
+		const updateTop = () => {
+			const header = document.getElementById("sticky-menu");
+			if (header) setMenuTop(header.offsetHeight);
+		};
+		updateTop();
+		window.addEventListener("resize", updateTop);
+		return () => window.removeEventListener("resize", updateTop);
+	}, []);
 
-	const animationVariants = {
-		initial: {
-			x: "-100%",
-		},
-		animate: () => {
-			if (showMenu) {
-				return {
-					x: 0,
-				};
-			}
-		},
+	const scrollToContact = () => {
+		setShowMenu(false);
+		setTimeout(() => {
+			document.getElementById("contact-us")?.scrollIntoView({ behavior: "smooth" });
+		}, 200);
 	};
-	const overlayAnimationVariants = {
-		initial: {
-			opacity: 0,
-			visibility: "hidden",
-		},
-		animate: () => {
-			if (showMenu) {
-				return {
-					opacity: 1,
-					visibility: "visible",
-				};
-			}
-		},
+
+	const handleFreebie = () => {
+		setShowMenu(false);
+		setTimeout(() => openFreebiePopup(), 200);
 	};
 
 	return (
-		<div className="mobile-nav-wrap">
-			<div className="mobile-menu-trigger" onClick={handleOpenMobileMenu}>
+		<div className="mobile-nav-wrap" ref={wrapRef}>
+			<div className="mobile-menu-trigger" onClick={() => setShowMenu((prev) => !prev)}>
 				<span></span>
 			</div>
-			{showMenu && (
-				<motion.nav className="mobile-navbar" variants={animationVariants} initial="initial" animate="animate">
-					<div className="mobile-menu-head">
-						<div className="mobile-menu-head--title">{title}</div>
-						<div className="mobile-menu-head--close" onClick={() => setShowMenu(false)}>
-							&times;
-						</div>
-					</div>
 
-					<ul>
-						{menuItemsData.map((menu, index) => {
-							return (
-								<NavItem
-									items={menu}
-									key={index}
-									depthLevel={depthLevel}
-									showMenu={showMenu}
-									setShowMenu={setShowMenu}
-								/>
-							);
-						})}
-					</ul>
-				</motion.nav>
-			)}
+			<AnimatePresence>
+				{showMenu && (
+					<>
+						<motion.nav
+							className="mobile-navbar"
+							style={{ top: menuTop }}
+							initial={{ opacity: 0, y: -8 }}
+							animate={{ opacity: 1, y: 0 }}
+							exit={{ opacity: 0, y: -8 }}
+							transition={{ duration: 0.18, ease: "easeOut" }}
+						>
+							<div className="mobile-nav-cta">
+								<button
+									type="button"
+									className="aximo-default-btn pill lya-header-journey-btn"
+									onClick={scrollToContact}
+								>
+									Start your journey
+								</button>
+								<button
+									type="button"
+									className="aximo-default-btn pill lya-header-freebie-btn"
+									onClick={handleFreebie}
+								>
+									Get your free ADHD guide
+								</button>
+							</div>
+						</motion.nav>
 
-			<motion.div
-				initial="initial"
-				animate="animate"
-				variants={overlayAnimationVariants}
-				className="mobile-nav--overlay"
-				onClick={handleOpenMobileMenu}
-			></motion.div>
+						<motion.div
+							className="mobile-nav--overlay"
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.18 }}
+							onClick={() => setShowMenu(false)}
+						/>
+					</>
+				)}
+			</AnimatePresence>
 		</div>
 	);
 };

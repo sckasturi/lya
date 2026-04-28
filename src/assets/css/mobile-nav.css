@@ -3,12 +3,11 @@
 }
 .mobile-navbar {
 	position: fixed;
-	top: 0;
 	left: 0;
+	width: 100%;
 	background-color: #fff;
-	width: 320px;
 	z-index: 9999;
-	border: 1px solid #ddd;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 .mobile-nav-wrap .mobile-menu-trigger {
 	display: flex;
@@ -48,7 +47,7 @@
 }
 .mobile-nav--overlay {
 	position: fixed;
-	background-color: rgba(0, 0, 0, 0.5);
+	background-color: rgba(0, 0, 0, 0.3);
 	left: 0;
 	top: 0;
 	width: 100%;
@@ -139,4 +138,36 @@
 	.mobile-nav-wrap {
 		display: block;
 	}
+}
+
+.mobile-nav-cta {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	padding: 20px 24px 24px;
+}
+
+.mobile-nav-cta .aximo-default-btn {
+	width: 100%;
+	text-align: center;
+	justify-content: center;
+	display: flex;
+	align-items: center;
+	height: 50px;
+	padding: 0 22px;
+	border-radius: 999px;
+	font-size: 16px;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+}
+
+.mobile-nav-cta .lya-header-journey-btn {
+	background-color: var(--red, #d86b6a);
+	color: var(--cream, #fff8e9);
+}
+
+.mobile-nav-cta .lya-header-freebie-btn {
+	background-color: var(--navy, #182d38);
+	color: var(--cream, #fff8e9);
 }

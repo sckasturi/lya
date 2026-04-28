@@ -48,10 +48,25 @@ async function appendToGoogleSheet(env, payload) {
 export async function onRequestPost(context) {
 	try {
 		const { request, env } = context;
-		const { name, email, phone, message, reason } = await request.json();
+		const { name, email, country, phone, message, reason, recaptchaToken } = await request.json();
 
-		if (!name || !email || !phone || !message) {
+		if (!name || !email || !message) {
 			return jsonResponse({ error: "All fields are required." }, 400);
+		}
+
+		if (env.RECAPTCHA_SECRET_KEY) {
+			if (!recaptchaToken) {
+				return jsonResponse({ error: "Please complete the reCAPTCHA." }, 400);
+			}
+			const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+				method: "POST",
+				headers: { "Content-Type": "application/x-www-form-urlencoded" },
+				body: `secret=${env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
+			});
+			const verifyData = await verifyRes.json();
+			if (!verifyData.success) {
+				return jsonResponse({ error: "reCAPTCHA verification failed." }, 400);
+			}
 		}
 
 		if (!env.RESEND_API_KEY) {
@@ -72,12 +87,12 @@ export async function onRequestPost(context) {
 				html: `
 					<p><strong>Name:</strong> ${name}</p>
 					<p><strong>Email:</strong> ${email}</p>
-					<p><strong>Phone:</strong> ${phone}</p>
+					<p><strong>Country:</strong> ${country || "Not provided"}</p>
 					<p><strong>Reason:</strong> ${reason || "Not provided"}</p>
 					<p><strong>Message:</strong></p>
 					<p>${message}</p>
 				`,
-				text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nReason: ${reason || "Not provided"}\n\nMessage:\n${message}`,
+				text: `Name: ${name}\nEmail: ${email}\nCountry: ${country || "Not provided"}\nReason: ${reason || "Not provided"}\n\nMessage:\n${message}`,
 			}),
 		});
 
@@ -94,7 +109,7 @@ export async function onRequestPost(context) {
 				type: "contact",
 				name,
 				email,
-				phone,
+				country: country || "Not provided",
 				reason: reason || "Not provided",
 				message,
 				timestamp: new Date().toISOString(),

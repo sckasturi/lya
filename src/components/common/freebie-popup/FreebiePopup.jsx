@@ -89,16 +89,16 @@ export default function FreebiePopup() {
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					exit={{ opacity: 0 }}
-					transition={{ duration: 0.22 }}
+					transition={{ duration: 0.15, ease: "easeOut" }}
 					onClick={closePopup}
 					role="presentation"
 				>
 					<motion.div
 						className="freebie-popup-card"
-						initial={{ opacity: 0, y: 12 }}
-						animate={{ opacity: 1, y: 0 }}
-						exit={{ opacity: 0, y: 8 }}
-						transition={{ duration: 0.22 }}
+						initial={{ opacity: 0, y: 16, scale: 0.97 }}
+						animate={{ opacity: 1, y: 0, scale: 1 }}
+						exit={{ opacity: 0, y: 8, scale: 0.98 }}
+						transition={{ duration: 0.18, ease: "easeOut" }}
 						onClick={(e) => e.stopPropagation()}
 						role="dialog"
 						aria-modal="true"
@@ -113,11 +113,25 @@ export default function FreebiePopup() {
 							×
 						</button>
 
+						<AnimatePresence mode="wait">
 						{status === "success" ? (
-							<div className="freebie-popup-success">
-								<div className="freebie-popup-success-icon" aria-hidden="true">
+							<motion.div
+								key="success"
+								className="freebie-popup-success"
+								initial={{ opacity: 0, scale: 0.92, y: 10 }}
+								animate={{ opacity: 1, scale: 1, y: 0 }}
+								exit={{ opacity: 0 }}
+								transition={{ duration: 0.22, ease: "easeOut" }}
+							>
+								<motion.div
+									className="freebie-popup-success-icon"
+									aria-hidden="true"
+									initial={{ scale: 0, rotate: -20 }}
+									animate={{ scale: 1, rotate: 0 }}
+									transition={{ delay: 0.1, type: "spring", stiffness: 260, damping: 18 }}
+								>
 									✓
-								</div>
+								</motion.div>
 								<h3 id="freebie-popup-title">Check your inbox!</h3>
 								<p>
 									The free guide is on its way to <strong>{email}</strong>.
@@ -130,33 +144,41 @@ export default function FreebiePopup() {
 								>
 									Done
 								</button>
-							</div>
+							</motion.div>
 						) : (
-							<>
+							<motion.div
+								key="form"
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								transition={{ duration: 0.15 }}
+							>
 								<h3 id="freebie-popup-title">Get the free ADHD guide</h3>
 								<p>
 									Enter your name and email and we&apos;ll send the PDF to your
 									inbox.
 								</p>
 								<form className="freebie-popup-form" onSubmit={handleSubmit}>
-									<input
-										type="text"
-										name="name"
-										placeholder="Your name"
-										value={name}
-										onChange={(e) => setName(e.target.value)}
-										autoComplete="name"
-										disabled={status === "loading"}
-									/>
-									<input
-										type="email"
-										name="email"
-										placeholder="Your email"
-										value={email}
-										onChange={(e) => setEmail(e.target.value)}
-										autoComplete="email"
-										disabled={status === "loading"}
-									/>
+								<input
+									type="text"
+									name="name"
+									placeholder="Your name"
+									value={name}
+									onChange={(e) => setName(e.target.value)}
+									autoComplete="name"
+									disabled={status === "loading"}
+									required
+								/>
+								<input
+									type="email"
+									name="email"
+									placeholder="Your email"
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									autoComplete="email"
+									disabled={status === "loading"}
+									required
+								/>
 									{siteKey ? (
 										<div className="freebie-popup-recaptcha">
 											<ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
@@ -174,8 +196,9 @@ export default function FreebiePopup() {
 								{message && (
 									<div className="freebie-popup-message error">{message}</div>
 								)}
-							</>
+							</motion.div>
 						)}
+						</AnimatePresence>
 					</motion.div>
 				</motion.div>
 			)}
