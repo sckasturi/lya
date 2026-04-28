@@ -111,27 +111,11 @@ function Handout() {
 				<div className="lya-handout-contact-band">
 					<div className="lya-handout-contact-details">
 						<h2>Get in touch</h2>
-						<ul>
-					<li>
-							<strong>Website:</strong>{" "}
-							<a href="https://leverageyouradhd.com">leverageyouradhd.com</a>
-						</li>
-						<li>
-							<strong>Schedule:</strong>{" "}
-							<a href="https://calendly.com/leverageyouradhd/30min">
-								calendly.com/leverageyouradhd
-							</a>
-						</li>
-						<li>
-							<strong>Email:</strong>{" "}
-							<a href="mailto:hello@leverageyouradhd.com">
-								hello@leverageyouradhd.com
-							</a>
-						</li>
-						<li>
-							<strong>Phone:</strong>{" "}
-							<a href="tel:+15713768033">571-376-8033</a>
-						</li>
+					<ul>
+							<li><strong>Phone:</strong> <a href="tel:+15713768033">571-376-8033</a></li>
+							<li><strong>Website:</strong> <a href="https://leverageyouradhd.com">leverageyouradhd.com</a></li>
+							<li><strong>Email:</strong> <a href="mailto:hello@leverageyouradhd.com">hello@leverageyouradhd.com</a></li>
+							<li><strong>Schedule:</strong> <a href="https://calendly.com/leverageyouradhd/30min">calendly.com/leverageyouradhd</a></li>
 						</ul>
 					</div>
 

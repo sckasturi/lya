@@ -11097,10 +11097,9 @@ button#aximo-notified-btn {
 	list-style: none;
 	padding: 0;
 	margin: 0;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	gap: 6px 32px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 7px 32px;
 }
 .lya-handout-contact-details li {
 	font-size: 13.5px;
