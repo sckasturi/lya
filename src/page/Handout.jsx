@@ -36,7 +36,8 @@ function Handout() {
 					<div className="lya-handout-col lya-handout-col-left">
 						<section className="lya-handout-section">
 							<h2>About Sudhita</h2>
-							<p>
+	
+							{/*<p>
 								As a Certified ADHD Coach, I partner with you to navigate the challenges
 								of ADHD and leverage its positive attributes to create a happy and
 								fulfilling life for yourself and your family.
@@ -50,7 +51,10 @@ function Handout() {
 								With a strength-based approach, we will amplify your inherent gifts and
 								mitigate the difficulties of ADHD. I can work with you with or without a
 								formal diagnosis.
-							</p>
+							</p>*/}
+							<p>I coach high-potential professionals and academics globally, leveraging my experience as an educator, entrepreneur, and program director. My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. I partner with them to embrace their ADHD and live happy, productive, and fulfilled lives.</p>
+<p>As the founder of Leverage Your ADHD, I am committed to raising awareness about ADHD, especially in underserved populations. I facilitate the Attention Deficit Disorder Association’s (ADDA) South Asian Virtual Peer Support Group and am the Diversity, Equity, Inclusion & Belonging (DEIB) Chair on the Board of the ADHD Coaches Organization (ACO).</p>
+
 						</section>
 
 						<section className="lya-handout-section">
@@ -74,34 +78,29 @@ function Handout() {
 							<div className="lya-handout-offering">
 								<h3>Personalized ADHD Coaching</h3>
 								<p>
-									One-on-one coaching sessions tailored to your ADHD-related challenges.
-									Enhance your mindset and create actionable strategies to help you thrive
-									and propel toward success.
-								</p>
+								I partner with my clients to reframe their perspectives, co-create actionable strategies, educate them about their unique wiring, and empower them to make the change they desire and thrive with their ADHD. 
+	</p>
 							</div>
 
 							<div className="lya-handout-offering">
 								<h3>Group Coaching for South Asian Professionals</h3>
 								<p>
-									Group sessions designed for South Asian professionals to navigate the
-									challenges of ADHD in a dynamic, collaborative environment. Enhance
-									personal and professional growth through shared learning, connection,
-									and accountability.
-								</p>
+								Group sessions for South Asian professionals to navigate the challenges of ADHD. We will strengthen personal and professional growth through shared learning, connection, and accountability.
+	</p>
 							</div>
 
 							<div className="lya-handout-offering">
 								<h3>Speaking Engagements</h3>
-								<p>
-									Drawing upon years of experience and knowledge to educate and empower
-									audiences of all types—corporate gatherings, conferences, panels, and
-									workshops.
-								</p>
-								<p>
-									Past events include Sonos, United States Agency for Global Media,
-									Bitcamp, Technica, and Lorain County Community College.
-								</p>
+							<p>I draw upon my experience and knowledge to educate and empower audiences.</p>
 							</div>
+						</section>
+
+						<section className="lya-handout-section">
+							<h2>Curriculum Vitae</h2>
+							<ul className="lya-handout-bullets">
+								<li>I facilitate the Attention Deficit Disorder Association&apos;s (ADDA) South Asian Virtual Peer Support Group and am the Diversity, Equity, Inclusion &amp; Belonging (DEIB) Chair on the Board of the ADHD Coaches Organization (ACO).</li>
+								<li>My past events include Sonos, United States Agency for Global Media, Bitcamp, Technica, and Lorain County Community College.</li>
+							</ul>
 						</section>
 
 					</div>
@@ -112,7 +111,7 @@ function Handout() {
 					<div className="lya-handout-contact-details">
 						<h2>Get in touch</h2>
 					<ul>
-							<li><strong>Phone:</strong> <a href="tel:+15713768033">571-376-8033</a></li>
+							<li><strong>Phone:</strong> <a href="tel:+15713768033">(571) 376-8033</a></li>
 							<li><strong>Website:</strong> <a href="https://leverageyouradhd.com">leverageyouradhd.com</a></li>
 							<li><strong>Email:</strong> <a href="mailto:hello@leverageyouradhd.com">hello@leverageyouradhd.com</a></li>
 							<li><strong>Schedule:</strong> <a href="https://calendly.com/leverageyouradhd/30min">calendly.com/leverageyouradhd</a></li>
@@ -129,10 +128,6 @@ function Handout() {
 							bgColor="#ffffff"
 							level="M"
 						/>
-						<div className="lya-handout-qr-text">
-							<p className="lya-handout-qr-label">Scan to book a session</p>
-							<p>calendly.com/leverageyouradhd</p>
-						</div>
 					</div>
 				</div>
 
