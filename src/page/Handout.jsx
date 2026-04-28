@@ -60,12 +60,11 @@ function Handout() {
 						<section className="lya-handout-section">
 							<h2>Notable Highlights</h2>
 						<ul className="lya-handout-bullets lya-handout-bullets--sm">
-						<li>Facilitator: ADDA South Asian Virtual Peer Support Group (2025)</li>
-						<li>DEIB Chair: ADHD Coaches Organization (ACO) Board (2025)</li>
-						<li>Speaker: Sonos, US Agency for Global Media, Bitcamp, Technica, Lorain County Community College (2025)</li>
-						<li>Member: Family Advisory Board, UMass Chan Medical School (2025–Present)</li>
-						<li>Guest: Translating ADHD Podcast (2025)</li>
-						<li>Panel Speaker: International Conference on ADHD (2025)</li>
+						<li>Facilitator: ADDA South Asian Virtual Peer Support Group</li>
+						<li>DEIB Chair: ADHD Coaches Organization (ACO) Board</li>
+						<li>Member: Family Advisory Board, UMass Chan Medical School</li>
+						<li>Guest: Translating ADHD Podcast</li>
+						<li>Speaker: Sonos, US Agency for Global Media, Bitcamp, Technica, Lorain County Community College, International Conference on ADHD</li>
 						</ul>
 						</section>
 					</div>
@@ -95,7 +94,7 @@ function Handout() {
 							</div>
 						</section>
 						<section className="lya-handout-section">
-							<h2>Who I Work With</h2>
+							<h2>Who I Can Help</h2>
 							<ul className="lya-handout-bullets lya-handout-bullets--offering lya-handout-bullets--two-col">
 								<li>C-Suite Executives</li>
 								<li>Academics &amp; Post-Docs</li>

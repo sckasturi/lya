@@ -55,7 +55,7 @@ function Testimonial() {
 			<div className="container">
 				<div className="aximo-section-title center">
 					<h2 className="teal-bg"> 
-						What clients say!
+						What my clients say!
 					</h2>
 				</div>
 				<div className="row">
