@@ -11165,6 +11165,9 @@ button#aximo-notified-btn {
 .lya-handout-bullets--sm li {
 	font-size: 12px;
 }
+.lya-handout-bullets--offering li {
+	font-size: 13.5px;
+}
 .lya-handout-bullets--two-col {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

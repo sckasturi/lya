@@ -94,13 +94,13 @@ function Handout() {
 						</section>
 						<section className="lya-handout-section">
 							<h2>Who I Work With</h2>
-							<div className="lya-handout-pills">
-								<span className="lya-handout-pill">C-Suite Executives</span>
-								<span className="lya-handout-pill">Academics &amp; Post-Docs</span>
-								<span className="lya-handout-pill">Students on Academic Probation</span>
-								<span className="lya-handout-pill">Medical &amp; Law Students</span>
-								<span className="lya-handout-pill">Parents of Neurodiverse Children</span>
-							</div>
+							<ul className="lya-handout-bullets lya-handout-bullets--offering">
+								<li>C-Suite Executives</li>
+								<li>Academics &amp; Post-Docs</li>
+								<li>Students on Academic Probation</li>
+								<li>Medical &amp; Law Students</li>
+								<li>Parents of Neurodiverse Children</li>
+							</ul>
 						</section>
 
 					</div>
