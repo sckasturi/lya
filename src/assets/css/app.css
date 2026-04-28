@@ -11067,7 +11067,7 @@ button#aximo-notified-btn {
 	overflow: hidden;
 }
 .lya-handout-col {
-	padding: 32px 36px 24px;
+	padding: 40px 36px 24px;
 }
 .lya-handout-col-left {
 }
@@ -11161,6 +11161,9 @@ button#aximo-notified-btn {
 	left: 0;
 	color: #182D38;
 	font-weight: 700;
+}
+.lya-handout-bullets--sm li {
+	font-size: 12px;
 }
 
 /* Offerings */

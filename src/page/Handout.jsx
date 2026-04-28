@@ -97,9 +97,10 @@ function Handout() {
 
 						<section className="lya-handout-section">
 							<h2>Curriculum Vitae</h2>
-							<ul className="lya-handout-bullets">
-								<li>I facilitate the Attention Deficit Disorder Association&apos;s (ADDA) South Asian Virtual Peer Support Group and am the Diversity, Equity, Inclusion &amp; Belonging (DEIB) Chair on the Board of the ADHD Coaches Organization (ACO).</li>
-								<li>My past events include Sonos, United States Agency for Global Media, Bitcamp, Technica, and Lorain County Community College.</li>
+							<ul className="lya-handout-bullets lya-handout-bullets--sm">
+								<li>Facilitator, ADDA South Asian Virtual Peer Support Group</li>
+								<li>DEIB Chair, ADHD Coaches Organization (ACO) Board</li>
+								<li>Speaker: Sonos, US Agency for Global Media, Bitcamp, Technica, Lorain County Community College</li>
 							</ul>
 						</section>
 
