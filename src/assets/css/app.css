@@ -11098,7 +11098,7 @@ button#aximo-notified-btn {
 	padding: 0;
 	margin: 0;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: max-content max-content;
 	gap: 7px 32px;
 }
 .lya-handout-contact-details li {
