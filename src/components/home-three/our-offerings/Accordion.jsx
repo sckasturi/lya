@@ -65,13 +65,12 @@ function Accordion() {
 						data-bs-toggle="collapse"
 						data-bs-target="#collapseThree"
 					>
-						Speaking engagements
+						ADHD speaking engagements
 					</button>
 				</h3>
 				<div id="collapseThree" className="accordion-collapse collapse" data-bs-parent="#aximo-accordion">
 					<div className="accordion-body">
-						<p>Sudhita draws upon years of experience and knowledge to educate and empower audiences of all types. Whether it&apos;s a corporate gathering, conference, panel or workshop, Sudhita provides insight, inspiration and actionable strategies.</p>
-						<p>She has spoken at local and international events including Sonos, United States Agency for Global Media, Bitcamp, Technica and Lorain County Community College.</p>
+						<p>I draw upon years of experience and knowledge of ADHD and Autism ADHD or AuDHD to educate and empower audiences of all types. Whether it&apos;s a corporate gathering, conference, panel or workshop, I provide insight, inspiration and actionable strategies. I&apos;ve spoken at local and international companies including Sonos, United States Agency for Global Media, Bitcamp, Technica and Lorain County Community College.</p>
 					</div>
 				</div>
 			</FadeInStaggerTwoChildren>
