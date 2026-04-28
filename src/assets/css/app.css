@@ -11156,7 +11156,7 @@ button#aximo-notified-btn {
 	position: relative;
 }
 .lya-handout-bullets li::before {
-	content: "–";
+	content: "•";
 	position: absolute;
 	left: 0;
 	color: #182D38;
