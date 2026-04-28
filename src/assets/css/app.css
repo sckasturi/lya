@@ -11096,10 +11096,10 @@ button#aximo-notified-btn {
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: #182D38;
+	color: #000000;
 	margin: 0 0 10px;
 	padding-bottom: 6px;
-	border-bottom: 2px solid #182D38;
+	border-bottom: 2px solid #000000;
 }
 .lya-handout-contact-details ul {
 	list-style: none;
@@ -11111,10 +11111,10 @@ button#aximo-notified-btn {
 }
 .lya-handout-contact-details li {
 	font-size: 13.5px;
-	color: #2a2a2a;
+	color: #000000;
 }
 .lya-handout-contact-details a {
-	color: #182D38;
+	color: #000000;
 	text-decoration: none;
 }
 .lya-handout-contact-divider {
@@ -11132,15 +11132,15 @@ button#aximo-notified-btn {
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: #182D38;
+	color: #000000;
 	margin: 0 0 12px;
 	padding-bottom: 7px;
-	border-bottom: 2px solid #182D38;
+	border-bottom: 2px solid #000000;
 }
 .lya-handout-section p {
 	font-size: 15px;
 	line-height: 1.65;
-	color: #2a2a2a;
+	color: #000000;
 	margin: 0 0 10px;
 }
 .lya-handout-section p:last-child {
@@ -11158,7 +11158,7 @@ button#aximo-notified-btn {
 }
 .lya-handout-bullets li {
 	font-size: 14px;
-	color: #2a2a2a;
+	color: #000000;
 	line-height: 1.4;
 	padding-left: 18px;
 	position: relative;
@@ -11167,7 +11167,7 @@ button#aximo-notified-btn {
 	content: "•";
 	position: absolute;
 	left: 0;
-	color: #182D38;
+	color: #000000;
 	font-weight: 700;
 }
 .lya-handout-bullets--sm li {
@@ -11190,12 +11190,12 @@ button#aximo-notified-btn {
 	gap: 8px;
 }
 .lya-handout-pill {
-	border: 1.5px solid #182D38;
+	border: 1.5px solid #000000;
 	border-radius: 999px;
 	padding: 5px 14px;
 	font-size: 12px;
 	font-weight: 600;
-	color: #182D38;
+	color: #000000;
 	line-height: 1.3;
 	white-space: nowrap;
 }
@@ -11217,7 +11217,7 @@ button#aximo-notified-btn {
 .lya-handout-offering p {
 	font-size: 13.5px;
 	line-height: 1.6;
-	color: #444;
+	color: #000000;
 	margin: 0 0 6px;
 }
 .lya-handout-offering p:last-child {
@@ -11264,11 +11264,11 @@ button#aximo-notified-btn {
 }
 .lya-handout-contact-block li {
 	font-size: 14px;
-	color: #2a2a2a;
+	color: #000000;
 	line-height: 1.4;
 }
 .lya-handout-contact-block a {
-	color: #182D38;
+	color: #000000;
 	text-decoration: none;
 }
 
