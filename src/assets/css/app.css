@@ -10960,8 +10960,8 @@ button#aximo-notified-btn {
 
 .lya-handout-print-btn {
 	margin-bottom: 20px;
-	background: var(--teal);
-	color: var(--cream);
+	background: #4A9AA3;
+	color: #fff9e9;
 	border: none;
 	border-radius: 999px;
 	padding: 12px 32px;
@@ -10972,7 +10972,7 @@ button#aximo-notified-btn {
 	transition: background 0.2s ease;
 }
 .lya-handout-print-btn:hover {
-	background: var(--navy);
+	background: #182D38;
 }
 
 .lya-handout-page {
@@ -11088,10 +11088,10 @@ button#aximo-notified-btn {
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: var(--navy);
+	color: #182D38;
 	margin: 0 0 10px;
 	padding-bottom: 6px;
-	border-bottom: 2px solid var(--navy);
+	border-bottom: 2px solid #182D38;
 }
 .lya-handout-contact-details ul {
 	list-style: none;
@@ -11107,7 +11107,7 @@ button#aximo-notified-btn {
 	color: #2a2a2a;
 }
 .lya-handout-contact-details a {
-	color: var(--navy);
+	color: #182D38;
 	text-decoration: none;
 }
 .lya-handout-contact-divider {
@@ -11125,10 +11125,10 @@ button#aximo-notified-btn {
 	font-weight: 700;
 	letter-spacing: 0.14em;
 	text-transform: uppercase;
-	color: var(--navy);
+	color: #182D38;
 	margin: 0 0 12px;
 	padding-bottom: 7px;
-	border-bottom: 2px solid var(--navy);
+	border-bottom: 2px solid #182D38;
 }
 .lya-handout-section p {
 	font-size: 14px;
@@ -11160,7 +11160,7 @@ button#aximo-notified-btn {
 	content: "–";
 	position: absolute;
 	left: 0;
-	color: var(--navy);
+	color: #182D38;
 	font-weight: 700;
 }
 
@@ -11213,7 +11213,7 @@ button#aximo-notified-btn {
 }
 .lya-handout-qr-text p {
 	font-size: 13px !important;
-	color: var(--navy) !important;
+	color: #182D38 !important;
 	margin: 0 !important;
 }
 
@@ -11232,7 +11232,7 @@ button#aximo-notified-btn {
 	line-height: 1.4;
 }
 .lya-handout-contact-block a {
-	color: var(--navy);
+	color: #182D38;
 	text-decoration: none;
 }
 
