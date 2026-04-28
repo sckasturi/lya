@@ -11077,7 +11077,7 @@ button#aximo-notified-btn {
 	display: flex;
 	align-items: flex-start;
 	gap: 40px;
-	padding: 16px 44px;
+	padding: 10px 44px 28px;
 	background: #ffffff;
 }
 .lya-handout-contact-details {
