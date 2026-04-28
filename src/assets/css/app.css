@@ -11075,7 +11075,7 @@ button#aximo-notified-btn {
 /* Contact + QR horizontal band */
 .lya-handout-contact-band {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	gap: 40px;
 	padding: 16px 44px;
 	background: #ffffff;
