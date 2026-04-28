@@ -106,38 +106,29 @@ function Handout() {
 					</div>
 				</div>
 
-				{/* ── Contact + QR band ─────────────────────────── */}
-				<div className="lya-handout-contact-band">
-					<div className="lya-handout-contact-details">
-						<h2>Get in touch</h2>
+			{/* ── Footer ─────────────────────────────────────── */}
+			<footer className="lya-handout-footer lya-handout-footer--contact">
+				<div className="lya-handout-contact-details">
+					<h2>Get in touch</h2>
 					<ul>
-							<li><strong>Phone:</strong> <a href="tel:+15713768033">(571) 376-8033</a></li>
-							<li><strong>Website:</strong> <a href="https://leverageyouradhd.com">leverageyouradhd.com</a></li>
-							<li><strong>Email:</strong> <a href="mailto:hello@leverageyouradhd.com">hello@leverageyouradhd.com</a></li>
-							<li><strong>Schedule:</strong> <a href="https://calendly.com/leverageyouradhd/30min">calendly.com/leverageyouradhd</a></li>
-						</ul>
-					</div>
-
-					<div className="lya-handout-contact-divider" />
-
-					<div className="lya-handout-qr-wrap">
-						<QRCodeSVG
-							value="https://calendly.com/leverageyouradhd/30min"
-							size={110}
-							fgColor="#000000"
-							bgColor="#ffffff"
-							level="M"
-						/>
-					</div>
+						<li><strong>Phone:</strong> <a href="tel:+15713768033">(571) 376-8033</a></li>
+						<li><strong>Website:</strong> <a href="https://leverageyouradhd.com">leverageyouradhd.com</a></li>
+						<li><strong>Email:</strong> <a href="mailto:hello@leverageyouradhd.com">hello@leverageyouradhd.com</a></li>
+						<li><strong>Schedule:</strong> <a href="https://calendly.com/leverageyouradhd/30min">calendly.com/leverageyouradhd</a></li>
+					</ul>
 				</div>
+				<div className="lya-handout-qr-wrap">
+					<QRCodeSVG
+						value="https://calendly.com/leverageyouradhd/30min"
+						size={90}
+						fgColor="#ffffff"
+						bgColor="#182D38"
+						level="M"
+					/>
+				</div>
+			</footer>
 
-				{/* ── Footer CTA ─────────────────────────────────── */}
-				<footer className="lya-handout-footer">
-					<p>
-						Ready to start your journey?{" "}
-						<strong>Schedule a free consultation at leverageyouradhd.com</strong>
-					</p>
-				</footer>
+			
 			</div>
 		</div>
 	);

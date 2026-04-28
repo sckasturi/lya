@@ -11268,14 +11268,13 @@ button#aximo-notified-btn {
 	text-decoration: none;
 }
 
-/* Footer CTA */
+/* Footer */
 .lya-handout-footer {
 	background: #182D38 !important;
 	-webkit-print-color-adjust: exact !important;
 	print-color-adjust: exact !important;
 	forced-color-adjust: none;
-	padding: 18px 44px;
-	text-align: center;
+	padding: 18px 36px;
 	flex-shrink: 0;
 }
 .lya-handout-footer p {
@@ -11286,6 +11285,27 @@ button#aximo-notified-btn {
 }
 .lya-handout-footer strong {
 	color: #fff9e9 !important;
+}
+.lya-handout-footer--contact {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 32px;
+	text-align: left;
+}
+.lya-handout-footer--contact .lya-handout-contact-details h2 {
+	color: #fff9e9 !important;
+	border-bottom-color: rgba(255,249,233,0.4) !important;
+}
+.lya-handout-footer--contact .lya-handout-contact-details li,
+.lya-handout-footer--contact .lya-handout-contact-details li strong {
+	color: #fff9e9 !important;
+}
+.lya-handout-footer--contact .lya-handout-contact-details a {
+	color: rgba(255,249,233,0.85) !important;
+}
+.lya-handout-footer--contact .lya-handout-qr-wrap {
+	flex-shrink: 0;
 }
 
 /* Print styles */
@@ -11323,6 +11343,12 @@ button#aximo-notified-btn {
 	}
 	.lya-handout-footer p,
 	.lya-handout-footer strong {
+		color: #fff9e9 !important;
+	}
+	.lya-handout-footer--contact .lya-handout-contact-details h2,
+	.lya-handout-footer--contact .lya-handout-contact-details li,
+	.lya-handout-footer--contact .lya-handout-contact-details li strong,
+	.lya-handout-footer--contact .lya-handout-contact-details a {
 		color: #fff9e9 !important;
 	}
 
