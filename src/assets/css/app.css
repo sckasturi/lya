@@ -11068,7 +11068,7 @@ button#aximo-notified-btn {
 	overflow: hidden;
 }
 .lya-handout-col {
-	padding: 40px 36px 24px;
+	padding: 40px 36px 40px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
