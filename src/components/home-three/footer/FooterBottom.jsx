@@ -30,13 +30,13 @@ function FooterBottom() {
 									onMouseEnter={show}
 									onMouseLeave={hide}
 								>
-									<strong>Website:</strong>{" "}
+									<strong>Website Design:</strong>{" "}
 									<a href="https://videobysrij.com" target="_blank" rel="noreferrer">Srijay Kasturi</a>
 									<br />
-									<strong>Logo:</strong>{" "}
+									<strong>Logo Design:</strong>{" "}
 									<a href="https://shiv-aurts.com" target="_blank" rel="noreferrer">Shivali Aurora Tandon</a>
 									<br />
-									<strong>Copy:</strong>{" "}
+									<strong>Content Design:</strong>{" "}
 									<a href="https://sravaniwrites.com" target="_blank" rel="noreferrer">Sravani Hotha</a>
 								</span>
 							)}

@@ -53,7 +53,7 @@ function Handout() {
 								formal diagnosis.
 							</p>*/}
 							<p>I coach high-potential professionals and academics globally, leveraging my experience as an educator, entrepreneur, and program director. </p>
-								<p>My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. I partner with them to embrace their ADHD and live happy, productive, and fulfilled lives.</p>
+								<p>My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. I empower them to embrace <br/>their ADHD and live happy, productive, and fulfilled lives.</p>
 <p>As the founder of Leverage Your ADHD, I am committed to raising awareness about ADHD, especially in underserved populations.</p>
 						</section>
 
@@ -77,20 +77,20 @@ function Handout() {
 							<div className="lya-handout-offering">
 								<h3>Personalized ADHD Coaching</h3>
 								<p>
-								I partner with my clients to reframe their perspectives, co-create actionable strategies, educate them about their unique wiring, and empower them to make the change they desire and thrive with their ADHD. 
+								I partner with my clients to educate them about their unique wiring, reframe their perspectives, co-create actionable strategies, and empower them to make the change they desire and thrive with their ADHD. 
 	</p>
 							</div>
 
 							<div className="lya-handout-offering">
 								<h3>Group Coaching for South Asian Professionals</h3>
 								<p>
-								Group sessions for South Asian professionals to navigate the challenges of ADHD. We will strengthen personal and professional growth through shared learning, connection, and accountability.
+								Group cohorts for South Asian professionals to navigate the challenges of ADHD. We will strengthen personal engagement and professional growth through shared learning, connection, and accountability.
 	</p>
 							</div>
 
 							<div className="lya-handout-offering">
 								<h3>Speaking Engagements</h3>
-							<p>I draw upon my lived experience with ADHD, along with my knowledge and passion for ADHD coaching, to educate, engage, and empower audiences or my audience.</p>
+							<p>I draw upon my lived experience with ADHD, along with my knowledge and passion for ADHD coaching, to educate, engage, and enliven audiences.</p>
 							</div>
 						</section>
 						<section className="lya-handout-section">
@@ -99,7 +99,7 @@ function Handout() {
 								<li>C-Suite Executives</li>
 								<li>Academics &amp; Post-Docs</li>
 								<li>Students on Academic Probation</li>
-								<li>Medical &amp; Law Students</li>
+								<li>Medical &amp; Law <br/>Students</li>
 								<li>Parents of Neurodiverse Children</li>
 							</ul>
 						</section>
@@ -113,14 +113,15 @@ function Handout() {
 					<h2>Get in touch</h2>
 					<ul>
 						<li><strong>Phone:</strong> <a href="tel:+15713768033">(571) 376-8033</a></li>
-						<li><strong>Website:</strong> <a href="https://leverageyouradhd.com">leverageyouradhd.com</a></li>
 						<li><strong>Email:</strong> <a href="mailto:hello@leverageyouradhd.com">hello@leverageyouradhd.com</a></li>
-						<li><strong>Schedule:</strong> <a href="https://calendly.com/leverageyouradhd/30min">calendly.com/leverageyouradhd</a></li>
+
+						<li><strong>Website:</strong> <a href="https://leverageyouradhd.com">leverageyouradhd.com</a></li>
+						<li><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/sudhitakasturi/">linkedin.com/in/sudhitakasturi</a></li>
 					</ul>
 				</div>
 				<div className="lya-handout-qr-wrap">
 					<QRCodeSVG
-						value="https://calendly.com/leverageyouradhd/30min"
+						value="https://leverageyouradhd.com"
 						size={90}
 						fgColor="#ffffff"
 						bgColor="#182D38"
