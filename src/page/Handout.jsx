@@ -12,10 +12,10 @@ function Handout() {
 
 			<div className="lya-handout-page">
 				{/* ── Header bar ─────────────────────────────────── */}
-				<header className="lya-handout-header">
-					<img src={LogoImg} alt="Leverage Your ADHD" className="lya-handout-logo" />
-					<span className="lya-handout-url">leverageyouradhd.com</span>
-				</header>
+			<header className="lya-handout-header">
+				<img src={LogoImg} alt="Leverage Your ADHD" className="lya-handout-logo" />
+				<span className="lya-handout-url">Leverage Your ADHD</span>
+			</header>
 
 				{/* ── Hero strip ─────────────────────────────────── */}
 				<div className="lya-handout-hero">
@@ -53,14 +53,13 @@ function Handout() {
 								formal diagnosis.
 							</p>*/}
 							<p>I coach high-potential professionals and academics globally, leveraging my experience as an educator, entrepreneur, and program director. </p>
-								<p>My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. </p>
-								<p>I partner with them to embrace their ADHD and live happy, productive, and fulfilled lives.</p>
+								<p>My clients include Fortune 500 executives, federal employees, physicians, medical residents, and program managers. I partner with them to embrace their ADHD and live happy, productive, and fulfilled lives.</p>
 <p>As the founder of Leverage Your ADHD, I am committed to raising awareness about ADHD, especially in underserved populations.</p>
 						</section>
 
 						<section className="lya-handout-section">
-							<h2>Curriculum Vitae</h2>
-							<ul className="lya-handout-bullets lya-handout-bullets--sm">
+							<h2>Notable Highlights</h2>
+							<ul className="lya-handout-bullets lya-handout-bullets">
 								<li>Facilitator, ADDA South Asian Virtual Peer Support Group</li>
 								<li>DEIB Chair, ADHD Coaches Organization (ACO) Board</li>
 								<li>Speaker: Sonos, US Agency for Global Media, Bitcamp, Technica, Lorain County Community College</li>
