@@ -10990,9 +10990,10 @@ button#aximo-notified-btn {
 
 /* Header bar */
 .lya-handout-header {
-	background: var(--teal);
-	-webkit-print-color-adjust: exact;
-	print-color-adjust: exact;
+	background: #4A9AA3 !important;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+	forced-color-adjust: none;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -11003,7 +11004,7 @@ button#aximo-notified-btn {
 	filter: brightness(0) invert(1);
 }
 .lya-handout-url {
-	color: var(--cream);
+	color: #fff9e9;
 	font-size: 14px;
 	font-weight: 600;
 	letter-spacing: 0.05em;
@@ -11011,9 +11012,10 @@ button#aximo-notified-btn {
 
 /* Hero strip */
 .lya-handout-hero {
-	background: var(--navy);
-	-webkit-print-color-adjust: exact;
-	print-color-adjust: exact;
+	background: #182D38 !important;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+	forced-color-adjust: none;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -11026,7 +11028,7 @@ button#aximo-notified-btn {
 .lya-handout-hero h1 {
 	font-size: 38px;
 	font-weight: 700;
-	color: var(--cream);
+	color: #fff9e9;
 	margin: 0 0 6px;
 	line-height: 1.1;
 }
@@ -11041,7 +11043,7 @@ button#aximo-notified-btn {
 .lya-handout-tagline {
 	font-size: 16px;
 	line-height: 1.55;
-	color: var(--cream);
+	color: #fff9e9;
 	margin: 0;
 	max-width: 440px;
 }
@@ -11236,21 +11238,22 @@ button#aximo-notified-btn {
 
 /* Footer CTA */
 .lya-handout-footer {
-	background: var(--navy);
-	-webkit-print-color-adjust: exact;
-	print-color-adjust: exact;
+	background: #182D38 !important;
+	-webkit-print-color-adjust: exact !important;
+	print-color-adjust: exact !important;
+	forced-color-adjust: none;
 	padding: 18px 44px;
 	text-align: center;
 	flex-shrink: 0;
 }
 .lya-handout-footer p {
 	font-size: 15px;
-	color: var(--cream);
+	color: #fff9e9;
 	margin: 0;
 	line-height: 1.5;
 }
 .lya-handout-footer strong {
-	color: var(--cream);
+	color: #fff9e9;
 }
 
 /* Print styles */
@@ -11264,6 +11267,17 @@ button#aximo-notified-btn {
 		-webkit-print-color-adjust: exact !important;
 		print-color-adjust: exact !important;
 		color-adjust: exact !important;
+		forced-color-adjust: none !important;
+	}
+
+	.lya-handout-header {
+		background: #4A9AA3 !important;
+	}
+	.lya-handout-hero {
+		background: #182D38 !important;
+	}
+	.lya-handout-footer {
+		background: #182D38 !important;
 	}
 
 	body {
