@@ -2453,7 +2453,10 @@ header.aximo-header-section.aximo-header7.sticky-menu {
 @media (max-width: 767px) {
 	.aximo-footer-info-column {
 		padding: 60px 0 30px;
-		display: block;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
 	}
 }
 .aximo-footer-info-item {
@@ -2462,6 +2465,14 @@ header.aximo-header-section.aximo-header7.sticky-menu {
 @media (max-width: 991px) {
 	.aximo-footer-info-item:first-child {
 		flex: 0 0 100%;
+	}
+}
+@media (max-width: 767px) {
+	.aximo-footer-info-item {
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
 	}
 }
 .aximo-footer-info-item h5 {
@@ -2484,6 +2495,72 @@ header.aximo-header-section.aximo-header7.sticky-menu {
 @media (max-width: 991px) {
 	.aximo-footer-info-item a {
 		font-size: 20px;
+	}
+}
+.aximo-footer-cert-logos {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	align-items: center;
+}
+.aximo-footer-cert-logos img {
+	filter: grayscale(100%) opacity(50%);
+	transition: filter 0.2s ease;
+}
+.aximo-footer-cert-logos img:hover {
+	filter: grayscale(0%) opacity(100%);
+}
+@media (max-width: 767px) {
+	.aximo-footer-cert-logos {
+		justify-content: center;
+	}
+}
+.aximo-footer-bottom.seven .aximo-copywright {
+	padding: 20px 0;
+}
+@media (max-width: 767px) {
+	.aximo-footer-bottom.seven {
+		text-align: center;
+	}
+}
+.lya-credits-trigger {
+	position: relative;
+	cursor: default;
+	font-size: 13px;
+	opacity: 0.55;
+	white-space: nowrap;
+}
+.lya-credits-trigger:hover,
+.lya-credits-trigger:focus {
+	opacity: 1;
+}
+.lya-credits-tooltip {
+	display: block;
+	position: absolute;
+	bottom: calc(100% + 8px);
+	left: 0;
+	width: 240px;
+	background: var(--navy);
+	color: var(--cream);
+	font-size: 13px;
+	line-height: 1.8;
+	padding: 12px 16px;
+	border-radius: 8px;
+	white-space: normal;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.18);
+	z-index: 100;
+}
+.lya-credits-tooltip a {
+	color: var(--teal);
+	text-decoration: none;
+}
+.lya-credits-tooltip a:hover {
+	text-decoration: underline;
+}
+@media (max-width: 767px) {
+	.lya-credits-tooltip {
+		left: 50%;
+		transform: translateX(-50%);
 	}
 }
 

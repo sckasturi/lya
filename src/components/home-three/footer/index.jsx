@@ -28,13 +28,15 @@ function Footer() {
 							</p>
 						</div>
 				
-						<div className="aximo-footer-info-item">
-							<img src={ICF} width="100px" alt="Logo" />
-							<img src={ACO} width="100px" alt="Logo" />
-							<img src={CHADD} height="100px" alt="Logo" />
-							<img src={APSARD} width="100px" alt="Logo" />
-							<img src={ADDA} width="100px" alt="Logo" />
+					<div className="aximo-footer-info-item">
+						<div className="aximo-footer-cert-logos">
+							<img src={ICF} width="80px" alt="ICF" />
+							<img src={ACO} width="80px" alt="ACO" />
+							<img src={CHADD} height="80px" alt="CHADD" />
+							<img src={APSARD} width="80px" alt="APSARD" />
+							<img src={ADDA} width="80px" alt="ADDA" />
 						</div>
+					</div>
 					</div>
 				</div>
 				<div className="aximo-footer-bottom seven">
