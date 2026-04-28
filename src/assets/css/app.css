@@ -11070,6 +11070,10 @@ button#aximo-notified-btn {
 	padding: 40px 36px 24px;
 }
 .lya-handout-col-left {
+	padding-right: 18px;
+}
+.lya-handout-col-right {
+	padding-left: 18px;
 }
 
 /* Contact + QR horizontal band */
@@ -11077,7 +11081,7 @@ button#aximo-notified-btn {
 	display: flex;
 	align-items: flex-start;
 	gap: 40px;
-	padding: 10px 36px 28px;
+	padding: 20px 36px 28px;
 	background: #ffffff;
 }
 .lya-handout-contact-details {
