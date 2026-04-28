@@ -11309,6 +11309,11 @@ button#aximo-notified-btn {
 		display: none !important;
 	}
 
+	.lya-handout a::after {
+		display: none !important;
+		content: none !important;
+	}
+
 	.lya-handout-page {
 		box-shadow: none;
 		width: 8.5in;
