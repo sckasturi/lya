@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
+import EmailPrivacyNotice from "../EmailPrivacyNotice";
+import { detectClientCountry } from "../../../lib/detectCountry";
 import { OPEN_FREEBIE_POPUP_EVENT } from "../../../lib/openFreebiePopup";
 import "./freebie-popup.css";
 
@@ -12,8 +14,13 @@ export default function FreebiePopup() {
 	const [email, setEmail] = useState("");
 	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
+	const [detectedCountry, setDetectedCountry] = useState("");
 	const recaptchaRef = useRef(null);
 	const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+
+	useEffect(() => {
+		detectClientCountry().then(setDetectedCountry);
+	}, []);
 
 	useEffect(() => {
 		const dismissed = localStorage.getItem(STORAGE_KEY) === "1";
@@ -64,6 +71,7 @@ export default function FreebiePopup() {
 				body: JSON.stringify({
 					name: name.trim(),
 					email: email.trim(),
+					country: detectedCountry || undefined,
 					recaptchaToken: recaptchaToken || undefined,
 				}),
 			});
@@ -153,7 +161,7 @@ export default function FreebiePopup() {
 								exit={{ opacity: 0 }}
 								transition={{ duration: 0.15 }}
 							>
-								<h3 id="freebie-popup-title">Get the free ADHD guide</h3>
+								<h3 id="freebie-popup-title">Get the FREE Un-Overwhelm Guide</h3>
 								<p>
 									Enter your name and email and we&apos;ll send the PDF to your
 									inbox.
@@ -179,6 +187,7 @@ export default function FreebiePopup() {
 									disabled={status === "loading"}
 									required
 								/>
+								<EmailPrivacyNotice className="freebie-popup-privacy" />
 									{siteKey ? (
 										<div className="freebie-popup-recaptcha">
 											<ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />

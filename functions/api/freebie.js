@@ -1,3 +1,5 @@
+import { resolveCountry } from "../lib/country.js";
+
 async function verifyRecaptcha(secret, token) {
 	const body = new URLSearchParams();
 	body.set("secret", secret);
@@ -55,6 +57,7 @@ export async function onRequestPost(context) {
 
 	const name = typeof body.name === "string" ? body.name.trim() : "";
 	const email = typeof body.email === "string" ? body.email.trim() : "";
+	const country = resolveCountry(request, body.country);
 	const recaptchaToken =
 		typeof body.recaptchaToken === "string" ? body.recaptchaToken.trim() : "";
 
@@ -117,7 +120,7 @@ export async function onRequestPost(context) {
 	const resendPayload = {
 		from: `Sudhita Kasturi <${from}>`,
 		to: [email],
-		subject: "Your free ADHD guide",
+		subject: "Your FREE Un-overwhelm Guide",
 		html: `<p>Hi ${name},</p><p>Thanks for requesting the free guide. The PDF is attached.</p><p>— Sudhita</p>`,
 		text: `Hi ${name},\n\nThanks for requesting the free guide. The PDF is attached.\n\n— Sudhita`,
 		attachments: [
@@ -150,6 +153,7 @@ export async function onRequestPost(context) {
 			type: "freebie",
 			name,
 			email,
+			country,
 			timestamp: new Date().toISOString(),
 		}).catch(() => {}),
 	);

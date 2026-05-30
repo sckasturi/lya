@@ -5778,6 +5778,67 @@ a.aximo-service-icon:hover {
 }
 /* ── end LYA FAQ ───────────────────────────────────── */
 
+/* Header / mobile "Start your journey" — one-time 2s glow when FAQ is first seen */
+.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn,
+.mobile-nav-cta .lya-header-journey-btn {
+	position: relative;
+	overflow: visible !important;
+}
+
+.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow,
+.mobile-nav-cta .lya-header-journey-btn.lya-journey-glow {
+	animation: lya-journey-glow-once 2s ease-in-out forwards;
+}
+
+@keyframes lya-journey-glow-once {
+	0% {
+		box-shadow: 0 0 0 0 transparent;
+		filter: brightness(1);
+	}
+	12% {
+		box-shadow:
+			0 0 0 4px color-mix(in srgb, var(--red) 70%, transparent),
+			0 0 18px 4px color-mix(in srgb, var(--red) 80%, transparent),
+			0 0 36px 8px color-mix(in srgb, var(--red) 55%, transparent);
+		filter: brightness(1.06);
+	}
+	35% {
+		box-shadow:
+			0 0 0 6px color-mix(in srgb, var(--red) 95%, transparent),
+			0 0 28px 7px color-mix(in srgb, var(--red) 100%, transparent),
+			0 0 56px 14px color-mix(in srgb, var(--red) 80%, transparent),
+			0 0 88px 20px color-mix(in srgb, var(--red) 60%, transparent);
+		filter: brightness(1.14);
+	}
+	65% {
+		box-shadow:
+			0 0 0 5px color-mix(in srgb, var(--red) 85%, transparent),
+			0 0 24px 6px color-mix(in srgb, var(--red) 95%, transparent),
+			0 0 48px 12px color-mix(in srgb, var(--red) 75%, transparent),
+			0 0 72px 18px color-mix(in srgb, var(--red) 55%, transparent);
+		filter: brightness(1.1);
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+		filter: brightness(1);
+	}
+}
+
+.header-btn,
+.aximo-header-wrap.lya-cta-row {
+	overflow: visible;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow,
+	.mobile-nav-cta .lya-header-journey-btn.lya-journey-glow {
+		animation: none;
+		box-shadow:
+			0 0 0 4px color-mix(in srgb, var(--red) 75%, transparent),
+			0 0 20px 5px color-mix(in srgb, var(--red) 85%, transparent) !important;
+	}
+}
+
 /* ── LYA Contact Form ─────────────────────────────── */
 .lya-contact-header {
 	text-align: center;
@@ -5886,6 +5947,60 @@ a.aximo-service-icon:hover {
 	opacity: 0.6;
 	cursor: not-allowed;
 }
+
+.lya-email-privacy-notice {
+	margin: 0;
+	font-size: 13px;
+	line-height: 1.5;
+	text-align: center;
+	color: var(--verylightblue);
+	opacity: 0.9;
+}
+
+.lya-email-privacy-notice a {
+	color: var(--verylightblue);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.lya-email-privacy-notice a:hover {
+	color: var(--cream);
+}
+
+.lya-footer-legal {
+	font-family: proxima-nova, sans-serif;
+	font-size: 14px;
+}
+
+.lya-footer-legal a {
+	color: var(--navy);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.lya-footer-legal a:hover {
+	color: var(--red);
+}
+
+.lya-privacy-policy-section {
+	padding-top: 48px;
+	padding-bottom: 80px;
+}
+
+.lya-privacy-policy-content {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 24px 20px 40px;
+	background: #fff;
+	border-radius: 12px;
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.lya-privacy-policy-content a {
+	word-break: break-word;
+}
+
 .lya-contact-success {
 	max-width: 480px;
 	margin: 0 auto;
@@ -5913,6 +6028,17 @@ a.aximo-service-icon:hover {
 .lya-contact-success p {
 	color: var(--verylightblue);
 	margin: 0;
+}
+.lya-contact-coaching-intro {
+	color: var(--verylightblue);
+	font-family: proxima-nova, sans-serif;
+	font-size: 15px;
+	line-height: 1.6;
+	margin: 0 0 8px;
+}
+.lya-testimonial-cta-row {
+	justify-content: center;
+	margin-top: 48px;
 }
 .lya-contact-reset {
 	background: none;
@@ -6084,6 +6210,10 @@ a.aximo-service-icon:hover {
 	color: var(--navy);
 }
 
+.lya-offerings-form-panel .lya-contact-coaching-intro {
+	color: rgba(24, 45, 56, 0.88);
+}
+
 .lya-offerings-form-panel .lya-contact-reset {
 	border-color: rgba(0, 14, 58, 0.4);
 	color: var(--navy);
@@ -6092,6 +6222,40 @@ a.aximo-service-icon:hover {
 .lya-offerings-form-panel .lya-contact-reset:hover {
 	border-color: var(--teal);
 	color: var(--teal);
+}
+
+.lya-offerings-form-panel .lya-email-privacy-notice {
+	color: rgba(24, 45, 56, 0.88);
+	opacity: 1;
+	text-align: left;
+}
+
+.lya-offerings-form-panel .lya-email-privacy-notice a {
+	color: var(--navy);
+	font-weight: 600;
+}
+
+.lya-offerings-form-panel .lya-email-privacy-notice a:hover {
+	color: var(--teal);
+}
+
+/* Tighter spacing between What I Offer / form and FAQ */
+.lya-offerings-section.aximo-section-padding {
+	padding-bottom: 56px;
+}
+
+#lya-faq.aximo-section-padding {
+	padding-top: 56px;
+}
+
+@media (max-width: 991px) {
+	.lya-offerings-section.aximo-section-padding {
+		padding-bottom: 48px;
+	}
+
+	#lya-faq.aximo-section-padding {
+		padding-top: 48px;
+	}
 }
 
 /* ── end LYA Contact Form ─────────────────────────── */

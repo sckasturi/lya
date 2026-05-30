@@ -1,4 +1,6 @@
 import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { PRIVACY_POLICY_PATH } from "../../common/EmailPrivacyNotice";
 
 function FooterBottom() {
 	const [open, setOpen] = useState(false);
@@ -14,7 +16,7 @@ function FooterBottom() {
 
 	return (
 		<div className="row">
-			<div className="col-lg-6 d-flex align-items-center">
+			<div className="col-lg-6 d-flex align-items-center flex-wrap gap-2">
 				<div className="aximo-copywright seven">
 					<p>
 						&copy; Copyright 2026
@@ -43,6 +45,9 @@ function FooterBottom() {
 						</span>
 					</p>
 				</div>
+				<nav className="lya-footer-legal" aria-label="Legal">
+					<Link to={PRIVACY_POLICY_PATH}>Privacy Policy</Link>
+				</nav>
 			</div>
 		</div>
 	);

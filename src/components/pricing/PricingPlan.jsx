@@ -4,230 +4,119 @@ import PricingCard from "./PricingCard";
 const professionPricingData = [
 	{
 		id: crypto.randomUUID(),
-		title: "C-Suite Executive",
+		title: "An aspiring senior and C-suite executive",
 		plans: [
 			{
 				id: crypto.randomUUID(),
-				title: "Where you are",
-				description:
-					"Web design packages offered a range of services and features to create websites",
 				problems: [
 					"An overwhelming workload",
 					"Meeting deadlines and staying accountable to colleagues",
-					"Work-life balance",
-					"Finding a new way to manage your ADHD at this career stage",
 					"Feeling stuck in your current position",
+					"Managing your ADHD at this career stage",
+					"Work-life balance",
 				],
 				solutions: [
-					"Increase your productivity with less exhaustion",
+					"Increase productivity with less exhaustion",
 					"Decrease cognitive load while achieving benchmarks",
-					"Find more time for what you love and enjoy",
-					"Customize solutions for your unique brain",
 					"Chart a fulfilling career journey",
-				],
-				highlighted: true,
-			},
-			{
-				id: crypto.randomUUID(),
-				title: "Where you could be",
-				description:
-					"Web design packages offered a range of services and features to create websites",
-				problems: [
-					"An overwhelming workload",
-					"Meeting deadlines and staying accountable to colleagues",
-					"Work-life balance",
-					"Finding a new way to manage your ADHD at this career stage",
-					"Feeling stuck in your current position",
-				],
-				solutions: [
-					"Increase your productivity with less exhaustion",
-					"Decrease cognitive load while achieving benchmarks",
-					"Find more time for what you love and enjoy",
 					"Customize solutions for your unique brain",
-					"Chart a fulfilling career journey",
+					"Find more time for what you love and enjoy",
 				],
-				highlighted: true,
 			},
 		],
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "Academic / Post-Doc",
+		title: "An academic or post-doctoral student",
 		plans: [
 			{
 				id: crypto.randomUUID(),
-				title: "Where you are",
-				description:
-					"Web design packages offered a range of services and features to create websites",
 				problems: [
-					"Motivating and activating to amorphous deadlines or instructions",
-					"Repetitive work with many roadblocks and few successful results",
-					"Iterative nature of research and publication",
-					"Career stagnation and dissatisfaction",
+					"Amorphous deadlines or instructions",
+					"The overwhelm nature of data and research",
+					"The labor-intensive process of grant writing and publication",
+					"Competing and conflicting priorities",
+					"Career dissatisfaction and stagnation",
 				],
 				solutions: [
-					"Set well-paced milemarkers and endpoints to make amorphous work more discrete",
-					"Ease the cyclical nature of research and publication",
-					"Identify needs and chart a path",
-				],
-				highlighted: true,
-			},
-			{
-				id: crypto.randomUUID(),
-				title: "Where you could be",
-				description:
-					"Web design packages offered a range of services and features to create websites",
-				problems: [
-					"Motivating and activating to amorphous deadlines or instructions",
-					"Repetitive work with many roadblocks and few successful results",
-					"Iterative nature of research and publication",
-					"Career stagnation and dissatisfaction",
-				],
-				solutions: [
-					"Set well-paced milemarkers and endpoints.",
 					"Make amorphous work more discrete",
-					"Ease the cyclical nature of research and publication",
-					"Identify needs and chart a path",
+					"Set well-paced mile markers and endpoints for research",
+					"Ease the cyclical nature of grant writing and publication",
+					"Manage various workflows and priorities",
+					"Identify needs and chart career next steps",
 				],
-				highlighted: true,
 			},
 		],
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "College student on probation",
+		title: "A college student on probation",
 		plans: [
 			{
 				id: crypto.randomUUID(),
-				title: "Where you are",
-				description:
-					"Web design packages offered a range of services and features to create websites",
 				problems: [
-					"Meeting the university standards",
-					"Avoidable mistakes costing your grade",
-					"Planning and task fatigue",
+					"Meeting academic standards",
+					"Task fatigue and overwhelm with schoolwork",
+					"Planning long-term assignments and projects",
+					"Studying for tests and retaining information",
+					"Balancing academics, self-care, and socializing",
 				],
 				solutions: [
-					"Bridge the gap between your abilities and performance",
-					"Understand rubrics and pay attention to the details",
+					"Bridge the gap between academic standards and your performance",
+					"Understand your unique learning style and abilities",
 					"Plan and prioritize in a way that works for you",
+					"Understand rubrics and attend to the details",
+					"Ease adulting and succeed academically",
 				],
-				highlighted: true,
-			},
-			{
-				id: crypto.randomUUID(),
-				title: "Where you could be",
-				description:
-					"Web design packages offered a range of services and features to create websites",
-				problems: [
-					"Meeting the university standards",
-					"Avoidable mistakes costing your grade",
-					"Planning and task fatigue",
-				],
-				solutions: [
-					"Bridge the gap between your abilities and performance",
-					"Understand rubrics and pay attention to the details",
-					"Plan and prioritize in a way that works for you",
-				],
-				highlighted: true,
 			},
 		],
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "Medical or law student",
+		title: "A medical or law student",
 		plans: [
 			{
 				id: crypto.randomUUID(),
-				title: "Where you are",
-				description:
-					"Web design packages offered a range of services and features to create websites",
 				problems: [
-					"Working memory overload when retaining broad, in-depth, and specialized knowledge",
-					"Inefficient and incomplete prep strategy",
-					"Test taking anxiety and fatigue for rigorous exams spanning multiple day",
+					"Working memory challenges while remembering detailed information",
+					"Learning fatigue and unclear prep strategy",
+					"Competing responsibilities of studying, prepping, and living",
+					"Test anxiety and an exam spanning multiple hours and days",
 				],
 				solutions: [
-					"Leverage multi-modal, active and passive learning methodologies or tools",
-					"Understand test format and build stamina for multi-day, multi-hour testing",
-					"Utilizing testing and sample tests, test banks simulate test conditions",
-					"Chart an exam prep strategy that works for you/is custom to you",
+					"Leverage multi-modal, active, and passive learning methodologies to retain specialized knowledge",
+					"Chart a custom strategy with tools and processes that work for you",
+					"Balance the rigor of school, test prep, adulting, and self-care",
+					"Build stamina and plan for multiple days of intense testing",
 				],
-				highlighted: true,
-			},
-			{
-				id: crypto.randomUUID(),
-				title: "Where you could be",
-				description:
-					"Web design packages offered a range of services and features to create websites",
-				problems: [
-					"Working memory overload when retaining broad, in-depth, and specialized knowledge",
-					"Inefficient and incomplete prep strategy",
-					"Test taking anxiety and fatigue for rigorous exams spanning multiple day",
-				],
-				solutions: [
-					"Leverage multi-modal, active and passive learning methodologies or tools",
-					"Understand test format and build stamina for multi-day, multi-hour testing",
-					"Utilizing testing and sample tests, test banks simulate test conditions",
-					"Chart an exam prep strategy that works for you/is custom to you",
-				],
-				highlighted: true,
 			},
 		],
 	},
 	{
 		id: crypto.randomUUID(),
-		title: "Parents of neurodiverse children",
+		title: "A parent of neurodiverse children",
 		plans: [
 			{
 				id: crypto.randomUUID(),
-				title: "Where you are",
-				description:
-					"Web design packages offered a range of services and features to create websites",
 				problems: [
-					"Overwhelming emotions",
-					"Battles over chores and meltdowns over homework",
-					"Lack of bandwidth for other family members",
-					"Perceived favoritism and relationship stress",
-					"Advice and techniques that are not working",
+					"Traditional advice and techniques that are not working",
+					"Overwhelming emotions, yours and your child's",
+					"Battles or meltdowns over chores and schoolwork",
+					"Lack of bandwidth for other children or your partner",
 					"Stress and shame in social situations",
 				],
 				solutions: [
-					"Bring calm to the household",
-					"Establish family systems that work",
-					"Make more time for everyone in your family",
+					"Design solutions and systems that bring calm to your family",
+					"Understand emotions and how to honor them",
+					"Establish rhythms that ease things for both you and your child",
 					"Balance attention and energy among family members",
-					"Create custom solutions for your family",
-					"Navigate social situations with ease, care, and confidence",
+					"Navigate social situations with care and confidence",
 				],
-				highlighted: true,
-			},
-			{
-				id: crypto.randomUUID(),
-				title: "Where you could be",
-				description:
-					"Web design packages offered a range of services and features to create websites",
-				problems: [
-					"Overwhelming emotions",
-					"Battles over chores and meltdowns over homework",
-					"Lack of bandwidth for other family members",
-					"Perceived favoritism and relationship stress",
-					"Advice and techniques that are not working",
-					"Stress and shame in social situations",
-				],
-				solutions: [
-					"Bring calm to the household",
-					"Establish family systems that work",
-					"Make more time for everyone in your family",
-					"Balance attention and energy among family members",
-					"Create custom solutions for your family",
-					"Navigate social situations with ease, care, and confidence",
-				],
-				highlighted: true,
 			},
 		],
 	},
 ];
+
 function PricingPlan() {
 	const [activeProfessionId, setActiveProfessionId] = useState(
 		professionPricingData[0]?.id,
@@ -235,6 +124,7 @@ function PricingPlan() {
 	const activeProfession =
 		professionPricingData.find((profession) => profession.id === activeProfessionId) ||
 		professionPricingData[0];
+	const activePlan = activeProfession?.plans[0];
 
 	return (
 		<div className="section aximo-section-padding3">
@@ -258,19 +148,20 @@ function PricingPlan() {
 						</button>
 					))}
 				</div>
-				{/*<div className="aximo-pricing-title">
-					<h3>{activeProfession?.title}</h3>
-				</div>*/}
 				<div className="row" id="table-price-value">
-					{activeProfession?.plans.map((plan, index) => (
-						<div className="col-xl-6 col-md-6" key={plan.id}>
-							<PricingCard
-								plan={plan}
-								useSecondary={index === 1}
-								titleOverride={index === 1 ? "Coaching can help you…" : "If you struggle with…"}
-							/>
-						</div>
-					))}
+					<div className="col-xl-6 col-md-6">
+						<PricingCard
+							plan={activePlan}
+							titleOverride="Struggling with"
+						/>
+					</div>
+					<div className="col-xl-6 col-md-6">
+						<PricingCard
+							plan={activePlan}
+							useSecondary
+							titleOverride="Coaching can help you"
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

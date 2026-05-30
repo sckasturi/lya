@@ -17,6 +17,7 @@ import SingleService from "../page/service/SingleService.jsx";
 import Team from "../page/team";
 import SingleTeam from "../page/team/SingleTeam.jsx";
 import Faq from "../page/utility/Faq.jsx";
+import PrivacyPolicy from "../page/PrivacyPolicy.jsx";
 import TestimonialPage from "../page/utility/Testimonial.jsx";
 
 export const router = createBrowserRouter([
@@ -47,6 +48,10 @@ export const router = createBrowserRouter([
 					{
 						path: "/faq",
 						element: <Faq />,
+					},
+					{
+						path: "/privacy-policy",
+						element: <PrivacyPolicy />,
 					},
 
 					{

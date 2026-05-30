@@ -1,3 +1,5 @@
+import { resolveCountry } from "../lib/country.js";
+
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 const DEFAULT_FROM = "sudhita@leverageyouradhd.com";
 const DEFAULT_TO = "sudhita@leverageyouradhd.com";
@@ -48,7 +50,9 @@ async function appendToGoogleSheet(env, payload) {
 export async function onRequestPost(context) {
 	try {
 		const { request, env } = context;
-		const { name, email, country, phone, message, reason, recaptchaToken } = await request.json();
+		const { name, email, country, phone, message, reason, recaptchaToken } =
+			await request.json();
+		const resolvedCountry = resolveCountry(request, country);
 
 		if (!name || !email || !message) {
 			return jsonResponse({ error: "All fields are required." }, 400);
@@ -87,12 +91,12 @@ export async function onRequestPost(context) {
 				html: `
 					<p><strong>Name:</strong> ${name}</p>
 					<p><strong>Email:</strong> ${email}</p>
-					<p><strong>Country:</strong> ${country || "Not provided"}</p>
+					<p><strong>Country:</strong> ${resolvedCountry}</p>
 					<p><strong>Reason:</strong> ${reason || "Not provided"}</p>
 					<p><strong>Message:</strong></p>
 					<p>${message}</p>
 				`,
-				text: `Name: ${name}\nEmail: ${email}\nCountry: ${country || "Not provided"}\nReason: ${reason || "Not provided"}\n\nMessage:\n${message}`,
+				text: `Name: ${name}\nEmail: ${email}\nCountry: ${resolvedCountry}\nReason: ${reason || "Not provided"}\n\nMessage:\n${message}`,
 			}),
 		});
 
@@ -109,7 +113,7 @@ export async function onRequestPost(context) {
 				type: "contact",
 				name,
 				email,
-				country: country || "Not provided",
+				country: resolvedCountry,
 				reason: reason || "Not provided",
 				message,
 				timestamp: new Date().toISOString(),

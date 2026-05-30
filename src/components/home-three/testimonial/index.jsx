@@ -1,9 +1,10 @@
-import Star2Img from "../../../assets/images/v1/star2.png";
 import Thumb1Img from "../../../assets/images/v1/t_thumb1.png";
 import Thumb2Img from "../../../assets/images/v1/t_thumb2.png";
 import Thumb3Img from "../../../assets/images/v1/t_thumb3.png";
 import Thumb4Img from "../../../assets/images/v1/t_thumb4.png";
 import FadeInStagger from "../../animation/FadeInStagger";
+import { CTA, CTA_SECTION, trackCtaClick } from "../../../lib/ctaEvents";
+import { openFreebiePopup } from "../../../lib/openFreebiePopup";
 import TestimonialCard from "./TestimonialCard";
 
 const testimonialsData = [
@@ -42,7 +43,7 @@ const testimonialsData = [
 		rating: 0,
 		title: "Transformed our brand",
 		description:
-			"I felt that our family was not working together as a team to help bring more order and structure to my child’s life. Sudhita was able to bring to light what is important from my son’s point of view and why it is important that we understand him.",
+			"I felt that our family was not working together as a team to help bring more order and structure to my child's life. Sudhita was able to bring to light what is important from my son's point of view and why it is important that we understand him.",
 		author: "AK",
 		designation: "Some Profession",
 		img: Thumb4Img,
@@ -50,12 +51,20 @@ const testimonialsData = [
 ];
 
 function Testimonial() {
+	const scrollToSection = () => {
+		trackCtaClick(CTA.START_JOURNEY, CTA_SECTION.TESTIMONIALS);
+		const target = document.getElementById("contact-us");
+		if (target) {
+			target.scrollIntoView({ behavior: "smooth" });
+		}
+	};
+
 	return (
 		<div className="section aximo-section-padding3 teal-bg">
 			<div className="container">
 				<div className="aximo-section-title center">
-					<h2 className="teal-bg"> 
-						What my clients say!
+					<h2 className="teal-bg">
+						What my clients are saying
 					</h2>
 				</div>
 				<div className="row">
@@ -64,6 +73,18 @@ function Testimonial() {
 							<TestimonialCard testimonial={testimonial} />
 						</FadeInStagger>
 					))}
+				</div>
+				<div className="aximo-hero-subscription lya-cta-row lya-testimonial-cta-row">
+					<button type="button" className="lya-hero-journey-btn" onClick={scrollToSection}>
+						Start your journey
+					</button>
+					<button
+						type="button"
+						className="lya-hero-freebie-btn"
+						onClick={() => openFreebiePopup(CTA_SECTION.TESTIMONIALS)}
+					>
+						Get your FREE Un-overwhelm Guide
+					</button>
 				</div>
 			</div>
 		</div>

@@ -54,6 +54,20 @@
 	cursor: not-allowed;
 }
 
+.freebie-popup-privacy {
+	margin: 2px 0 8px;
+	font-size: 12px;
+	line-height: 1.45;
+	color: #5b6678;
+	text-align: left;
+}
+
+.freebie-popup-privacy a {
+	color: var(--navy, #182d38);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
 .freebie-popup-recaptcha {
 	display: flex;
 	justify-content: center;
@@ -181,7 +195,14 @@ button.lya-freebie-cta-btn .aximo-label-up {
 	max-height: 50px;
 	padding: 0 22px !important;
 	margin: 0;
+}
+
+.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-freebie-btn {
 	overflow: hidden;
+}
+
+.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn {
+	overflow: visible;
 }
 
 /* Start your journey: light fill at rest; red on hover */
@@ -192,7 +213,7 @@ button.lya-freebie-cta-btn .aximo-label-up {
 	text-align: center;
 	line-height: normal;
 	border: none !important;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 0 transparent;
 	background-color: var(--verylightblue) !important;
 	color: var(--navy) !important;
 	font-weight: 600;

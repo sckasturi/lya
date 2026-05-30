@@ -24,6 +24,8 @@ For local development with Wrangler, copy `.dev.vars.example` to `.dev.vars`.
 Both endpoints will POST JSON to `GOOGLE_SHEETS_WEBHOOK_URL` if configured:
 
 - Freebie payload:
-  - `type`, `name`, `email`, `timestamp`, `secret`
+  - `type`, `name`, `email`, `country`, `timestamp`, `secret`
 - Contact payload:
-  - `type`, `name`, `email`, `phone`, `reason`, `message`, `timestamp`, `secret`
+  - `type`, `name`, `email`, `country`, `reason`, `message`, `timestamp`, `secret`
+
+`country` is taken from the contact form dropdown when provided; otherwise resolved from `CF-IPCountry` on Cloudflare (or client geo hint for freebie). Redeploy the Apps Script in `google-apps-script/sheets-webhook.gs` after pulling changes so the **Freebies** sheet gets a **Country** column.

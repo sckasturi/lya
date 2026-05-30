@@ -3,9 +3,10 @@ function Content() {
 		<div className="aximo-default-content">
 			<h2>
 				<span className="aximo-title-animation">
-					What I Offer
+					What I offer
 				</span>
 			</h2>
+			<p>I am based in Virginia and offer ADHD coaching services globally in English, Hindi, and Telugu.</p>
 		</div>
 	);
 }

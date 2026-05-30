@@ -1,9 +1,12 @@
 /* eslint-disable react/prop-types */
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import useFaqJourneyGlow from "../../../../hooks/useFaqJourneyGlow";
+import { CTA, CTA_SECTION, trackCtaClick } from "../../../../lib/ctaEvents";
 import { openFreebiePopup } from "../../../../lib/openFreebiePopup";
 
 const MobileNavbar = () => {
+	const journeyGlow = useFaqJourneyGlow();
 	const [showMenu, setShowMenu] = useState(false);
 	const [menuTop, setMenuTop] = useState(72);
 	const wrapRef = useRef(null);
@@ -19,6 +22,7 @@ const MobileNavbar = () => {
 	}, []);
 
 	const scrollToContact = () => {
+		trackCtaClick(CTA.START_JOURNEY, CTA_SECTION.MOBILE_NAV);
 		setShowMenu(false);
 		setTimeout(() => {
 			document.getElementById("contact-us")?.scrollIntoView({ behavior: "smooth" });
@@ -27,7 +31,7 @@ const MobileNavbar = () => {
 
 	const handleFreebie = () => {
 		setShowMenu(false);
-		setTimeout(() => openFreebiePopup(), 200);
+		setTimeout(() => openFreebiePopup(CTA_SECTION.MOBILE_NAV), 200);
 	};
 
 	return (
@@ -50,7 +54,7 @@ const MobileNavbar = () => {
 							<div className="mobile-nav-cta">
 								<button
 									type="button"
-									className="aximo-default-btn pill lya-header-journey-btn"
+									className={`aximo-default-btn pill lya-header-journey-btn${journeyGlow ? " lya-journey-glow" : ""}`}
 									onClick={scrollToContact}
 								>
 									Start your journey
@@ -60,7 +64,7 @@ const MobileNavbar = () => {
 									className="aximo-default-btn pill lya-header-freebie-btn"
 									onClick={handleFreebie}
 								>
-									Get your free ADHD guide
+									Get your FREE Un-overwhelm Guide
 								</button>
 							</div>
 						</motion.nav>

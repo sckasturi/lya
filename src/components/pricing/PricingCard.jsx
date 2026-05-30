@@ -3,11 +3,11 @@ import FadeInRight from "../animation/FadeInRight";
 import QuestionImg from "../../assets/images/icon/question.svg";
 
 function PricingCard({
-	plan: { title, problems, solutions },
+	plan: { problems, solutions },
 	titleOverride,
 	useSecondary = false,
 }) {
-	const displayTitle = titleOverride || title;
+	const displayTitle = titleOverride || "";
 	const displayItems =
 		useSecondary && solutions?.length ? solutions : problems;
 	const bulletIcon = useSecondary ? CheckImg : QuestionImg;

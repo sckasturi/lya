@@ -4,7 +4,7 @@ import { ContactFormFields } from "../contact-form";
 
 function OurOfferings() {
 	return (
-		<div className="section aximo-section-padding">
+		<div className="section aximo-section-padding lya-offerings-section">
 			<div className="container">
 				<div className="lya-offerings-title">
 					<Content />

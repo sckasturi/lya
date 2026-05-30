@@ -1,8 +1,6 @@
-import { Link } from "react-router-dom";
 import Shape2Img from "../../../assets/images/v3/shape2.png";
 import Thumb1Img from "../../../assets/images/lya/amma photos-12.jpg";
 import FadeInLeft from "../../animation/FadeInLeft";
-import FadeInUp from "../../animation/FadeInUp";
 function About() {
 	return (
 		<div className="section aximo-section-padding  navy-bg">
@@ -15,23 +13,17 @@ function About() {
 								<img src={Shape2Img} alt="Shape2Img" />
 							</div>
 						</FadeInLeft><br/>
-						{/*<p>Sudhita is a Certified ADHD Life Coach specializing in ADHD management and skills training for working professionals.</p>
-						<p>She also serves as DEI Chair for the ADHD Coaches Organization and facilitates a South Asian peer support group.</p>*/}
 					</div>
 					<div className="col-lg-7 offset-lg-1">
 						<div className="aximo-default-content ">
-							<h2 className="navy-bg">Does ADHD cause you issues?</h2>
-							<p>As a Certified ADHD Coach,  I partner with you to navigate the challenges of ADHD and leverage its positive attributes to create a happy and fulfilling life for yourself and your family.</p> 
-							<p>As a former science educator, I know that the ADHD brain is wired differently, not better, not broken, just different. Taking science and mindfulness into account, we will understand where, when, and how your ADHD is coming into play and how to navigate this difference effectively.  </p>
-							<p>While ADHD brings positives like ingenuity, generosity, and spontaneity, it can also come with poor time management, disorganization, difficulty prioritizing tasks, and low frustration tolerance. With a strength-based approach, we will work towards amplifying your inherent gifts and mitigating the difficulties of ADHD.</p> 
-							<p>Together, we will design solutions to leverage your ADHD, navigate the world authentically and passionately, and thrive while honoring your unique self. </p>
+							<h2 className="navy-bg">Is your ADHD getting in your way?</h2>
+							<p>Falling short while working hard. Just holding it together when more was possible.</p>
+							<p>This was my reality. My diagnosis of ADHD in my 30s brought a glimmer of understanding, though my gains were fleeting. My family&apos;s challenges with ADHD and a desire to make a difference led me to train as a strengths-based Certified ADHD Coach.</p>
+							<p>I learned that positive ADHD attributes, such as ingenuity, tenacity, generosity, and spontaneity, are overshadowed by challenges with time management, disorganization, prioritizing tasks, and frustration tolerance. Now, I partner with adults like you to identify what is working for you, what is not, and to amplify your inherent gifts to mitigate your challenges with ADHD.</p>
+							<p>By melding transformational coaching practices, scientific research, and the age-old wisdom of mindfulness, we will build a bridge between where you are and where you want to be. By understanding how ADHD is at play, you will learn to work with your brain rather than against it.</p>
+							<p>ADHD makes us different. Not better, not broken. Together, we will design strategies to honor this difference and leverage it. We will create a bespoke pathway to success that you can navigate authentically and passionately while honoring your unique self.</p>
+							<p>Thriving with our ADHD, not despite it, is possible!</p>
 						</div>
-						{/*<FadeInUp className="aximo-btn-wrap">
-							<Link className="aximo-default-btn pill yellow-btn" to="/contact-us">
-								<span className="aximo-label-up">Explore more</span>
-								<span className="aximo-label-up">Explore more</span>
-							</Link>
-						</FadeInUp>*/}
 					</div>
 				</div>
 			</div>

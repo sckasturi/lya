@@ -1,40 +1,7 @@
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-
-const COUNTRY_LIST = [
-	"United States",
-	"Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda",
-	"Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain",
-	"Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan",
-	"Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria",
-	"Burkina Faso", "Burundi", "Cabo Verde", "Cambodia", "Cameroon", "Canada",
-	"Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros",
-	"Congo (Brazzaville)", "Congo (Kinshasa)", "Costa Rica", "Croatia", "Cuba",
-	"Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic",
-	"Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia",
-	"Eswatini", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia",
-	"Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau",
-	"Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran",
-	"Iraq", "Ireland", "Israel", "Italy", "Jamaica", "Japan", "Jordan", "Kazakhstan",
-	"Kenya", "Kiribati", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho",
-	"Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar",
-	"Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania",
-	"Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro",
-	"Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands",
-	"New Zealand", "Nicaragua", "Niger", "Nigeria", "North Korea", "North Macedonia",
-	"Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay",
-	"Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russia", "Rwanda",
-	"Saint Kitts and Nevis", "Saint Lucia", "Saint Vincent and the Grenadines", "Samoa",
-	"San Marino", "Sao Tome and Principe", "Saudi Arabia", "Senegal", "Serbia",
-	"Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands",
-	"Somalia", "South Africa", "South Korea", "South Sudan", "Spain", "Sri Lanka",
-	"Sudan", "Suriname", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan",
-	"Tanzania", "Thailand", "Timor-Leste", "Togo", "Tonga", "Trinidad and Tobago",
-	"Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine",
-	"United Arab Emirates", "United Kingdom", "Uruguay", "Uzbekistan", "Vanuatu",
-	"Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe",
-];
+import EmailPrivacyNotice from "../../common/EmailPrivacyNotice";
 
 export const INQUIRY_OPTIONS = [
 	{ value: "", label: "Select a topic…" },
@@ -45,19 +12,36 @@ export const INQUIRY_OPTIONS = [
 	{ value: "professional-connection", label: "Professional connection" },
 ];
 
+const COACHING_INTRO =
+	"Share a bit more about yourself, and I will send you a link to schedule your free consultation.";
+
 const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+
+function buildCoachingMessage(fields) {
+	return [
+		`Line of work: ${fields.lineOfWork}`,
+		`How ADHD is getting in your way: ${fields.adhdChallenge}`,
+		`Beneficial aspects of ADHD: ${fields.adhdBenefit}`,
+		`Goals for coaching: ${fields.coachingGoals}`,
+	].join("\n\n");
+}
 
 export function ContactFormFields({ initialInquiry = "" }) {
 	const recaptchaRef = useRef(null);
 	const [fields, setFields] = useState({
 		name: "",
 		email: "",
-		country: "",
 		reason: initialInquiry,
 		message: "",
+		lineOfWork: "",
+		adhdChallenge: "",
+		adhdBenefit: "",
+		coachingGoals: "",
 	});
 	const [recaptchaToken, setRecaptchaToken] = useState("");
 	const [status, setStatus] = useState("idle");
+
+	const isCoachingInquiry = fields.reason === "adhd-coaching";
 
 	useEffect(() => {
 		if (initialInquiry) {
@@ -70,10 +54,25 @@ export function ContactFormFields({ initialInquiry = "" }) {
 		if (status === "validation") setStatus("idle");
 	}
 
+	function isFormValid() {
+		if (!fields.name.trim() || !fields.email.trim() || !fields.reason) {
+			return false;
+		}
+		if (isCoachingInquiry) {
+			return (
+				fields.lineOfWork.trim() &&
+				fields.adhdChallenge.trim() &&
+				fields.adhdBenefit.trim() &&
+				fields.coachingGoals.trim()
+			);
+		}
+		return fields.message.trim();
+	}
+
 	async function handleSubmit(e) {
 		e.preventDefault();
 
-		if (!fields.name.trim() || !fields.email.trim() || !fields.country || !fields.reason || !fields.message.trim()) {
+		if (!isFormValid()) {
 			setStatus("validation");
 			return;
 		}
@@ -87,6 +86,9 @@ export function ContactFormFields({ initialInquiry = "" }) {
 
 		const reasonLabel =
 			INQUIRY_OPTIONS.find((o) => o.value === fields.reason)?.label || fields.reason;
+		const message = isCoachingInquiry
+			? buildCoachingMessage(fields)
+			: fields.message;
 
 		try {
 			const res = await fetch("/api/contact", {
@@ -95,9 +97,8 @@ export function ContactFormFields({ initialInquiry = "" }) {
 				body: JSON.stringify({
 					name: fields.name,
 					email: fields.email,
-					country: fields.country || "Not provided",
 					phone: "Not provided",
-					message: fields.message,
+					message,
 					reason: reasonLabel,
 					recaptchaToken,
 				}),
@@ -105,7 +106,16 @@ export function ContactFormFields({ initialInquiry = "" }) {
 			const data = await res.json();
 			if (res.ok && data?.ok) {
 				setStatus("success");
-				setFields({ name: "", email: "", country: "", reason: initialInquiry, message: "" });
+				setFields({
+					name: "",
+					email: "",
+					reason: initialInquiry,
+					message: "",
+					lineOfWork: "",
+					adhdChallenge: "",
+					adhdBenefit: "",
+					coachingGoals: "",
+				});
 				setRecaptchaToken("");
 				recaptchaRef.current?.reset();
 			} else {
@@ -121,13 +131,13 @@ export function ContactFormFields({ initialInquiry = "" }) {
 	}
 
 	const showValidationError = status === "validation";
+	const nameLabel = isCoachingInquiry ? "First and last name" : "Your name";
 
 	if (status === "success") {
 		return (
 			<div className="lya-contact-success">
 				<div className="lya-contact-success-icon">✓</div>
-				<h3>Message sent!</h3>
-				<p>Thank you for reaching out. I&apos;ll be in touch soon.</p>
+				<p>Thank you for reaching out. I will be in touch with you soon.</p>
 				<button type="button" className="lya-contact-reset" onClick={() => setStatus("idle")}>
 					Send another message
 				</button>
@@ -139,7 +149,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 		<form className="lya-contact-form" onSubmit={handleSubmit} noValidate>
 			<div className="lya-contact-row">
 				<div className="lya-contact-field">
-					<label htmlFor="cf-name">Your name</label>
+					<label htmlFor="cf-name">{nameLabel}</label>
 					<input
 						id="cf-name"
 						type="text"
@@ -164,54 +174,90 @@ export function ContactFormFields({ initialInquiry = "" }) {
 				</div>
 			</div>
 
-			<div className="lya-contact-row">
-				<div className="lya-contact-field">
-					<label htmlFor="cf-country">Country</label>
-					<select
-						id="cf-country"
-						name="country"
-						value={fields.country}
-						onChange={handleChange}
-						required
-						className={fields.country === "" ? "lya-select-placeholder" : ""}
-					>
-						<option value="">Select your country…</option>
-						{COUNTRY_LIST.map((c) => (
-							<option key={c} value={c}>{c}</option>
-						))}
-					</select>
-				</div>
-				<div className="lya-contact-field">
-					<label htmlFor="cf-reason">Why are you reaching out?</label>
-					<select
-						id="cf-reason"
-						name="reason"
-						value={fields.reason}
-						onChange={handleChange}
-						required
-						className={fields.reason === "" ? "lya-select-placeholder" : ""}
-					>
-						{INQUIRY_OPTIONS.map((opt) => (
-							<option key={opt.value} value={opt.value} disabled={opt.value === ""}>
-								{opt.label}
-							</option>
-						))}
-					</select>
-				</div>
-			</div>
-
 			<div className="lya-contact-field">
-				<label htmlFor="cf-message">Message</label>
-				<textarea
-					id="cf-message"
-					name="message"
-					rows={5}
-					placeholder="Tell me a bit about yourself and what you're hoping to work on…"
-					value={fields.message}
+				<label htmlFor="cf-reason">Why are you reaching out?</label>
+				<select
+					id="cf-reason"
+					name="reason"
+					value={fields.reason}
 					onChange={handleChange}
 					required
-				/>
+					className={fields.reason === "" ? "lya-select-placeholder" : ""}
+				>
+					{INQUIRY_OPTIONS.map((opt) => (
+						<option key={opt.value} value={opt.value} disabled={opt.value === ""}>
+							{opt.label}
+						</option>
+					))}
+				</select>
 			</div>
+
+			{isCoachingInquiry ? (
+				<>
+					<p className="lya-contact-coaching-intro">{COACHING_INTRO}</p>
+					<div className="lya-contact-field">
+						<label htmlFor="cf-line-of-work">What is your line of work?</label>
+						<input
+							id="cf-line-of-work"
+							type="text"
+							name="lineOfWork"
+							value={fields.lineOfWork}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+					<div className="lya-contact-field">
+						<label htmlFor="cf-adhd-challenge">How is ADHD getting in your way?</label>
+						<textarea
+							id="cf-adhd-challenge"
+							name="adhdChallenge"
+							rows={4}
+							value={fields.adhdChallenge}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+					<div className="lya-contact-field">
+						<label htmlFor="cf-adhd-benefit">Is there anything about your ADHD you find beneficial?</label>
+						<textarea
+							id="cf-adhd-benefit"
+							name="adhdBenefit"
+							rows={4}
+							value={fields.adhdBenefit}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+					<div className="lya-contact-field">
+						<label htmlFor="cf-coaching-goals">
+							To make the most of our 30 minutes, please share your goals for coaching.
+						</label>
+						<textarea
+							id="cf-coaching-goals"
+							name="coachingGoals"
+							rows={4}
+							value={fields.coachingGoals}
+							onChange={handleChange}
+							required
+						/>
+					</div>
+				</>
+			) : (
+				<div className="lya-contact-field">
+					<label htmlFor="cf-message">Message</label>
+					<textarea
+						id="cf-message"
+						name="message"
+						rows={5}
+						placeholder="Tell me a bit about yourself and what you're hoping to work on…"
+						value={fields.message}
+						onChange={handleChange}
+						required
+					/>
+				</div>
+			)}
+
+			<EmailPrivacyNotice />
 
 			{siteKey && (
 				<div className="lya-contact-recaptcha">
