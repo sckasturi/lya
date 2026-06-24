@@ -1,8 +1,6 @@
 import StarShapeHalfImg from "../../../assets/images/v3/star-shape-half2.png";
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/FadeInStaggerTwo";
-import ContactForm from "./ContactForm";
-import {InlineWidget} from 'react-calendly'
-import { PopupWidget } from "react-calendly";
+import { InlineWidget } from "react-calendly";
 
 
 function Contact() {

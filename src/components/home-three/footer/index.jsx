@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import LogoDarkImg from "../../../assets/images/logo/logo-dark.svg";
 import FooterBottom from "./FooterBottom";
-import FooterTop from "./FooterTop";
 
 import ICF from "../../../assets/images/lya/icf.png"
 import CHADD from "../../../assets/images/lya/chadd.png"
 import ADDA from "../../../assets/images/lya/adda.png"
 import ACO from "../../../assets/images/lya/aco.png"
-import APSARD from "../../../assets/images/lya/apsard.png"
+import WISER from "../../../assets/images/lya/wiser.png"
 
 function Footer() {
 	return (
@@ -33,7 +32,7 @@ function Footer() {
 							<img src={ICF} width="80px" alt="ICF" />
 							<img src={ACO} width="80px" alt="ACO" />
 							<img src={CHADD} height="80px" alt="CHADD" />
-							<img src={APSARD} width="80px" alt="APSARD" />
+							<img src={WISER} height="80px" alt="WISER" />
 							<img src={ADDA} width="80px" alt="ADDA" />
 						</div>
 					</div>

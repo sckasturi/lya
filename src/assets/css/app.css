@@ -3911,6 +3911,48 @@ h1.post__title {
 	padding-top: 91px;
 	overflow: hidden;
 }
+
+@media (min-width: 992px) {
+	.aximo-hero-section3 .aximo-hero-content-col {
+		position: relative;
+		z-index: 2;
+		min-width: 0;
+		flex: 0 0 54%;
+		max-width: 54%;
+		padding-right: 2.5rem !important;
+	}
+
+	.aximo-hero-section3 .aximo-hero-thumb-col {
+		position: relative;
+		z-index: 1;
+		min-width: 0;
+		flex: 0 0 46%;
+		max-width: 46%;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 {
+		max-width: 100%;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1499px) {
+	.aximo-hero-section3 .aximo-hero-content3 h2 {
+		font-size: 48px;
+		line-height: 1.1;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 h3 {
+		font-size: 22px;
+		line-height: 1.45;
+		max-width: 32rem;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1400px) {
+	.aximo-hero-thumb3 {
+		border-radius: 0 0 0 280px;
+	}
+}
 @media (max-width: 991px) {
 	.aximo-hero-section3 {
 		padding-top: 170px;
@@ -3948,6 +3990,22 @@ h1.post__title {
 		margin-right: auto;
 	}
 
+	.aximo-hero-section3 .aximo-hero-content3 h1 {
+		font-size: 72px;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 h2 {
+		font-size: 40px;
+		line-height: 1.15;
+		margin-bottom: 14px;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 h3 {
+		font-size: 22px;
+		line-height: 1.45;
+		max-width: 26rem;
+	}
+
 	.aximo-hero-section3 .aximo-hero-thumb-col {
 		margin-left: auto;
 		margin-right: auto;
@@ -3956,18 +4014,23 @@ h1.post__title {
 
 @media (max-width: 767px) {
 	.aximo-hero-section3 .aximo-hero-content3 h1 {
+		font-size: 58px;
 		margin-bottom: 16px;
 	}
 
 	.aximo-hero-section3 .aximo-hero-content3 h2 {
-		font-size: 28px;
+		font-size: 34px;
 		line-height: 1.15;
 		margin-bottom: 12px;
 	}
 
 	.aximo-hero-section3 .aximo-hero-content3 h3 {
-		font-size: 18px;
+		font-size: 20px;
 		line-height: 1.5;
+		max-width: 24rem;
+	}
+
+	.aximo-hero-subscription.lya-cta-row {
 		max-width: 22rem;
 	}
 
@@ -4106,8 +4169,9 @@ h1.post__title {
 	.aximo-hero-subscription.lya-cta-row {
 		width: 100%;
 		max-width: 22rem;
-		flex-direction: column;
-		align-items: stretch;
+		justify-content: center;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
 .aximo-hero-subscription input {
@@ -7927,10 +7991,24 @@ img.aximo-video-circle {
 	margin: 0;
 	color: inherit;
 	font-weight: 600;
+	font-size: inherit;
+	line-height: inherit;
 }
 .aximo-pricing-tab.active {
 	background-color: var(--navy);
 	color: var(--cream);
+}
+
+@media (max-width: 767px) {
+	.aximo-pricing-tabs {
+		gap: 8px;
+	}
+
+	.aximo-pricing-tab {
+		font-size: 14px;
+		padding: 8px 14px;
+		line-height: 1.25;
+	}
 }
 .aximo-pricing-description {
 	font-weight: 600;
