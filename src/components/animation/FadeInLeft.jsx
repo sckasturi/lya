@@ -19,9 +19,10 @@ function FadeInLeft({ children, className = "" }) {
 		<motion.div
 			variants={animationVariants}
 			initial="initial"
+			animate="animate"
 			whileInView="animate"
+			viewport={{ once: true, amount: 0.01 }}
 			className={className}
-			// viewport={{ once: true }}
 		>
 			{children}
 		</motion.div>

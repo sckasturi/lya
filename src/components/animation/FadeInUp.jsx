@@ -20,8 +20,9 @@ function FadeInUp({ children, className = "" }) {
 			className={className}
 			variants={animationVariants}
 			initial="initial"
+			animate="animate"
 			whileInView="animate"
-			// viewport={{ once: true }}
+			viewport={{ once: true, amount: 0.01 }}
 		>
 			{children}
 		</motion.div>

@@ -21,7 +21,7 @@ function HeroContent() {
 			</FadeInStaggerTwoChildren>*/}
 			<FadeInStaggerTwoChildren>
 
-				<h2>Hi, I'm Sudhita Kasturi</h2>				<br/>
+				<h2>Hi, I&apos;m Sudhita Kasturi</h2>
 				<h3>Navigate your ADHD challenges by partnering with me, a certified and credentialed ADHD Life Coach, dedicated to helping you live authentically.</h3>
 				<div className="aximo-hero-subscription lya-cta-row">
 					<button type="button" className="lya-hero-journey-btn" onClick={scrollToSection}>

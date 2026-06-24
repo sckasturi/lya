@@ -20,8 +20,9 @@ function FadeInStaggerTwo({ children, className = "", id = "" }) {
 		<motion.div
 			variants={animationVariants}
 			initial="initial"
+			animate="animate"
 			whileInView="animate"
-			// viewport={{ once: true }}
+			viewport={{ once: true, amount: 0.01 }}
 			className={className}
 			id={id}
 		>

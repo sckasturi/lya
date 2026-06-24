@@ -1,56 +1,98 @@
-import Thumb1Img from "../../../assets/images/v1/t_thumb1.png";
-import Thumb2Img from "../../../assets/images/v1/t_thumb2.png";
-import Thumb3Img from "../../../assets/images/v1/t_thumb3.png";
-import Thumb4Img from "../../../assets/images/v1/t_thumb4.png";
-import FadeInStagger from "../../animation/FadeInStagger";
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { CTA, CTA_SECTION, trackCtaClick } from "../../../lib/ctaEvents";
 import { openFreebiePopup } from "../../../lib/openFreebiePopup";
 import TestimonialCard from "./TestimonialCard";
+import { testimonialsData } from "./testimonialsData";
 
-const testimonialsData = [
-	{
-		id: crypto.randomUUID(),
-		rating: 0,
-		title: "Super customer service!",
-		description:
-			"Excellent customer service and I was really impressed and happy with my purchase especially as it was a last minute order which got to me in time, and when it arrived I was very happy with the design and size and so was the recipient.",
-		author: "SS",
-		designation: "Jobless Person",
-		img: Thumb1Img,
-	},
-	{
-		id: crypto.randomUUID(),
-		rating: 0,
-		title: "Innovative and professional",
-		description:
-			"Working with Sudhita led me to start my dream career and manage my personal and professional life better. She's hands-on in supporting her clients through ADHD-related challenges and capacity building. Being a WOC (women of color) was an important deciding factor for me because Sudhita is culturally responsive and respectful.",
-		author: "PL",
-		designation: "Another Profession",
-		img: Thumb3Img,
-	},
-	{
-		id: crypto.randomUUID(),
-		rating: 0,
-		title: "Exceptional creativity and vision",
-		description:
-			"Sudhita consistently brings me back to my goals, reminds me what I have dreamed of for myself, and listens to my big creative brain. She can follow my threads and then help me bring them together to concrete actions.",
-		author: "CK",
-		designation: "One More Profession",
-		img: Thumb2Img,
-	},
-	{
-		id: crypto.randomUUID(),
-		rating: 0,
-		title: "Transformed our brand",
-		description:
-			"I felt that our family was not working together as a team to help bring more order and structure to my child's life. Sudhita was able to bring to light what is important from my son's point of view and why it is important that we understand him.",
-		author: "AK",
-		designation: "Some Profession",
-		img: Thumb4Img,
-	},
-];
+const ROTATE_MS = 12000;
+const HEIGHT_TRANSITION = { duration: 0.4, ease: [0.4, 0, 0.2, 1] };
+const SLIDE_TRANSITION = { duration: 0.35, ease: [0.4, 0, 0.2, 1] };
+
+function TestimonialArrow({ direction, label, onClick }) {
+	return (
+		<button
+			type="button"
+			className={`lya-testimonial-arrow lya-testimonial-arrow--${direction}`}
+			onClick={onClick}
+			aria-label={label}
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+				<path
+					d={direction === "prev" ? "M12 4L6 10L12 16" : "M8 4L14 10L8 16"}
+					stroke="currentColor"
+					strokeWidth="2"
+					strokeLinecap="round"
+					strokeLinejoin="round"
+				/>
+			</svg>
+		</button>
+	);
+}
 
 function Testimonial() {
+	const [activeIndex, setActiveIndex] = useState(0);
+	const [slideHeight, setSlideHeight] = useState(0);
+	const [direction, setDirection] = useState(1);
+	const slideRef = useRef(null);
+	const autoplayRef = useRef(null);
+
+	const activeTestimonial = testimonialsData[activeIndex];
+	const testimonialCount = testimonialsData.length;
+
+	const measureHeight = useCallback(() => {
+		if (!slideRef.current) return;
+		const next = slideRef.current.offsetHeight;
+		if (next > 0) {
+			setSlideHeight(next);
+		}
+	}, []);
+
+	useLayoutEffect(() => {
+		measureHeight();
+		const node = slideRef.current;
+		if (!node || typeof ResizeObserver === "undefined") return undefined;
+
+		const observer = new ResizeObserver(() => measureHeight());
+		observer.observe(node);
+		return () => observer.disconnect();
+	}, [activeIndex, activeTestimonial?.id, measureHeight]);
+
+	const startAutoplay = useCallback(() => {
+		if (autoplayRef.current) {
+			window.clearInterval(autoplayRef.current);
+		}
+		if (testimonialCount <= 1) return;
+
+		autoplayRef.current = window.setInterval(() => {
+			setDirection(1);
+			setActiveIndex((current) => (current + 1) % testimonialCount);
+		}, ROTATE_MS);
+	}, [testimonialCount]);
+
+	useEffect(() => {
+		startAutoplay();
+		return () => {
+			if (autoplayRef.current) {
+				window.clearInterval(autoplayRef.current);
+			}
+		};
+	}, [startAutoplay]);
+
+	const goToIndex = (index, nextDirection) => {
+		setDirection(nextDirection);
+		setActiveIndex(index);
+		startAutoplay();
+	};
+
+	const goPrevious = () => {
+		goToIndex((activeIndex - 1 + testimonialCount) % testimonialCount, -1);
+	};
+
+	const goNext = () => {
+		goToIndex((activeIndex + 1) % testimonialCount, 1);
+	};
+
 	const scrollToSection = () => {
 		trackCtaClick(CTA.START_JOURNEY, CTA_SECTION.TESTIMONIALS);
 		const target = document.getElementById("contact-us");
@@ -59,28 +101,94 @@ function Testimonial() {
 		}
 	};
 
+	if (!activeTestimonial) {
+		return null;
+	}
+
+	const slideVariants = {
+		enter: (dir) => ({
+			opacity: 0,
+			x: dir > 0 ? 28 : -28,
+		}),
+		center: {
+			opacity: 1,
+			x: 0,
+		},
+		exit: (dir) => ({
+			opacity: 0,
+			x: dir > 0 ? -28 : 28,
+		}),
+	};
+
 	return (
 		<div className="section aximo-section-padding3 teal-bg">
 			<div className="container">
 				<div className="aximo-section-title center">
-					<h2 className="teal-bg">
-						What my clients are saying
-					</h2>
+					<h2 className="teal-bg">What my clients are saying</h2>
 				</div>
-				<div className="row">
-					{testimonialsData.map((testimonial, index) => (
-						<FadeInStagger index={index} className="col-lg-6" key={testimonial.id}>
-							<TestimonialCard testimonial={testimonial} />
-						</FadeInStagger>
-					))}
+
+				<div className="lya-testimonial-slider">
+					{testimonialCount > 1 && (
+						<TestimonialArrow direction="prev" label="Previous testimonial" onClick={goPrevious} />
+					)}
+
+					<div className="lya-testimonial-carousel lya-testimonial-carousel--single">
+						<motion.div
+							className="lya-testimonial-viewport"
+							animate={{ height: slideHeight || "auto" }}
+							transition={HEIGHT_TRANSITION}
+						>
+							<AnimatePresence mode="wait" custom={direction} initial={false}>
+								<motion.div
+									ref={slideRef}
+									key={activeTestimonial.id}
+									custom={direction}
+									variants={slideVariants}
+									initial="enter"
+									animate="center"
+									exit="exit"
+									transition={SLIDE_TRANSITION}
+									className="lya-testimonial-carousel-page lya-testimonial-carousel-page--single"
+								>
+									<TestimonialCard testimonial={activeTestimonial} />
+								</motion.div>
+							</AnimatePresence>
+						</motion.div>
+
+						{testimonialCount > 1 && (
+							<div
+								className="lya-testimonial-dots"
+								role="tablist"
+								aria-label="Testimonials"
+							>
+								{testimonialsData.map((testimonial, index) => (
+									<button
+										key={testimonial.id}
+										type="button"
+										className={`lya-testimonial-dot${index === activeIndex ? " active" : ""}`}
+										aria-label={`Show testimonial ${index + 1} of ${testimonialCount}`}
+										aria-selected={index === activeIndex}
+										onClick={() =>
+											goToIndex(index, index >= activeIndex ? 1 : -1)
+										}
+									/>
+								))}
+							</div>
+						)}
+					</div>
+
+					{testimonialCount > 1 && (
+						<TestimonialArrow direction="next" label="Next testimonial" onClick={goNext} />
+					)}
 				</div>
-				<div className="aximo-hero-subscription lya-cta-row lya-testimonial-cta-row">
-					<button type="button" className="lya-hero-journey-btn" onClick={scrollToSection}>
+
+				<div className="lya-cta-row lya-testimonial-cta-row">
+					<button type="button" className="lya-testimonial-journey-btn" onClick={scrollToSection}>
 						Start your journey
 					</button>
 					<button
 						type="button"
-						className="lya-hero-freebie-btn"
+						className="lya-testimonial-freebie-btn"
 						onClick={() => openFreebiePopup(CTA_SECTION.TESTIMONIALS)}
 					>
 						Get your FREE Un-overwhelm Guide

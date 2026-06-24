@@ -3918,12 +3918,61 @@ h1.post__title {
 }
 @media (max-width: 767px) {
 	.aximo-hero-section3 {
-		padding-top: 140px;
+		padding-top: 120px;
 	}
 }
 @media (max-width: 991px) {
 	.aximo-hero-content3 {
 		text-align: center;
+	}
+
+	.aximo-hero-section3 .aximo_screenfix_right {
+		margin-right: 0;
+		margin-left: 0;
+		justify-content: center;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content-col {
+		justify-content: center;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 {
+		width: 100%;
+		max-width: 100%;
+		text-align: center;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 h2,
+	.aximo-hero-section3 .aximo-hero-content3 h3 {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.aximo-hero-section3 .aximo-hero-thumb-col {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+@media (max-width: 767px) {
+	.aximo-hero-section3 .aximo-hero-content3 h1 {
+		margin-bottom: 16px;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 h2 {
+		font-size: 28px;
+		line-height: 1.15;
+		margin-bottom: 12px;
+	}
+
+	.aximo-hero-section3 .aximo-hero-content3 h3 {
+		font-size: 18px;
+		line-height: 1.5;
+		max-width: 22rem;
+	}
+
+	.aximo-hero-section3 .aximo-hero-thumb-col {
+		max-width: 20rem;
 	}
 }
 .aximo-hero-content3 p {
@@ -4052,6 +4101,13 @@ h1.post__title {
 	.aximo-hero-subscription {
 		margin: 0 auto;
 		margin-top: 30px;
+	}
+
+	.aximo-hero-subscription.lya-cta-row {
+		width: 100%;
+		max-width: 22rem;
+		flex-direction: column;
+		align-items: stretch;
 	}
 }
 .aximo-hero-subscription input {
@@ -5663,6 +5719,8 @@ a.aximo-service-icon:hover {
 	}
 }
 
+/* ── LYA letter (About) ───────────────────────────── */
+
 /* ── LYA FAQ redesign ─────────────────────────────── */
 .lya-faq-header {
 	text-align: center;
@@ -6036,9 +6094,267 @@ a.aximo-service-icon:hover {
 	line-height: 1.6;
 	margin: 0 0 8px;
 }
-.lya-testimonial-cta-row {
+.lya-contact-calendly-cta {
+	margin-top: 4px;
+}
+.lya-contact-calendly-cta p {
+	margin: 0 0 16px;
+	font-family: proxima-nova, sans-serif;
+	font-size: 15px;
+	line-height: 1.6;
+	color: var(--verylightblue);
+}
+.lya-contact-calendly-link {
+	display: inline-flex;
+	align-items: center;
 	justify-content: center;
-	margin-top: 48px;
+	background-color: var(--red);
+	color: var(--cream);
+	border: 2px solid var(--red);
+	border-radius: 999px;
+	padding: 14px 28px;
+	font-family: proxima-nova, sans-serif;
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.lya-contact-calendly-link:hover {
+	background-color: transparent;
+	border-color: var(--red);
+	color: var(--red);
+}
+.lya-testimonial-slider {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 16px;
+	max-width: 58rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.lya-testimonial-carousel {
+	position: relative;
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.lya-testimonial-carousel--single {
+	max-width: none;
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.lya-testimonial-viewport {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.lya-testimonial-arrow {
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 48px;
+	height: 48px;
+	padding: 0;
+	border: 2px solid rgba(252, 245, 227, 0.45);
+	border-radius: 50%;
+	background: transparent;
+	color: var(--cream);
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		border-color 0.2s ease,
+		transform 0.2s ease;
+}
+
+.lya-testimonial-arrow:hover {
+	background: rgba(252, 245, 227, 0.12);
+	border-color: var(--cream);
+}
+
+.lya-testimonial-arrow:active {
+	transform: scale(0.96);
+}
+
+.lya-testimonial-carousel-page--single {
+	width: 100%;
+	will-change: transform, opacity;
+}
+
+.lya-testimonial-card {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100%;
+	margin-bottom: 0;
+}
+
+.lya-testimonial-card--single {
+	padding: 36px 40px;
+	text-align: center;
+}
+
+.lya-testimonial-headline {
+	font-size: 26px;
+	line-height: 1.35;
+	font-weight: 600;
+	color: var(--navy);
+	margin: 0 0 24px;
+}
+
+.lya-testimonial-quote-wrap {
+	flex: 1 1 auto;
+}
+
+.lya-testimonial-quote {
+	margin-bottom: 0;
+	font-size: 18px;
+	line-height: 1.65;
+	color: var(--navy);
+}
+
+.lya-testimonial-card .aximo-testimonial-data {
+	flex: 1 1 auto;
+}
+
+.lya-testimonial-card .aximo-testimonial-data p {
+	margin-bottom: 0;
+}
+
+.lya-testimonial-card .aximo-testimonial-author {
+	margin-top: auto;
+	padding-top: 28px;
+	justify-content: center;
+}
+
+.lya-testimonial-card .aximo-testimonial-author-data p {
+	text-align: center;
+}
+
+.lya-testimonial-dots {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 32px;
+}
+
+.lya-testimonial-dot {
+	width: 10px;
+	height: 10px;
+	padding: 0;
+	border: none;
+	border-radius: 50%;
+	background: rgba(252, 245, 227, 0.35);
+	cursor: pointer;
+	transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.lya-testimonial-dot.active {
+	background: var(--cream);
+	transform: scale(1.15);
+}
+
+@media (max-width: 767px) {
+	.lya-testimonial-slider {
+		gap: 10px;
+		max-width: none;
+	}
+
+	.lya-testimonial-arrow {
+		width: 40px;
+		height: 40px;
+	}
+
+	.lya-testimonial-card--single {
+		padding: 28px 20px;
+	}
+
+	.lya-testimonial-headline {
+		font-size: 22px;
+		margin-bottom: 20px;
+	}
+
+	.lya-testimonial-quote {
+		font-size: 17px;
+		line-height: 1.6;
+	}
+
+	.lya-testimonial-dots {
+		flex-wrap: wrap;
+		max-width: 16rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.lya-testimonial-cta-row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+	width: 100%;
+	max-width: 52rem;
+	margin: 48px auto 0;
+}
+
+.lya-testimonial-cta-row .lya-testimonial-journey-btn,
+.lya-testimonial-cta-row .lya-testimonial-freebie-btn {
+	box-sizing: border-box;
+	min-height: 56px;
+	padding: 14px 24px;
+	border-radius: 50px;
+	font-size: 18px;
+	font-weight: 600;
+	font-family: proxima-nova, sans-serif;
+	line-height: 1.25;
+	border: none;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.lya-testimonial-cta-row .lya-testimonial-journey-btn {
+	background-color: var(--red);
+	color: var(--cream);
+}
+
+.lya-testimonial-cta-row .lya-testimonial-journey-btn:hover {
+	background-color: var(--navy);
+	color: var(--cream);
+}
+
+.lya-testimonial-cta-row .lya-testimonial-freebie-btn {
+	background-color: var(--cream);
+	color: var(--navy);
+	box-shadow: 0 0 0 2px var(--cream);
+}
+
+.lya-testimonial-cta-row .lya-testimonial-freebie-btn:hover {
+	background-color: var(--navy);
+	color: var(--cream);
+	box-shadow: 0 0 0 2px var(--navy);
+}
+
+@media (max-width: 767px) {
+	.lya-testimonial-cta-row {
+		flex-direction: column;
+		align-items: stretch;
+		max-width: 22rem;
+	}
+
+	.lya-testimonial-cta-row .lya-testimonial-journey-btn,
+	.lya-testimonial-cta-row .lya-testimonial-freebie-btn {
+		width: 100%;
+		font-size: 16px;
+	}
 }
 .lya-contact-reset {
 	background: none;
@@ -6212,6 +6528,22 @@ a.aximo-service-icon:hover {
 
 .lya-offerings-form-panel .lya-contact-coaching-intro {
 	color: rgba(24, 45, 56, 0.88);
+}
+
+.lya-offerings-form-panel .lya-contact-calendly-cta p {
+	color: rgba(24, 45, 56, 0.88);
+}
+
+.lya-offerings-form-panel .lya-contact-calendly-link {
+	background-color: var(--navy);
+	border-color: var(--navy);
+	color: var(--cream);
+}
+
+.lya-offerings-form-panel .lya-contact-calendly-link:hover {
+	background-color: var(--red);
+	border-color: var(--red);
+	color: var(--cream);
 }
 
 .lya-offerings-form-panel .lya-contact-reset {
@@ -9342,6 +9674,21 @@ a.aximo-connect-login img {
 }
 .aximo-default-content p strong {
 	font-weight: 600;
+}
+.lya-letter .lya-letter-signature {
+	margin-top: 1.75rem;
+	margin-bottom: 0;
+	text-align: right;
+	font-family: "Snell Roundhand", "Segoe Script", "Brush Script MT", cursive;
+	font-size: clamp(2rem, 4vw, 2.75rem);
+	font-weight: 400;
+	line-height: 1;
+	color: inherit;
+}
+@media (max-width: 767px) {
+	.lya-letter .lya-letter-signature {
+		font-size: clamp(1.75rem, 7vw, 2.25rem);
+	}
 }
 .aximo-default-content.large p {
 	font-size: 24px;

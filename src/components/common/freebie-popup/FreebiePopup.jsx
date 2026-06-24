@@ -23,14 +23,16 @@ export default function FreebiePopup() {
 	}, []);
 
 	useEffect(() => {
-		const dismissed = localStorage.getItem(STORAGE_KEY) === "1";
-		if (!dismissed) {
-			setIsOpen(true);
-		}
 		const onOpen = () => setIsOpen(true);
 		window.addEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
-		return () =>
+
+		const dismissed = localStorage.getItem(STORAGE_KEY) === "1";
+		const timer = dismissed ? null : window.setTimeout(() => setIsOpen(true), 1200);
+
+		return () => {
 			window.removeEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
+			if (timer) window.clearTimeout(timer);
+		};
 	}, []);
 
 	const closePopup = () => {

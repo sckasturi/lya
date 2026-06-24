@@ -12,18 +12,13 @@ export const INQUIRY_OPTIONS = [
 	{ value: "professional-connection", label: "Professional connection" },
 ];
 
-const COACHING_INTRO =
-	"Share a bit more about yourself, and I will send you a link to schedule your free consultation.";
-
 const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
-function buildCoachingMessage(fields) {
-	return [
-		`Line of work: ${fields.lineOfWork}`,
-		`How ADHD is getting in your way: ${fields.adhdChallenge}`,
-		`Beneficial aspects of ADHD: ${fields.adhdBenefit}`,
-		`Goals for coaching: ${fields.coachingGoals}`,
-	].join("\n\n");
+function scrollToCalendly() {
+	const target = document.getElementById("contact-us");
+	if (target) {
+		target.scrollIntoView({ behavior: "smooth" });
+	}
 }
 
 export function ContactFormFields({ initialInquiry = "" }) {
@@ -33,10 +28,6 @@ export function ContactFormFields({ initialInquiry = "" }) {
 		email: "",
 		reason: initialInquiry,
 		message: "",
-		lineOfWork: "",
-		adhdChallenge: "",
-		adhdBenefit: "",
-		coachingGoals: "",
 	});
 	const [recaptchaToken, setRecaptchaToken] = useState("");
 	const [status, setStatus] = useState("idle");
@@ -59,12 +50,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 			return false;
 		}
 		if (isCoachingInquiry) {
-			return (
-				fields.lineOfWork.trim() &&
-				fields.adhdChallenge.trim() &&
-				fields.adhdBenefit.trim() &&
-				fields.coachingGoals.trim()
-			);
+			return false;
 		}
 		return fields.message.trim();
 	}
@@ -86,9 +72,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 
 		const reasonLabel =
 			INQUIRY_OPTIONS.find((o) => o.value === fields.reason)?.label || fields.reason;
-		const message = isCoachingInquiry
-			? buildCoachingMessage(fields)
-			: fields.message;
+		const message = fields.message;
 
 		try {
 			const res = await fetch("/api/contact", {
@@ -111,10 +95,6 @@ export function ContactFormFields({ initialInquiry = "" }) {
 					email: "",
 					reason: initialInquiry,
 					message: "",
-					lineOfWork: "",
-					adhdChallenge: "",
-					adhdBenefit: "",
-					coachingGoals: "",
 				});
 				setRecaptchaToken("");
 				recaptchaRef.current?.reset();
@@ -131,7 +111,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 	}
 
 	const showValidationError = status === "validation";
-	const nameLabel = isCoachingInquiry ? "First and last name" : "Your name";
+	const nameLabel = "Your name";
 
 	if (status === "success") {
 		return (
@@ -193,55 +173,18 @@ export function ContactFormFields({ initialInquiry = "" }) {
 			</div>
 
 			{isCoachingInquiry ? (
-				<>
-					<p className="lya-contact-coaching-intro">{COACHING_INTRO}</p>
-					<div className="lya-contact-field">
-						<label htmlFor="cf-line-of-work">What is your line of work?</label>
-						<input
-							id="cf-line-of-work"
-							type="text"
-							name="lineOfWork"
-							value={fields.lineOfWork}
-							onChange={handleChange}
-							required
-						/>
-					</div>
-					<div className="lya-contact-field">
-						<label htmlFor="cf-adhd-challenge">How is ADHD getting in your way?</label>
-						<textarea
-							id="cf-adhd-challenge"
-							name="adhdChallenge"
-							rows={4}
-							value={fields.adhdChallenge}
-							onChange={handleChange}
-							required
-						/>
-					</div>
-					<div className="lya-contact-field">
-						<label htmlFor="cf-adhd-benefit">Is there anything about your ADHD you find beneficial?</label>
-						<textarea
-							id="cf-adhd-benefit"
-							name="adhdBenefit"
-							rows={4}
-							value={fields.adhdBenefit}
-							onChange={handleChange}
-							required
-						/>
-					</div>
-					<div className="lya-contact-field">
-						<label htmlFor="cf-coaching-goals">
-							To make the most of our 30 minutes, please share your goals for coaching.
-						</label>
-						<textarea
-							id="cf-coaching-goals"
-							name="coachingGoals"
-							rows={4}
-							value={fields.coachingGoals}
-							onChange={handleChange}
-							required
-						/>
-					</div>
-				</>
+				<div className="lya-contact-calendly-cta">
+					<p>
+						For ADHD coaching, book your free consultation using the scheduler above.
+					</p>
+					<button
+						type="button"
+						className="lya-contact-calendly-link"
+						onClick={scrollToCalendly}
+					>
+						Schedule your free consultation
+					</button>
+				</div>
 			) : (
 				<div className="lya-contact-field">
 					<label htmlFor="cf-message">Message</label>
@@ -257,37 +200,41 @@ export function ContactFormFields({ initialInquiry = "" }) {
 				</div>
 			)}
 
-			<EmailPrivacyNotice />
+			{!isCoachingInquiry && (
+				<>
+					<EmailPrivacyNotice />
 
-			{siteKey && (
-				<div className="lya-contact-recaptcha">
-					<ReCAPTCHA
-						ref={recaptchaRef}
-						sitekey={siteKey}
-						onChange={(token) => setRecaptchaToken(token || "")}
-						onExpired={() => setRecaptchaToken("")}
-					/>
-				</div>
-			)}
+					{siteKey && (
+						<div className="lya-contact-recaptcha">
+							<ReCAPTCHA
+								ref={recaptchaRef}
+								sitekey={siteKey}
+								onChange={(token) => setRecaptchaToken(token || "")}
+								onExpired={() => setRecaptchaToken("")}
+							/>
+						</div>
+					)}
 
-			{showValidationError && (
-				<p className="lya-contact-error">
-					Please fill in all fields{siteKey && !recaptchaToken ? " and complete the reCAPTCHA" : ""}.
-				</p>
-			)}
-			{status === "error" && (
-				<p className="lya-contact-error">
-					Something went wrong — please try again or email me directly.
-				</p>
-			)}
+					{showValidationError && (
+						<p className="lya-contact-error">
+							Please fill in all fields{siteKey && !recaptchaToken ? " and complete the reCAPTCHA" : ""}.
+						</p>
+					)}
+					{status === "error" && (
+						<p className="lya-contact-error">
+							Something went wrong — please try again or email me directly.
+						</p>
+					)}
 
-			<button
-				type="submit"
-				className="lya-contact-submit"
-				disabled={status === "submitting" || (!!siteKey && !recaptchaToken)}
-			>
-				{status === "submitting" ? "Sending…" : "Send message"}
-			</button>
+					<button
+						type="submit"
+						className="lya-contact-submit"
+						disabled={status === "submitting" || (!!siteKey && !recaptchaToken)}
+					>
+						{status === "submitting" ? "Sending…" : "Send message"}
+					</button>
+				</>
+			)}
 		</form>
 	);
 }

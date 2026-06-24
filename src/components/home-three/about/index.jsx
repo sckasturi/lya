@@ -15,14 +15,50 @@ function About() {
 						</FadeInLeft><br/>
 					</div>
 					<div className="col-lg-7 offset-lg-1">
-						<div className="aximo-default-content ">
-							<h2 className="navy-bg">Is your ADHD getting in your way?</h2>
-							<p>Falling short while working hard. Just holding it together when more was possible.</p>
-							<p>This was my reality. My diagnosis of ADHD in my 30s brought a glimmer of understanding, though my gains were fleeting. My family&apos;s challenges with ADHD and a desire to make a difference led me to train as a strengths-based Certified ADHD Coach.</p>
-							<p>I learned that positive ADHD attributes, such as ingenuity, tenacity, generosity, and spontaneity, are overshadowed by challenges with time management, disorganization, prioritizing tasks, and frustration tolerance. Now, I partner with adults like you to identify what is working for you, what is not, and to amplify your inherent gifts to mitigate your challenges with ADHD.</p>
-							<p>By melding transformational coaching practices, scientific research, and the age-old wisdom of mindfulness, we will build a bridge between where you are and where you want to be. By understanding how ADHD is at play, you will learn to work with your brain rather than against it.</p>
-							<p>ADHD makes us different. Not better, not broken. Together, we will design strategies to honor this difference and leverage it. We will create a bespoke pathway to success that you can navigate authentically and passionately while honoring your unique self.</p>
-							<p>Thriving with our ADHD, not despite it, is possible!</p>
+						<div className="aximo-default-content lya-letter">
+							<h2 className="navy-bg">
+								&ldquo;She has so much potential. She just needs to work harder.&rdquo;
+							</h2>
+							<p>
+								I grew up hearing that my whole life. While I was great at thinking outside
+								the box and coming up with creative solutions to problems, the ease with
+								which my peers managed multiple homework and project deadlines evaded me.
+							</p>
+							<p>
+								In grad school, my compensatory mechanisms reached their limit, and I went
+								from having multiple research options to being on academic probation.{" "}
+								<strong>
+									My self-esteem tanked, and I panicked daily.
+								</strong>
+							</p>
+							<p>
+								Nearly 10 years later, work, home, parenthood, and taking too much on led
+								to a diagnosis of inattentive ADHD. Unlike other diagnoses, no one offered
+								any information or tools to address what I was experiencing. It was left to
+								my husband and me to figure things out.
+							</p>
+							<p>
+								My journey to find answers for myself, to be true to what I was being called
+								to do, led me to study spirituality and philosophy. I understood that ADHD was
+								an essential part of me, and my success and happiness lay in journeying with
+								it and not by denying it.
+							</p>
+							<p>
+								I believe there is a reason we are born the way we are. From my upbringing
+								and education on two different continents, to marriage, motherhood, and my
+								aspirations to effect change, everything led me to be right here, right now.
+							</p>
+							<p>
+								With a better understanding of our brains and neurochemistry, we can reduce
+								shame and negative self-talk and address the demands of day-to-day life.{" "}
+								<strong>
+									We can thrive and succeed with our ADHD, not in spite of it.
+								</strong>{" "}
+								I hope you too can leverage your ADHD and live authentically.
+							</p>
+							<p className="lya-letter-signature" aria-label="Sudhita">
+								- Sudhita
+							</p>
 						</div>
 					</div>
 				</div>
