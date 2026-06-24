@@ -95,6 +95,7 @@ export async function onRequestPost(context) {
 			return jsonResponse({ error: "Email not configured." }, 500);
 		}
 
+		// Source file: src/assets/pdfs/freebie.pdf (copied to dist on build)
 		const pdfUrl = new URL("/assets/pdfs/freebie.pdf", request.url);
 		const pdfRes = env.ASSETS
 			? await env.ASSETS.fetch(pdfUrl)

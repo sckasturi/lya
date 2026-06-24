@@ -17,7 +17,9 @@ dist/
 
 # Design / scratch files
 *.psd
-src/assets/pdfs/
+src/assets/pdfs/*
+!src/assets/pdfs/freebie.pdf
+!src/assets/pdfs/README.md
 src/assets/images/lya/test.jpg
 src/components/pricing/Untitled
 

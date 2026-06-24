@@ -2,7 +2,7 @@ Cloudflare Pages Functions for freebie and contact form:
 
 - Endpoint: `POST /api/freebie`
 - File: `functions/api/freebie.js`
-- Attachment source: `public/assets/pdfs/freebie.pdf`
+- Attachment source: `src/assets/pdfs/freebie.pdf` (copied to `dist/assets/pdfs/freebie.pdf` on build)
 - Endpoint: `POST /api/contact`
 - File: `functions/api/contact.js`
 
