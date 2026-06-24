@@ -27,7 +27,7 @@ function HeaderButton() {
 					className="aximo-default-btn pill aximo-header-btn lya-header-freebie-btn"
 					onClick={() => openFreebiePopup(CTA_SECTION.HEADER)}
 				>
-					Get your FREE Un-overwhelm Guide
+					Get your FREE Un-Overwhelm Guide
 				</button>
 			</div>
 		</div>

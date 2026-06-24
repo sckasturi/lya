@@ -109,12 +109,12 @@ export async function onRequestPost(context) {
 		const resendPayload = {
 			from: `Sudhita Kasturi <${from}>`,
 			to: [email],
-			subject: "Your FREE Un-overwhelm Guide",
+			subject: "Your FREE Un-Overwhelm Guide",
 			html: `<p>Hi ${name},</p><p>Thanks for requesting the free guide. The PDF is attached.</p><p>— Sudhita</p>`,
 			text: `Hi ${name},\n\nThanks for requesting the free guide. The PDF is attached.\n\n— Sudhita`,
 			attachments: [
 				{
-					filename: "LYA-Un-overwhelm-Guide.pdf",
+					filename: "LYA-Un-Overwhelm-Guide.pdf",
 					content: pdfBase64,
 				},
 			],

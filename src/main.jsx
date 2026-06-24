@@ -10,7 +10,6 @@ import "./assets/css/fontawesome.css";
 // main css
 import "./assets/css/app.css";
 import "./assets/css/main.css";
-import "./assets/css/mobile-nav.css";
 
 // React Router Dom
 import { RouterProvider } from "react-router-dom";

@@ -191,7 +191,7 @@ function Testimonial() {
 						className="lya-testimonial-freebie-btn"
 						onClick={() => openFreebiePopup(CTA_SECTION.TESTIMONIALS)}
 					>
-						Get your FREE Un-overwhelm Guide
+						Get your FREE Un-Overwhelm Guide
 					</button>
 				</div>
 			</div>

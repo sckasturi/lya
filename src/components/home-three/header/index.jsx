@@ -1,5 +1,4 @@
 import DesktopNav from "../../common/navigation/desktop-nav/DesktopNav";
-import MobileNavbar from "../../common/navigation/mobile-nav/MobileNavbar";
 import HeaderButton from "./HeaderButton";
 import HeaderLogo from "./HeaderLogo";
 
@@ -14,7 +13,6 @@ function Header() {
 						</DesktopNav>
 					</div>
 					<HeaderButton />
-					<MobileNavbar />
 				</nav>
 			</div>
 		</header>

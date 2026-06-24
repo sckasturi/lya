@@ -5901,14 +5901,12 @@ a.aximo-service-icon:hover {
 /* ── end LYA FAQ ───────────────────────────────────── */
 
 /* Header / mobile "Start your journey" — one-time 2s glow when FAQ is first seen */
-.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn,
-.mobile-nav-cta .lya-header-journey-btn {
+.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn {
 	position: relative;
 	overflow: visible !important;
 }
 
-.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow,
-.mobile-nav-cta .lya-header-journey-btn.lya-journey-glow {
+.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow {
 	animation: lya-journey-glow-once 2s ease-in-out forwards;
 }
 
@@ -5952,8 +5950,7 @@ a.aximo-service-icon:hover {
 }
 
 @media (prefers-reduced-motion: reduce) {
-	.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow,
-	.mobile-nav-cta .lya-header-journey-btn.lya-journey-glow {
+	.aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow {
 		animation: none;
 		box-shadow:
 			0 0 0 4px color-mix(in srgb, var(--red) 75%, transparent),

@@ -32,7 +32,7 @@ function HeroContent() {
 						className="lya-hero-freebie-btn"
 						onClick={() => openFreebiePopup(CTA_SECTION.HERO)}
 					>
-						Get your FREE Un-overwhelm Guide
+						Get your FREE Un-Overwhelm Guide
 					</button>
 				</div>
 				{/*<div className="aximo-hero-rating">

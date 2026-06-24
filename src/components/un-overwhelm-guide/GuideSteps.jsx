@@ -262,7 +262,7 @@ function ClarityStep({ items, itemPriorities, focusItem, onFocusChange, onBookCo
 			<h2 className="lya-guide-heading lya-guide-heading--center">
 				Congrats, you have taken the first step on achieving{" "}
 				<span className="lya-guide-accent">clarity</span> to{" "}
-				<span className="lya-guide-accent-teal lya-guide-underline">un-overwhelm</span> your brain.
+				<span className="lya-guide-accent-teal lya-guide-underline">Un-Overwhelm</span> your brain.
 			</h2>
 
 			<p className="lya-guide-lead lya-guide-lead--center">
