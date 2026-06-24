@@ -114,7 +114,7 @@ export async function onRequestPost(context) {
 			text: `Hi ${name},\n\nThanks for requesting the free guide. The PDF is attached.\n\n— Sudhita`,
 			attachments: [
 				{
-					filename: "Leverage-Your-ADHD-Free-Guide.pdf",
+					filename: "LYA-Un-overwhelm-Guide.pdf",
 					content: pdfBase64,
 				},
 			],
