@@ -5,16 +5,6 @@ import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-// blur css
-import "react-lazy-load-image-component/src/effects/blur.css";
-
-//  Swiper styles
-import "swiper/css";
-import "swiper/css/autoplay";
-import "swiper/css/mousewheel";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 import "./assets/css/fontawesome.css";
 
 // main css
