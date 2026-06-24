@@ -36,7 +36,7 @@ function FooterBottom() {
 									<a href="https://videobysrij.com" target="_blank" rel="noreferrer">Srijay Kasturi</a>
 									<br />
 									<strong>Logo Design:</strong>{" "}
-									<a href="https://shiv-aurts.com" target="_blank" rel="noreferrer">Shivali Aurora Tandon</a>
+									<a href="https://shiv-aurts.com" target="_blank" rel="noreferrer">Shiv Aurts</a>
 									<br />
 									<strong>Content Design:</strong>{" "}
 									<a href="https://sravaniwrites.com" target="_blank" rel="noreferrer">Sravani Hotha</a>
