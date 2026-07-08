@@ -1,0 +1,2 @@
+import{j as a}from"./react-vendor-DXv7Z-GT.js";import{m as n}from"./motion-C7VYX2No.js";const o={initial:{opacity:0,y:50},animate:{opacity:1,y:0,transition:{duration:.7}}};function m({children:i,className:t=""}){return a.jsx(n.div,{className:t,variants:o,initial:"initial",animate:"animate",whileInView:"animate",viewport:{once:!0,amount:.01},children:i})}export{m as F};
+//# sourceMappingURL=FadeInUp-9pAL9sNH.js.map
