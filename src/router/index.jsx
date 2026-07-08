@@ -1,20 +1,34 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import Handout from "../page/Handout.jsx";
-import UnOverwhelmGuide from "../page/UnOverwhelmGuide.jsx";
 import LayoutThree from "../components/layout/LayoutThree.jsx";
 import Layout from "../components/layout/index.jsx";
-import ErrorPage from "../error-page";
-import HomeThree from "../page/home/HomeThree.jsx";
-import PrivacyPolicy from "../page/PrivacyPolicy.jsx";
+
+const Handout = lazy(() => import("../page/Handout.jsx"));
+const UnOverwhelmGuide = lazy(() => import("../page/UnOverwhelmGuide.jsx"));
+const HomeThree = lazy(() => import("../page/home/HomeThree.jsx"));
+const PrivacyPolicy = lazy(() => import("../page/PrivacyPolicy.jsx"));
+const ErrorPage = lazy(() => import("../error-page"));
+
+function RouteFallback() {
+	return null;
+}
 
 export const router = createBrowserRouter([
 	{
 		path: "/handout",
-		element: <Handout />,
+		element: (
+			<Suspense fallback={<RouteFallback />}>
+				<Handout />
+			</Suspense>
+		),
 	},
 	{
 		path: "/un-overwhelm-guide",
-		element: <UnOverwhelmGuide />,
+		element: (
+			<Suspense fallback={<RouteFallback />}>
+				<UnOverwhelmGuide />
+			</Suspense>
+		),
 	},
 	{
 		path: "/",
@@ -26,15 +40,27 @@ export const router = createBrowserRouter([
 				children: [
 					{
 						path: "/",
-						element: <HomeThree />,
+						element: (
+							<Suspense fallback={<RouteFallback />}>
+								<HomeThree />
+							</Suspense>
+						),
 					},
 					{
 						path: "/privacy-policy",
-						element: <PrivacyPolicy />,
+						element: (
+							<Suspense fallback={<RouteFallback />}>
+								<PrivacyPolicy />
+							</Suspense>
+						),
 					},
 					{
 						path: "*",
-						element: <ErrorPage />,
+						element: (
+							<Suspense fallback={<RouteFallback />}>
+								<ErrorPage />
+							</Suspense>
+						),
 					},
 				],
 			},

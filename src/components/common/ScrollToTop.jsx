@@ -4,26 +4,37 @@ export default function ScrollToTop() {
 	const [showTopBtn, setShowTopBtn] = useState(false);
 
 	useEffect(() => {
-		window.addEventListener("scroll", () => {
-			if (window.scrollY > 700) {
-				setShowTopBtn(true);
-			} else {
-				setShowTopBtn(false);
-			}
-		});
+		const onScroll = () => {
+			setShowTopBtn(window.scrollY > 700);
+		};
+
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
+		return () => window.removeEventListener("scroll", onScroll);
 	}, []);
 
-	const goToTop = () => {
-		window.scrollTo({
-			top: 0,
-			behavior: "smooth",
-		});
-	};
+	if (!showTopBtn) return null;
+
 	return (
-		showTopBtn && (
-			<div className="aximo-go-top" onClick={goToTop}>
-				<i className="fas fa-arrow-up"></i>
-			</div>
-		)
+		<div
+			className="aximo-go-top"
+			onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+			role="button"
+			tabIndex={0}
+			aria-label="Scroll to top"
+			onKeyDown={(event) => {
+				if (event.key === "Enter" || event.key === " ") {
+					event.preventDefault();
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				}
+			}}
+		>
+			<svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+				<path
+					d="M10 4L4 11H8V16H12V11H16L10 4Z"
+					fill="currentColor"
+				/>
+			</svg>
+		</div>
 	);
 }

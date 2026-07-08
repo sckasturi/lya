@@ -4,7 +4,7 @@ function HeaderLogo() {
 	return (
 		<div className="brand-logo">
 			<Link to="/">
-				<img src={Logo} alt="Logo" height="60px" className="light-version-logo" />
+				<img src={Logo} alt="Leverage Your ADHD" height="60" width="180" className="light-version-logo" decoding="async" />
 			</Link>
 		</div>
 	);

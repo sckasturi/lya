@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const animationVariants = {
 	initial: {
@@ -17,7 +17,7 @@ const animationVariants = {
 
 function FadeInStaggerTwo({ children, className = "", id = "" }) {
 	return (
-		<motion.div
+		<m.div
 			variants={animationVariants}
 			initial="initial"
 			animate="animate"
@@ -27,15 +27,15 @@ function FadeInStaggerTwo({ children, className = "", id = "" }) {
 			id={id}
 		>
 			{children}
-		</motion.div>
+		</m.div>
 	);
 }
 
 function FadeInStaggerTwoChildren({ children, className = "", id = "" }) {
 	return (
-		<motion.div className={className} id={id} variants={animationVariants}>
+		<m.div className={className} id={id} variants={animationVariants}>
 			{children}
-		</motion.div>
+		</m.div>
 	);
 }
 

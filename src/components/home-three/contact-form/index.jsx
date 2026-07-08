@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import ReCAPTCHA from "react-google-recaptcha";
+import DeferredRecaptcha from "../../common/DeferredRecaptcha";
 import EmailPrivacyNotice from "../../common/EmailPrivacyNotice";
 
 export const INQUIRY_OPTIONS = [
@@ -31,6 +31,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 	});
 	const [recaptchaToken, setRecaptchaToken] = useState("");
 	const [status, setStatus] = useState("idle");
+	const [formTouched, setFormTouched] = useState(false);
 
 	const isCoachingInquiry = fields.reason === "adhd-coaching";
 
@@ -126,7 +127,12 @@ export function ContactFormFields({ initialInquiry = "" }) {
 	}
 
 	return (
-		<form className="lya-contact-form" onSubmit={handleSubmit} noValidate>
+		<form
+			className="lya-contact-form"
+			onSubmit={handleSubmit}
+			onFocusCapture={() => setFormTouched(true)}
+			noValidate
+		>
 			<div className="lya-contact-row">
 				<div className="lya-contact-field">
 					<label htmlFor="cf-name">{nameLabel}</label>
@@ -206,7 +212,8 @@ export function ContactFormFields({ initialInquiry = "" }) {
 
 					{siteKey && (
 						<div className="lya-contact-recaptcha">
-							<ReCAPTCHA
+							<DeferredRecaptcha
+								active={formTouched}
 								ref={recaptchaRef}
 								sitekey={siteKey}
 								onChange={(token) => setRecaptchaToken(token || "")}

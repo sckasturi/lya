@@ -1,11 +1,16 @@
+import { lazy, Suspense } from "react";
 import { Outlet } from "react-router-dom";
-import FreebiePopup from "../common/freebie-popup/FreebiePopup";
 import Footer from "../home-three/footer";
 import Header from "../home-three/header";
+
+const FreebiePopup = lazy(() => import("../common/freebie-popup/FreebiePopup"));
+
 function LayoutThree() {
 	return (
 		<>
-			<FreebiePopup />
+			<Suspense fallback={null}>
+				<FreebiePopup />
+			</Suspense>
 			<Header />
 			<Outlet />
 			<Footer />

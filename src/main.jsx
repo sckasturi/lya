@@ -1,19 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { initCtaColorExperiment } from "./lib/ctaColorExperiment";
+import { ensureGtagStub } from "./lib/loadAnalytics";
 
-// Bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
 
-import "./assets/css/fontawesome.css";
-
-// main css
 import "./assets/css/app.css";
 import "./assets/css/main.css";
+import "./assets/css/cta-color-experiment-teal.css";
+import "./assets/css/performance.css";
+import "./assets/css/lya-hero.css";
 
-// React Router Dom
 import { RouterProvider } from "react-router-dom";
 import { router } from "./router";
+
+initCtaColorExperiment();
+ensureGtagStub();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>

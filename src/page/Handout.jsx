@@ -1,6 +1,6 @@
 import { QRCodeSVG } from "qrcode.react";
 import LogoImg from "../assets/images/logo/logo-dark.svg";
-import PhotoImg from "../assets/images/lya/amma photos-12.jpg";
+import PhotoImg from "../assets/images/lya/sudhita-about.webp";
 
 function Handout() {
 	return (

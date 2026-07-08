@@ -1,6 +1,6 @@
 import StarShapeHalfImg from "../../../assets/images/v3/star-shape-half2.png";
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/FadeInStaggerTwo";
-import { InlineWidget } from "react-calendly";
+import CalendlyEmbed from "./CalendlyEmbed";
 
 
 function Contact() {
@@ -38,15 +38,13 @@ function Contact() {
 					</FadeInStaggerTwoChildren>
 					<FadeInStaggerTwoChildren className="col-lg-5">
 						<div className="aximo-form-wrap2 white-bg">
-							<InlineWidget url="https://calendly.com/leverageyouradhd/30min" styles={{
-  height: '600px'
-}} />
+							<CalendlyEmbed />
 						</div>
 					</FadeInStaggerTwoChildren>
 				</FadeInStaggerTwo>
 			</div>
 			<div className="aximo-star-shape-half2">
-				<img src={StarShapeHalfImg} alt="StarShapeHalfImg" />
+				<img src={StarShapeHalfImg} alt="" loading="lazy" decoding="async" />
 			</div>
 		</div>
 	);

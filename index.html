@@ -25,19 +25,20 @@
 		<link rel="icon" href="/favicon.ico" sizes="64x64" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="shortcut icon" href="/favicon.ico" />
-		<!--- End favicon-->
 
-		<!-- Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-V7B1YRQQZ0"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-			gtag('config', 'G-V7B1YRQQZ0', { send_page_view: false });
-		</script>
+		<link rel="preconnect" href="https://use.typekit.net" crossorigin />
+		<link rel="preconnect" href="https://p.typekit.net" crossorigin />
+		<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
-		<!-- Adobe Font -->
-		<link rel="stylesheet" href="https://use.typekit.net/meh4ylb.css">
+		<!-- Warm up Calendly connections so the scheduler appears instantly -->
+		<link rel="preconnect" href="https://calendly.com" crossorigin />
+		<link rel="preconnect" href="https://assets.calendly.com" crossorigin />
+
+		<!-- LCP image: fetch it before React renders -->
+		<link rel="preload" as="image" href="/assets/hero/sudhita-hero.webp" fetchpriority="high" />
+
+		<link rel="stylesheet" href="https://use.typekit.net/meh4ylb.css" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="https://use.typekit.net/meh4ylb.css" /></noscript>
 
 		<!-- GitHub Pages SPA redirect restore -->
 		<script>
@@ -51,7 +52,7 @@
 			})();
 		</script>
 	</head>
-	<body className="light">
+	<body class="light">
 		<div id="root"></div>
 		<script type="module" src="/src/main.jsx"></script>
 	</body>

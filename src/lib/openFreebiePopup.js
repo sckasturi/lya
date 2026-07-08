@@ -1,3 +1,5 @@
+import { getCtaColorExperimentParams } from "./ctaColorExperiment";
+
 /** Dispatched globally; FreebiePopup listens and opens. */
 export const OPEN_FREEBIE_POPUP_EVENT = "lya-open-freebie-popup";
 
@@ -8,6 +10,7 @@ export function openFreebiePopup(section) {
 		window.gtag("event", "cta_click", {
 			cta_name: "un_overwhelm_guide",
 			cta_section: section,
+			...getCtaColorExperimentParams(),
 		});
 	}
 	window.dispatchEvent(new CustomEvent(OPEN_FREEBIE_POPUP_EVENT));

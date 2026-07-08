@@ -1,3 +1,5 @@
+import { getCtaColorExperimentParams } from "./ctaColorExperiment";
+
 /** CTA identifiers for GA4 custom event `cta_click`. */
 export const CTA = {
 	START_JOURNEY: "start_your_journey",
@@ -18,5 +20,6 @@ export function trackCtaClick(ctaName, section) {
 	window.gtag("event", "cta_click", {
 		cta_name: ctaName,
 		cta_section: section,
+		...getCtaColorExperimentParams(),
 	});
 }

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m } from "framer-motion";
 import { CTA, CTA_SECTION, trackCtaClick } from "../../../lib/ctaEvents";
 import { openFreebiePopup } from "../../../lib/openFreebiePopup";
 import TestimonialCard from "./TestimonialCard";
@@ -133,13 +133,13 @@ function Testimonial() {
 					)}
 
 					<div className="lya-testimonial-carousel lya-testimonial-carousel--single">
-						<motion.div
+						<m.div
 							className="lya-testimonial-viewport"
 							animate={{ height: slideHeight || "auto" }}
 							transition={HEIGHT_TRANSITION}
 						>
 							<AnimatePresence mode="wait" custom={direction} initial={false}>
-								<motion.div
+								<m.div
 									ref={slideRef}
 									key={activeTestimonial.id}
 									custom={direction}
@@ -151,9 +151,9 @@ function Testimonial() {
 									className="lya-testimonial-carousel-page lya-testimonial-carousel-page--single"
 								>
 									<TestimonialCard testimonial={activeTestimonial} />
-								</motion.div>
+								</m.div>
 							</AnimatePresence>
-						</motion.div>
+						</m.div>
 
 						{testimonialCount > 1 && (
 							<div

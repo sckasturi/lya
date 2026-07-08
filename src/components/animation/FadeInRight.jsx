@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const animationVariants = {
 	initial: {
@@ -15,14 +15,14 @@ const animationVariants = {
 };
 
 function FadeInRight({ children, className = "", as = "div" }) {
-	const MotionComponent = motion[as] || motion.div;
+	const MotionComponent = m[as] || m.div;
 	return (
 		<MotionComponent
 			variants={animationVariants}
 			initial="initial"
 			whileInView="animate"
 			className={className}
-			// viewport={{ once: true }}
+			viewport={{ once: true, amount: 0.01 }}
 		>
 			{children}
 		</MotionComponent>

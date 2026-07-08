@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const animationVariants = {
 	initial: {
@@ -16,7 +16,7 @@ const animationVariants = {
 
 function FadeInLeft({ children, className = "" }) {
 	return (
-		<motion.div
+		<m.div
 			variants={animationVariants}
 			initial="initial"
 			animate="animate"
@@ -25,7 +25,7 @@ function FadeInLeft({ children, className = "" }) {
 			className={className}
 		>
 			{children}
-		</motion.div>
+		</m.div>
 	);
 }
 

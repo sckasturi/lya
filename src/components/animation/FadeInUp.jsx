@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 
 const animationVariants = {
 	initial: {
@@ -16,7 +16,7 @@ const animationVariants = {
 
 function FadeInUp({ children, className = "" }) {
 	return (
-		<motion.div
+		<m.div
 			className={className}
 			variants={animationVariants}
 			initial="initial"
@@ -25,7 +25,7 @@ function FadeInUp({ children, className = "" }) {
 			viewport={{ once: true, amount: 0.01 }}
 		>
 			{children}
-		</motion.div>
+		</m.div>
 	);
 }
 

@@ -1,5 +1,5 @@
 import Shape2Img from "../../../assets/images/v3/shape2.png";
-import Thumb1Img from "../../../assets/images/lya/amma photos-12.jpg";
+import Thumb1Img from "../../../assets/images/lya/sudhita-about.webp";
 import FadeInLeft from "../../animation/FadeInLeft";
 function About() {
 	return (
@@ -8,9 +8,16 @@ function About() {
 				<div className="row">
 					<div className="col-lg-4">
 						<FadeInLeft className="aximo-content-thumb">
-							<img src={Thumb1Img} alt="Thumb1Img" />
+							<img
+								src={Thumb1Img}
+								alt="Sudhita Kasturi"
+								width="720"
+								height="900"
+								loading="lazy"
+								decoding="async"
+							/>
 							<div className="aximo-thumb-shape1">
-								<img src={Shape2Img} alt="Shape2Img" />
+								<img src={Shape2Img} alt="" loading="lazy" decoding="async" />
 							</div>
 						</FadeInLeft><br/>
 					</div>

@@ -1,0 +1,167 @@
+/* Teal treatment arm for CTA color A/B test (control = default red styles). */
+
+html.lya-cta-variant-teal .aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-journey-btn:hover {
+	background-color: var(--navy) !important;
+	color: var(--cream) !important;
+}
+
+html.lya-cta-variant-teal .aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-freebie-btn {
+	background-color: var(--cream) !important;
+	color: var(--navy) !important;
+}
+
+html.lya-cta-variant-teal .aximo-header-wrap.lya-cta-row .aximo-default-btn.aximo-header-btn.lya-header-freebie-btn:hover {
+	background-color: var(--navy) !important;
+	color: var(--cream) !important;
+}
+
+html.lya-cta-variant-teal .aximo-hero-subscription.lya-cta-row .lya-hero-journey-btn {
+	background-color: var(--teal) !important;
+	color: var(--cream) !important;
+}
+
+html.lya-cta-variant-teal .aximo-hero-subscription.lya-cta-row button.lya-hero-freebie-btn {
+	box-shadow: 0 0 0 2px var(--teal);
+	color: var(--teal);
+}
+
+html.lya-cta-variant-teal .aximo-hero-subscription.lya-cta-row button.lya-hero-freebie-btn:hover {
+	background-color: var(--teal) !important;
+	color: var(--cream) !important;
+	box-shadow: 0 0 0 2px var(--teal);
+}
+
+/* Testimonial sits on teal-bg — keep navy CTAs for contrast (not teal). */
+html.lya-cta-variant-teal .lya-testimonial-cta-row .lya-testimonial-journey-btn {
+	background-color: var(--navy);
+	color: var(--cream);
+}
+
+html.lya-cta-variant-teal .lya-testimonial-cta-row .lya-testimonial-journey-btn:hover {
+	background-color: var(--cream);
+	color: var(--navy);
+}
+
+html.lya-cta-variant-teal .lya-testimonial-cta-row .lya-testimonial-freebie-btn {
+	background-color: var(--cream);
+	color: var(--navy);
+	box-shadow: 0 0 0 2px var(--cream);
+}
+
+html.lya-cta-variant-teal .lya-testimonial-cta-row .lya-testimonial-freebie-btn:hover {
+	background-color: var(--navy);
+	color: var(--cream);
+	box-shadow: 0 0 0 2px var(--navy);
+}
+
+html.lya-cta-variant-teal .lya-contact-submit {
+	background-color: var(--teal);
+	border-color: var(--teal);
+}
+
+html.lya-cta-variant-teal .lya-contact-submit:hover:not(:disabled) {
+	border-color: var(--teal);
+	color: var(--teal);
+}
+
+html.lya-cta-variant-teal .lya-contact-calendly-link {
+	background-color: var(--teal);
+	border-color: var(--teal);
+}
+
+html.lya-cta-variant-teal .lya-contact-calendly-link:hover {
+	border-color: var(--teal);
+	color: var(--teal);
+}
+
+html.lya-cta-variant-teal .aximo-offerings-cta {
+	border-color: var(--teal);
+	background: var(--teal);
+}
+
+html.lya-cta-variant-teal .aximo-offerings-cta:hover {
+	border-color: var(--teal);
+	color: var(--teal);
+}
+
+html.lya-cta-variant-teal .aximo-offerings-cta.lya-offerings-cta--outline {
+	color: var(--teal);
+}
+
+html.lya-cta-variant-teal .aximo-offerings-cta.lya-offerings-cta--outline:hover {
+	background: var(--teal);
+	border-color: var(--teal);
+}
+
+html.lya-cta-variant-teal .lya-offerings-form-panel .lya-contact-calendly-link {
+	background-color: var(--teal);
+	border-color: var(--teal);
+}
+
+html.lya-cta-variant-teal .lya-offerings-form-panel .lya-contact-calendly-link:hover {
+	background-color: transparent;
+	border-color: var(--teal);
+	color: var(--teal);
+}
+
+html.lya-cta-variant-teal .freebie-popup-form button,
+html.lya-cta-variant-teal .freebie-popup-done-btn {
+	background: var(--teal);
+	color: var(--cream);
+}
+
+html.lya-cta-variant-teal .freebie-popup-form button:hover:not(:disabled),
+html.lya-cta-variant-teal .freebie-popup-done-btn:hover {
+	background: var(--navy);
+}
+
+html.lya-cta-variant-teal
+	.aximo-header-wrap.lya-cta-row
+	.aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow {
+	animation-name: lya-journey-glow-once-teal;
+}
+
+@keyframes lya-journey-glow-once-teal {
+	0% {
+		box-shadow: 0 0 0 0 transparent;
+		filter: brightness(1);
+	}
+	12% {
+		box-shadow:
+			0 0 0 4px color-mix(in srgb, var(--teal) 70%, transparent),
+			0 0 18px 4px color-mix(in srgb, var(--teal) 80%, transparent),
+			0 0 36px 8px color-mix(in srgb, var(--teal) 55%, transparent);
+		filter: brightness(1.06);
+	}
+	35% {
+		box-shadow:
+			0 0 0 6px color-mix(in srgb, var(--teal) 95%, transparent),
+			0 0 28px 7px color-mix(in srgb, var(--teal) 100%, transparent),
+			0 0 56px 14px color-mix(in srgb, var(--teal) 80%, transparent),
+			0 0 88px 20px color-mix(in srgb, var(--teal) 60%, transparent);
+		filter: brightness(1.14);
+	}
+	65% {
+		box-shadow:
+			0 0 0 5px color-mix(in srgb, var(--teal) 85%, transparent),
+			0 0 24px 6px color-mix(in srgb, var(--teal) 95%, transparent),
+			0 0 48px 12px color-mix(in srgb, var(--teal) 75%, transparent),
+			0 0 72px 18px color-mix(in srgb, var(--teal) 55%, transparent);
+		filter: brightness(1.1);
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+		filter: brightness(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html.lya-cta-variant-teal
+		.aximo-header-wrap.lya-cta-row
+		.aximo-default-btn.aximo-header-btn.lya-header-journey-btn.lya-journey-glow {
+		animation: none;
+		box-shadow:
+			0 0 0 4px color-mix(in srgb, var(--teal) 75%, transparent),
+			0 0 20px 5px color-mix(in srgb, var(--teal) 85%, transparent) !important;
+	}
+}

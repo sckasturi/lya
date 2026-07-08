@@ -1,0 +1,25 @@
+/* Below-fold sections: skip layout/paint until near viewport (mobile-first). */
+@media (max-width: 991.98px) {
+	.aximo-section-padding,
+	.aximo-section-padding2,
+	.lya-offerings-section {
+		content-visibility: auto;
+		contain-intrinsic-size: auto 720px;
+	}
+
+	.aximo-hero-section3,
+	.site-header {
+		content-visibility: visible;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}

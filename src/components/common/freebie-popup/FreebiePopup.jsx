@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import ReCAPTCHA from "react-google-recaptcha";
+import { AnimatePresence, m } from "framer-motion";
+import DeferredRecaptcha from "../DeferredRecaptcha";
 import EmailPrivacyNotice from "../EmailPrivacyNotice";
 import { detectClientCountry } from "../../../lib/detectCountry";
 import { OPEN_FREEBIE_POPUP_EVENT } from "../../../lib/openFreebiePopup";
@@ -15,22 +15,37 @@ export default function FreebiePopup() {
 	const [status, setStatus] = useState("idle");
 	const [message, setMessage] = useState("");
 	const [detectedCountry, setDetectedCountry] = useState("");
+	const [formTouched, setFormTouched] = useState(false);
 	const recaptchaRef = useRef(null);
 	const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
+	// Only look up the visitor's country once the popup is actually shown.
 	useEffect(() => {
+		if (!isOpen || detectedCountry) return;
 		detectClientCountry().then(setDetectedCountry);
-	}, []);
+	}, [isOpen, detectedCountry]);
 
 	useEffect(() => {
 		const onOpen = () => setIsOpen(true);
 		window.addEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
 
 		const dismissed = localStorage.getItem(STORAGE_KEY) === "1";
-		const timer = dismissed ? null : window.setTimeout(() => setIsOpen(true), 1200);
+
+		// Auto-open on first scroll — or after 8s for visitors who never
+		// scroll. Keeps the popup (and its animation work) out of the
+		// initial-load window that Lighthouse measures.
+		const onFirstScroll = () => setIsOpen(true);
+		let timer = null;
+		if (!dismissed) {
+			window.addEventListener("scroll", onFirstScroll, { once: true, passive: true });
+			window.addEventListener("touchmove", onFirstScroll, { once: true, passive: true });
+			timer = window.setTimeout(onFirstScroll, 8000);
+		}
 
 		return () => {
 			window.removeEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
+			window.removeEventListener("scroll", onFirstScroll);
+			window.removeEventListener("touchmove", onFirstScroll);
 			if (timer) window.clearTimeout(timer);
 		};
 	}, []);
@@ -94,7 +109,7 @@ export default function FreebiePopup() {
 	return (
 		<AnimatePresence>
 			{isOpen && (
-				<motion.div
+				<m.div
 					className="freebie-popup-overlay"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
@@ -103,7 +118,7 @@ export default function FreebiePopup() {
 					onClick={closePopup}
 					role="presentation"
 				>
-					<motion.div
+					<m.div
 						className="freebie-popup-card"
 						initial={{ opacity: 0, y: 16, scale: 0.97 }}
 						animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -125,7 +140,7 @@ export default function FreebiePopup() {
 
 						<AnimatePresence mode="wait">
 						{status === "success" ? (
-							<motion.div
+							<m.div
 								key="success"
 								className="freebie-popup-success"
 								initial={{ opacity: 0, scale: 0.92, y: 10 }}
@@ -133,7 +148,7 @@ export default function FreebiePopup() {
 								exit={{ opacity: 0 }}
 								transition={{ duration: 0.22, ease: "easeOut" }}
 							>
-								<motion.div
+								<m.div
 									className="freebie-popup-success-icon"
 									aria-hidden="true"
 									initial={{ scale: 0, rotate: -20 }}
@@ -141,7 +156,7 @@ export default function FreebiePopup() {
 									transition={{ delay: 0.1, type: "spring", stiffness: 260, damping: 18 }}
 								>
 									✓
-								</motion.div>
+								</m.div>
 								<h3 id="freebie-popup-title">Check your inbox!</h3>
 								<p>
 									The free guide is on its way to <strong>{email}</strong>.
@@ -154,9 +169,9 @@ export default function FreebiePopup() {
 								>
 									Done
 								</button>
-							</motion.div>
+							</m.div>
 						) : (
-							<motion.div
+							<m.div
 								key="form"
 								initial={{ opacity: 0 }}
 								animate={{ opacity: 1 }}
@@ -168,7 +183,11 @@ export default function FreebiePopup() {
 									Enter your name and email and we&apos;ll send the PDF to your
 									inbox.
 								</p>
-								<form className="freebie-popup-form" onSubmit={handleSubmit}>
+								<form
+								className="freebie-popup-form"
+								onSubmit={handleSubmit}
+								onFocusCapture={() => setFormTouched(true)}
+							>
 								<input
 									type="text"
 									name="name"
@@ -192,7 +211,11 @@ export default function FreebiePopup() {
 								<EmailPrivacyNotice className="freebie-popup-privacy" />
 									{siteKey ? (
 										<div className="freebie-popup-recaptcha">
-											<ReCAPTCHA ref={recaptchaRef} sitekey={siteKey} />
+											<DeferredRecaptcha
+												active={formTouched}
+												ref={recaptchaRef}
+												sitekey={siteKey}
+											/>
 										</div>
 									) : (
 										<p className="freebie-popup-recaptcha-hint">
@@ -207,11 +230,11 @@ export default function FreebiePopup() {
 								{message && (
 									<div className="freebie-popup-message error">{message}</div>
 								)}
-							</motion.div>
+							</m.div>
 						)}
 						</AnimatePresence>
-					</motion.div>
-				</motion.div>
+					</m.div>
+				</m.div>
 			)}
 		</AnimatePresence>
 	);

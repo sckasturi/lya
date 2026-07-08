@@ -3949,8 +3949,8 @@ h1.post__title {
 }
 
 @media (min-width: 992px) and (max-width: 1400px) {
-	.aximo-hero-thumb3 {
-		border-radius: 0 0 0 280px;
+	.lya-hero .aximo-hero-thumb3 {
+		border-radius: 0 0 0 clamp(8rem, 22vw, 17.5rem);
 	}
 }
 @media (max-width: 991px) {
@@ -3968,9 +3968,10 @@ h1.post__title {
 		text-align: center;
 	}
 
-	.aximo-hero-section3 .aximo_screenfix_right {
+	.aximo-hero-section3 .lya-hero-row {
 		margin-right: 0;
 		margin-left: 0;
+		max-width: 100%;
 		justify-content: center;
 	}
 
@@ -5583,6 +5584,27 @@ a.aximo-service-icon:hover {
 }
 .aximo-accordion-wrap .accordion-button::after {
 	background-image: url(../images/v1/accordion-inactive.svg);
+	transition: transform 0.35s ease;
+}
+
+.aximo-accordion-wrap .accordion-button:not(.collapsed)::after {
+	transform: rotate(-180deg);
+}
+
+.aximo-accordion-wrap .accordion-collapse {
+	display: block !important;
+	overflow: hidden;
+	transition: max-height 0.35s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.aximo-accordion-wrap .accordion-collapse {
+		transition: none;
+	}
+
+	.aximo-accordion-wrap .accordion-button::after {
+		transition: none;
+	}
 }
 
 /* bootstrap accordion overwrite end */
@@ -9993,6 +10015,9 @@ a.aximo-connect-login img {
 
 .aximo-content-thumb img {
 	border-radius: 20px;
+	width: 100%;
+	height: auto;
+	display: block;
 }
 .aximo-content-thumb-wrap {
 	position: relative;
@@ -11543,7 +11568,6 @@ button#aximo-notified-btn {
 }
 
 /*1.4 themes css*/
-/*# sourceMappingURL=app.css.map */
 
 /* ── LYA Handout / Print One-Pager ─────────────────────────── */
 .lya-handout {

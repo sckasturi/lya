@@ -1,0 +1,102 @@
+/* LYA hero — full-bleed photo, curved frame, cream copy block */
+
+@media (min-width: 992px) {
+	.aximo-hero-section3.lya-hero {
+		background-color: var(--cream);
+	}
+
+	.lya-hero .lya-hero-row {
+		width: calc(50vw + 50%);
+		max-width: none;
+		align-items: stretch;
+		min-height: clamp(26rem, 68vh, 42rem);
+	}
+
+	.lya-hero .aximo-hero-content-col {
+		display: flex;
+		align-items: center;
+		align-self: center;
+		padding-top: 2.5rem !important;
+		padding-bottom: 2.5rem !important;
+	}
+
+	.lya-hero .aximo-hero-thumb-col {
+		display: flex;
+		align-items: stretch;
+		padding-left: 1.25rem !important;
+		padding-right: 0 !important;
+		margin-bottom: 0 !important;
+	}
+
+	.lya-hero .aximo-hero-thumb3-wrap {
+		flex: 1 1 auto;
+		width: 100%;
+		min-height: 100%;
+	}
+
+	.lya-hero .aximo-hero-thumb3 {
+		height: 100%;
+		min-height: clamp(26rem, 68vh, 42rem);
+		border-radius: 0 0 0 clamp(10rem, 28vw, 26.5rem);
+		border-left: 2px solid #000;
+		border-bottom: 2px solid #000;
+		isolation: isolate;
+		transform: translateZ(0);
+	}
+
+	.lya-hero .aximo-hero-thumb3 img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: 62% 18%;
+	}
+
+	.lya-hero .aximo-hero-content3 h1 {
+		margin-bottom: 0.4rem;
+		line-height: 0.95;
+	}
+
+	.lya-hero .aximo-hero-content3 h2 {
+		margin-bottom: 0.75rem;
+	}
+
+	.lya-hero .aximo-hero-content3 h3 {
+		max-width: 30rem;
+		line-height: 1.48;
+		margin-bottom: 0;
+	}
+
+	.lya-hero .aximo-hero-subscription.lya-cta-row {
+		margin-top: clamp(1.75rem, 2.8vw, 2.35rem);
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1400px) {
+	.lya-hero .aximo-hero-thumb3 {
+		border-radius: 0 0 0 clamp(8rem, 22vw, 17.5rem);
+	}
+}
+
+@media (max-width: 991.98px) {
+	.lya-hero .lya-hero-row {
+		width: auto;
+	}
+
+	.lya-hero .aximo-hero-thumb3-wrap {
+		max-width: 20rem;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.lya-hero .aximo-hero-thumb3 {
+		border-radius: 16px;
+		border: none;
+		overflow: hidden;
+	}
+
+	.lya-hero .aximo-hero-thumb3 img {
+		height: auto;
+		aspect-ratio: 4 / 5;
+		object-position: center 15%;
+	}
+}
