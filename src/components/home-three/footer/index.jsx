@@ -20,7 +20,7 @@ function Footer() {
 							</Link>
 						</div>
 						<div className="aximo-footer-info-item">
-							<h5>Leverage Your ADHD</h5>
+							<p className="aximo-footer-brand-name">Leverage Your ADHD</p>
 							<p>
 								Sudhita Kasturi (she/her)
 								<br />Certified ADHD Coach

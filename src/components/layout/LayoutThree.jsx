@@ -12,7 +12,9 @@ function LayoutThree() {
 				<FreebiePopup />
 			</Suspense>
 			<Header />
-			<Outlet />
+			<main>
+				<Outlet />
+			</main>
 			<Footer />
 		</>
 	);

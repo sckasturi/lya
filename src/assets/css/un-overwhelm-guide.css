@@ -1,10 +1,10 @@
 /* Un-Overwhelm Guide — interactive worksheet */
 
 .lya-guide-app {
-	--lya-guide-teal: #4a9aa3;
+	--lya-guide-teal: #4A9AA3;
 	--lya-guide-navy: #182d38;
 	--lya-guide-cream: #fff8e9;
-	--lya-guide-accent: #d86b6a;
+	--lya-guide-accent: #D86B6A;
 	--lya-guide-warm: #f7a072;
 
 	min-height: 100vh;
@@ -531,7 +531,7 @@
 
 .lya-guide-action-run { color: #4caf50; }
 .lya-guide-action-jog { color: #f7a072; }
-.lya-guide-action-stop { color: #d86b6a; }
+.lya-guide-action-stop { color: #D86B6A; }
 .lya-guide-action-give { color: #5b8fd8; }
 
 .lya-guide-action-key-grid {

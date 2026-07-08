@@ -2490,6 +2490,14 @@ header.aximo-header-section.aximo-header7.sticky-menu {
 .aximo-footer-info-item h5 {
 	font-family: proxima-nova, sans-serif;
 }
+/* Was an h5; now a p for correct heading order — keep the h5 look. */
+.aximo-footer-info-item .aximo-footer-brand-name {
+	font-family: proxima-nova, sans-serif;
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 1.2;
+	margin-bottom: 0.5rem;
+}
 .aximo-footer-info-item p {
 	font-size: 21px;
 	color: var(--navy);
@@ -2539,7 +2547,7 @@ header.aximo-header-section.aximo-header7.sticky-menu {
 	position: relative;
 	cursor: default;
 	font-size: 13px;
-	opacity: 0.55;
+	opacity: 0.78; /* was 0.55 — failed WCAG contrast */
 	white-space: nowrap;
 }
 .lya-credits-trigger:hover,
@@ -6326,12 +6334,14 @@ a.aximo-service-icon:hover {
 }
 
 .lya-testimonial-dot {
-	width: 10px;
-	height: 10px;
-	padding: 0;
+	/* 24x24 tap target (WCAG 2.2), 10px visible dot via background-clip */
+	width: 24px;
+	height: 24px;
+	padding: 7px;
 	border: none;
 	border-radius: 50%;
 	background: rgba(252, 245, 227, 0.35);
+	background-clip: content-box;
 	cursor: pointer;
 	transition: background-color 0.2s ease, transform 0.2s ease;
 }
@@ -12005,3 +12015,19 @@ button#aximo-notified-btn {
 	}
 }
 /* ── end LYA Handout ─────────────────────────── */
+
+/* WCAG large-text exception: text >=14pt (18.67px) at weight 700 only needs
+   3:1 contrast, which the brand red/teal on cream already meet. This keeps
+   the original palette while passing the contrast audits. */
+.lya-hero-journey-btn,
+.lya-hero-freebie-btn {
+	font-weight: 700;
+}
+.lya-testimonial-cta-row .lya-testimonial-journey-btn,
+.lya-testimonial-cta-row .lya-testimonial-freebie-btn {
+	font-weight: 700;
+	font-size: 19px;
+}
+.lya-faq-number {
+	font-size: 19px;
+}

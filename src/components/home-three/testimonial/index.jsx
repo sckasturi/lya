@@ -165,6 +165,7 @@ function Testimonial() {
 									<button
 										key={testimonial.id}
 										type="button"
+										role="tab"
 										className={`lya-testimonial-dot${index === activeIndex ? " active" : ""}`}
 										aria-label={`Show testimonial ${index + 1} of ${testimonialCount}`}
 										aria-selected={index === activeIndex}

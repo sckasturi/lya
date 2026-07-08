@@ -282,7 +282,7 @@ button.lya-freebie-cta-btn .aximo-label-up {
 	padding: 0 24px;
 	border-radius: 50px;
 	font-size: 21px;
-	font-weight: 600;
+	font-weight: 700; /* >=14pt bold = WCAG large text, 3:1 contrast applies */
 	font-family: proxima-nova, sans-serif;
 	line-height: normal;
 	border: none;
@@ -333,7 +333,7 @@ button.lya-freebie-cta-btn .aximo-label-up {
 	.aximo-hero-subscription.lya-cta-row button.lya-hero-freebie-btn {
 		width: 100% !important;
 		max-width: none;
-		font-size: 18px;
+		font-size: 19px; /* keep >=14pt bold for WCAG large-text contrast */
 		padding: 0 20px;
 		height: 60px;
 		min-height: 60px;
