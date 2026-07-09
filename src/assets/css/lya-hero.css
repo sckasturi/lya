@@ -82,21 +82,41 @@
 		width: auto;
 	}
 
+	/* Mobile: the photo becomes a compact circular portrait ABOVE the
+	   headline instead of a full-width block after the CTAs. */
+	.lya-hero .aximo-hero-thumb-col {
+		order: -1;
+		margin-bottom: 0 !important;
+	}
+
+	.lya-hero .aximo-hero-content-col {
+		padding-top: 0.75rem !important;
+	}
+
 	.lya-hero .aximo-hero-thumb3-wrap {
-		max-width: 20rem;
+		max-width: none;
+		margin-top: 0;
 		margin-left: auto;
 		margin-right: auto;
 	}
 
 	.lya-hero .aximo-hero-thumb3 {
-		border-radius: 16px;
-		border: none;
+		width: 148px;
+		height: 148px;
+		margin: 0 auto;
+		border-radius: 50%;
+		border: 3px solid var(--teal);
 		overflow: hidden;
 	}
 
 	.lya-hero .aximo-hero-thumb3 img {
-		height: auto;
-		aspect-ratio: 4 / 5;
-		object-position: center 15%;
+		width: 100%;
+		height: 100%;
+		aspect-ratio: 1 / 1;
+		object-fit: cover;
+		object-position: center 12%;
+		/* The face sits left-of-center in the source photo; a square crop
+		   has no horizontal overflow, so shift+zoom to center the face. */
+		transform: scale(1.12) translateX(5%);
 	}
 }

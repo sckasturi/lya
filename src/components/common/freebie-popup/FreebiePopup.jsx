@@ -33,19 +33,24 @@ export default function FreebiePopup() {
 
 		// Auto-open on first scroll — or after 8s for visitors who never
 		// scroll. Keeps the popup (and its animation work) out of the
-		// initial-load window that Lighthouse measures.
-		const onFirstScroll = () => setIsOpen(true);
+		// initial-load window that Lighthouse measures. Re-check the
+		// dismissed flag at fire time so the fallback timer can't re-open
+		// a popup the visitor already closed.
+		const autoOpen = () => {
+			if (localStorage.getItem(STORAGE_KEY) === "1") return;
+			setIsOpen(true);
+		};
 		let timer = null;
 		if (!dismissed) {
-			window.addEventListener("scroll", onFirstScroll, { once: true, passive: true });
-			window.addEventListener("touchmove", onFirstScroll, { once: true, passive: true });
-			timer = window.setTimeout(onFirstScroll, 8000);
+			window.addEventListener("scroll", autoOpen, { once: true, passive: true });
+			window.addEventListener("touchmove", autoOpen, { once: true, passive: true });
+			timer = window.setTimeout(autoOpen, 8000);
 		}
 
 		return () => {
 			window.removeEventListener(OPEN_FREEBIE_POPUP_EVENT, onOpen);
-			window.removeEventListener("scroll", onFirstScroll);
-			window.removeEventListener("touchmove", onFirstScroll);
+			window.removeEventListener("scroll", autoOpen);
+			window.removeEventListener("touchmove", autoOpen);
 			if (timer) window.clearTimeout(timer);
 		};
 	}, []);
