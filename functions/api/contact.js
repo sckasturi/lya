@@ -50,7 +50,7 @@ async function appendToGoogleSheet(env, payload) {
 export async function onRequestPost(context) {
 	try {
 		const { request, env } = context;
-		const { name, email, country, phone, message, reason, recaptchaToken } =
+		const { name, email, country, phone, message, reason, turnstileToken } =
 			await request.json();
 		const resolvedCountry = resolveCountry(request, country);
 
@@ -58,18 +58,26 @@ export async function onRequestPost(context) {
 			return jsonResponse({ error: "All fields are required." }, 400);
 		}
 
-		if (env.RECAPTCHA_SECRET_KEY) {
-			if (!recaptchaToken) {
-				return jsonResponse({ error: "Please complete the reCAPTCHA." }, 400);
+		if (env.TURNSTILE_SECRET_KEY) {
+			if (!turnstileToken) {
+				return jsonResponse({ error: "Verification failed — please retry." }, 400);
 			}
-			const verifyRes = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-				method: "POST",
-				headers: { "Content-Type": "application/x-www-form-urlencoded" },
-				body: `secret=${env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
-			});
+			const body = new URLSearchParams();
+			body.set("secret", env.TURNSTILE_SECRET_KEY);
+			body.set("response", turnstileToken);
+			const ip = request.headers.get("CF-Connecting-IP");
+			if (ip) body.set("remoteip", ip);
+			const verifyRes = await fetch(
+				"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+				{
+					method: "POST",
+					headers: { "Content-Type": "application/x-www-form-urlencoded" },
+					body,
+				},
+			);
 			const verifyData = await verifyRes.json();
 			if (!verifyData.success) {
-				return jsonResponse({ error: "reCAPTCHA verification failed." }, 400);
+				return jsonResponse({ error: "Verification failed — please retry." }, 400);
 			}
 		}
 

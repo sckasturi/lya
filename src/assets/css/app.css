@@ -12259,3 +12259,21 @@ body {
 		top: 110px;
 	}
 }
+
+/* ── Contact form legibility on the white panel ── */
+/* The privacy line was cream-on-white (invisible) */
+.lya-offerings-form-panel .lya-email-privacy-notice {
+	color: rgba(24, 45, 56, 0.75);
+	opacity: 1;
+}
+.lya-offerings-form-panel .lya-email-privacy-notice a {
+	color: var(--navy);
+	text-decoration: underline;
+}
+
+
+/* .navy-bg a sets cream !important on the whole section — the white form
+   panel needs its links navy regardless. */
+.navy-bg .lya-offerings-form-panel .lya-email-privacy-notice a {
+	color: var(--navy) !important;
+}

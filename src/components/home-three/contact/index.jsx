@@ -46,6 +46,7 @@ function Contact() {
 					</FadeInStaggerTwoChildren>
 				</FadeInStaggerTwo>
 
+				{/* "What happens next" steps — disabled for now
 				<div className="lya-next-steps">
 					<ol className="lya-next-steps-list">
 						<li>
@@ -71,6 +72,7 @@ function Contact() {
 						</li>
 					</ol>
 				</div>
+				*/}
 			</div>
 			<div className="aximo-star-shape-half2">
 				<img src={StarShapeHalfImg} alt="" loading="lazy" decoding="async" />

@@ -3,15 +3,19 @@ import { resolveCountry } from "../lib/country.js";
 
 const DEFAULT_FROM = "sudhita@leverageyouradhd.com";
 
-async function verifyRecaptcha(secret, token) {
+async function verifyTurnstile(secret, token, remoteIp) {
 	const body = new URLSearchParams();
 	body.set("secret", secret);
 	body.set("response", token);
-	const res = await fetch("https://www.google.com/recaptcha/api/siteverify", {
-		method: "POST",
-		headers: { "Content-Type": "application/x-www-form-urlencoded" },
-		body,
-	});
+	if (remoteIp) body.set("remoteip", remoteIp);
+	const res = await fetch(
+		"https://challenges.cloudflare.com/turnstile/v0/siteverify",
+		{
+			method: "POST",
+			headers: { "Content-Type": "application/x-www-form-urlencoded" },
+			body,
+		},
+	);
 	const data = await res.json();
 	return data.success === true;
 }
@@ -66,8 +70,8 @@ export async function onRequestPost(context) {
 		const name = typeof body.name === "string" ? body.name.trim() : "";
 		const email = typeof body.email === "string" ? body.email.trim() : "";
 		const country = resolveCountry(request, body.country);
-		const recaptchaToken =
-			typeof body.recaptchaToken === "string" ? body.recaptchaToken.trim() : "";
+		const turnstileToken =
+			typeof body.turnstileToken === "string" ? body.turnstileToken.trim() : "";
 
 		if (!name) {
 			return jsonResponse({ error: "Name is required." }, 400);
@@ -77,14 +81,18 @@ export async function onRequestPost(context) {
 			return jsonResponse({ error: "Email is required." }, 400);
 		}
 
-		const secretKey = env.RECAPTCHA_SECRET_KEY;
+		const secretKey = env.TURNSTILE_SECRET_KEY;
 		if (secretKey) {
-			if (!recaptchaToken) {
-				return jsonResponse({ error: "reCAPTCHA verification required." }, 400);
+			if (!turnstileToken) {
+				return jsonResponse({ error: "Verification failed — please retry." }, 400);
 			}
-			const ok = await verifyRecaptcha(secretKey, recaptchaToken);
+			const ok = await verifyTurnstile(
+				secretKey,
+				turnstileToken,
+				request.headers.get("CF-Connecting-IP"),
+			);
 			if (!ok) {
-				return jsonResponse({ error: "reCAPTCHA verification failed." }, 400);
+				return jsonResponse({ error: "Verification failed — please retry." }, 400);
 			}
 		}
 

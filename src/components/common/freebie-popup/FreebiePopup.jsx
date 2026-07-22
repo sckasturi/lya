@@ -1,9 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, m } from "framer-motion";
-import DeferredRecaptcha from "../DeferredRecaptcha";
+import TurnstileField from "../TurnstileField";
 import EmailPrivacyNotice from "../EmailPrivacyNotice";
 import { detectClientCountry } from "../../../lib/detectCountry";
 import { OPEN_FREEBIE_POPUP_EVENT } from "../../../lib/openFreebiePopup";
+import { TURNSTILE_SITE_KEY } from "../../../lib/turnstileKey";
 import "./freebie-popup.css";
 
 const STORAGE_KEY = "lya-freebie-popup-dismissed";
@@ -16,9 +17,10 @@ export default function FreebiePopup() {
 	const [message, setMessage] = useState("");
 	const [detectedCountry, setDetectedCountry] = useState("");
 	const [formTouched, setFormTouched] = useState(false);
-	const recaptchaRef = useRef(null);
+	const [turnstileToken, setTurnstileToken] = useState("");
+	const turnstileRef = useRef(null);
 	const cardRef = useRef(null);
-	const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+	const siteKey = TURNSTILE_SITE_KEY;
 
 	// Only look up the visitor's country once the popup is actually shown.
 	useEffect(() => {
@@ -109,7 +111,6 @@ export default function FreebiePopup() {
 				previouslyFocused.focus();
 			}
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isOpen]);
 
 	const handleSubmit = async (e) => {
@@ -126,13 +127,9 @@ export default function FreebiePopup() {
 			return;
 		}
 
-		let recaptchaToken = "";
-		if (siteKey) {
-			recaptchaToken = recaptchaRef.current?.getValue() || "";
-			if (!recaptchaToken) {
-				setMessage("Please complete the reCAPTCHA.");
-				return;
-			}
+		if (siteKey && !turnstileToken) {
+			setMessage("Still verifying you're human — try again in a second.");
+			return;
 		}
 
 		setStatus("loading");
@@ -146,7 +143,7 @@ export default function FreebiePopup() {
 					name: name.trim(),
 					email: email.trim(),
 					country: detectedCountry || undefined,
-					recaptchaToken: recaptchaToken || undefined,
+					turnstileToken: turnstileToken || undefined,
 				}),
 			});
 			const data = await res.json().catch(() => ({}));
@@ -155,7 +152,7 @@ export default function FreebiePopup() {
 			}
 			setStatus("success");
 			setMessage("Check your inbox for the free guide.");
-			recaptchaRef.current?.reset();
+			turnstileRef.current?.reset();
 		} catch (err) {
 			setStatus("error");
 			setMessage(err.message || "Something went wrong.");
@@ -166,7 +163,8 @@ export default function FreebiePopup() {
 					error_message: (err.message || "unknown").slice(0, 100),
 				});
 			}
-			recaptchaRef.current?.reset();
+			turnstileRef.current?.reset();
+			setTurnstileToken("");
 		}
 	};
 
@@ -274,20 +272,12 @@ export default function FreebiePopup() {
 									required
 								/>
 								<EmailPrivacyNotice className="freebie-popup-privacy" />
-									{siteKey ? (
-										<div className="freebie-popup-recaptcha">
-											<DeferredRecaptcha
-												active={formTouched}
-												ref={recaptchaRef}
-												sitekey={siteKey}
-											/>
-										</div>
-									) : (
-										<p className="freebie-popup-recaptcha-hint">
-											Add <code>VITE_RECAPTCHA_SITE_KEY</code> to enable
-											reCAPTCHA.
-										</p>
-									)}
+									<TurnstileField
+										active={formTouched}
+										ref={turnstileRef}
+										siteKey={siteKey}
+										onToken={setTurnstileToken}
+									/>
 									<button type="submit" disabled={status === "loading"}>
 										{status === "loading" ? "Sending..." : "Send me the guide"}
 									</button>

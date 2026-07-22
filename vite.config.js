@@ -95,7 +95,6 @@ export default defineConfig(({ command }) => ({
 					if (!id.includes('node_modules')) return
 					if (id.includes('framer-motion')) return 'motion'
 					if (id.includes('react-calendly')) return 'calendly'
-					if (id.includes('react-google-recaptcha')) return 'recaptcha'
 					if (
 						id.includes('react-dom') ||
 						id.includes('react-router') ||

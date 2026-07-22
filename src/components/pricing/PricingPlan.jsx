@@ -159,7 +159,7 @@ function PricingPlan() {
 						<PricingCard
 							plan={activePlan}
 							useSecondary
-							titleOverride="Coaching can help you"
+							titleOverride="Coaching with Sudhita can help you"
 						/>
 					</div>
 				</div>

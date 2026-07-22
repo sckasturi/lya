@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import DeferredRecaptcha from "../../common/DeferredRecaptcha";
+import TurnstileField from "../../common/TurnstileField";
 import EmailPrivacyNotice from "../../common/EmailPrivacyNotice";
+import { TURNSTILE_SITE_KEY } from "../../../lib/turnstileKey";
 
 export const INQUIRY_OPTIONS = [
 	{ value: "", label: "Select a topic…" },
@@ -12,7 +13,7 @@ export const INQUIRY_OPTIONS = [
 	{ value: "professional-connection", label: "Professional connection" },
 ];
 
-const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
+const siteKey = TURNSTILE_SITE_KEY;
 
 function scrollToCalendly() {
 	const target =
@@ -24,14 +25,14 @@ function scrollToCalendly() {
 }
 
 export function ContactFormFields({ initialInquiry = "" }) {
-	const recaptchaRef = useRef(null);
+	const turnstileRef = useRef(null);
 	const [fields, setFields] = useState({
 		name: "",
 		email: "",
 		reason: initialInquiry,
 		message: "",
 	});
-	const [recaptchaToken, setRecaptchaToken] = useState("");
+	const [turnstileToken, setTurnstileToken] = useState("");
 	const [status, setStatus] = useState("idle");
 	const [formTouched, setFormTouched] = useState(false);
 
@@ -66,7 +67,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 			return;
 		}
 
-		if (siteKey && !recaptchaToken) {
+		if (siteKey && !turnstileToken) {
 			setStatus("validation");
 			return;
 		}
@@ -87,7 +88,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 					phone: "Not provided",
 					message,
 					reason: reasonLabel,
-					recaptchaToken,
+					turnstileToken,
 				}),
 			});
 			const data = await res.json();
@@ -99,19 +100,19 @@ export function ContactFormFields({ initialInquiry = "" }) {
 					reason: initialInquiry,
 					message: "",
 				});
-				setRecaptchaToken("");
-				recaptchaRef.current?.reset();
+				setTurnstileToken("");
+				turnstileRef.current?.reset();
 			} else {
 				setStatus("error");
 				trackFormError(data?.error || `HTTP ${res.status}`);
-				recaptchaRef.current?.reset();
-				setRecaptchaToken("");
+				turnstileRef.current?.reset();
+				setTurnstileToken("");
 			}
 		} catch (err) {
 			setStatus("error");
 			trackFormError(err?.message || "network error");
-			recaptchaRef.current?.reset();
-			setRecaptchaToken("");
+			turnstileRef.current?.reset();
+			setTurnstileToken("");
 		}
 	}
 
@@ -223,21 +224,16 @@ export function ContactFormFields({ initialInquiry = "" }) {
 				<>
 					<EmailPrivacyNotice />
 
-					{siteKey && (
-						<div className="lya-contact-recaptcha">
-							<DeferredRecaptcha
-								active={formTouched}
-								ref={recaptchaRef}
-								sitekey={siteKey}
-								onChange={(token) => setRecaptchaToken(token || "")}
-								onExpired={() => setRecaptchaToken("")}
-							/>
-						</div>
-					)}
+					<TurnstileField
+						active={formTouched}
+						ref={turnstileRef}
+						siteKey={siteKey}
+						onToken={setTurnstileToken}
+					/>
 
 					{showValidationError && (
 						<p className="lya-contact-error">
-							Please fill in all fields{siteKey && !recaptchaToken ? " and complete the reCAPTCHA" : ""}.
+							Please fill in all fields{siteKey && !turnstileToken ? " and wait a moment for verification" : ""}.
 						</p>
 					)}
 					{status === "error" && (
@@ -249,7 +245,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 					<button
 						type="submit"
 						className="lya-contact-submit"
-						disabled={status === "submitting" || (!!siteKey && !recaptchaToken)}
+						disabled={status === "submitting" || (!!siteKey && !turnstileToken)}
 					>
 						{status === "submitting" ? "Sending…" : "Send message"}
 					</button>
