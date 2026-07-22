@@ -17,6 +17,7 @@ export default function FreebiePopup() {
 	const [detectedCountry, setDetectedCountry] = useState("");
 	const [formTouched, setFormTouched] = useState(false);
 	const recaptchaRef = useRef(null);
+	const cardRef = useRef(null);
 	const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 	// Only look up the visitor's country once the popup is actually shown.
@@ -59,6 +60,57 @@ export default function FreebiePopup() {
 		setIsOpen(false);
 		localStorage.setItem(STORAGE_KEY, "1");
 	};
+
+	// Dialog accessibility: focus the form on open, keep Tab inside the
+	// dialog, close on Escape, and restore focus when it closes.
+	useEffect(() => {
+		if (!isOpen) return undefined;
+		const previouslyFocused = document.activeElement;
+
+		const getFocusable = () => {
+			const card = cardRef.current;
+			if (!card) return [];
+			return [...card.querySelectorAll(
+				'button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])'
+			)].filter((el) => !el.disabled && el.offsetParent !== null);
+		};
+
+		const focusTimer = window.setTimeout(() => {
+			const card = cardRef.current;
+			const firstInput = card && card.querySelector("input");
+			(firstInput || getFocusable()[0])?.focus();
+		}, 60);
+
+		const onKeyDown = (e) => {
+			if (e.key === "Escape") {
+				e.preventDefault();
+				closePopup();
+				return;
+			}
+			if (e.key !== "Tab") return;
+			const focusable = getFocusable();
+			if (focusable.length === 0) return;
+			const first = focusable[0];
+			const last = focusable[focusable.length - 1];
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		};
+
+		document.addEventListener("keydown", onKeyDown);
+		return () => {
+			window.clearTimeout(focusTimer);
+			document.removeEventListener("keydown", onKeyDown);
+			if (previouslyFocused && typeof previouslyFocused.focus === "function") {
+				previouslyFocused.focus();
+			}
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isOpen]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -107,6 +159,13 @@ export default function FreebiePopup() {
 		} catch (err) {
 			setStatus("error");
 			setMessage(err.message || "Something went wrong.");
+			// Surface failures in GA so silent breakage is visible as a spike.
+			if (typeof window.gtag === "function") {
+				window.gtag("event", "form_error", {
+					form_name: "freebie_popup",
+					error_message: (err.message || "unknown").slice(0, 100),
+				});
+			}
 			recaptchaRef.current?.reset();
 		}
 	};
@@ -124,6 +183,7 @@ export default function FreebiePopup() {
 					role="presentation"
 				>
 					<m.div
+						ref={cardRef}
 						className="freebie-popup-card"
 						initial={{ opacity: 0, y: 16, scale: 0.97 }}
 						animate={{ opacity: 1, y: 0, scale: 1 }}

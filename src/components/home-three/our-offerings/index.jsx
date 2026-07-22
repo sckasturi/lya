@@ -1,6 +1,6 @@
 import Accordion from "./Accordion";
 import Content from "./Content";
-import { ContactFormFields } from "../contact-form";
+import CalendlyEmbed from "../contact/CalendlyEmbed";
 
 function OurOfferings() {
 	return (
@@ -14,11 +14,8 @@ function OurOfferings() {
 						<Accordion />
 					</div>
 					<div className="col-lg-6">
-						<div className="lya-offerings-form-panel" id="lya-offerings-form">
-							<div className="lya-contact-header">
-								<h3>Get in touch</h3>
-							</div>
-							<ContactFormFields />
+						<div className="aximo-form-wrap2 white-bg" id="lya-scheduler">
+							<CalendlyEmbed />
 						</div>
 					</div>
 				</div>

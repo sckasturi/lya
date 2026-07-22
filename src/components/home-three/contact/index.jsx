@@ -1,6 +1,6 @@
 import StarShapeHalfImg from "../../../assets/images/v3/star-shape-half2.png";
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../../animation/FadeInStaggerTwo";
-import CalendlyEmbed from "./CalendlyEmbed";
+import { ContactFormFields } from "../contact-form";
 
 
 function Contact() {
@@ -37,11 +37,40 @@ function Contact() {
 						</div>
 					</FadeInStaggerTwoChildren>
 					<FadeInStaggerTwoChildren className="col-lg-5">
-						<div className="aximo-form-wrap2 white-bg">
-							<CalendlyEmbed />
+						<div className="lya-offerings-form-panel">
+							<div className="lya-contact-header">
+								<h3>Get in touch</h3>
+							</div>
+							<ContactFormFields />
 						</div>
 					</FadeInStaggerTwoChildren>
 				</FadeInStaggerTwo>
+
+				<div className="lya-next-steps">
+					<ol className="lya-next-steps-list">
+						<li>
+							<span className="lya-next-steps-num" aria-hidden="true">1</span>
+							<div>
+								<strong>Book a free 30-minute call</strong>
+								<p>Pick any time that works for you — no payment info needed.</p>
+							</div>
+						</li>
+						<li>
+							<span className="lya-next-steps-num" aria-hidden="true">2</span>
+							<div>
+								<strong>We just talk</strong>
+								<p>No prep required. Share as much or as little as you like.</p>
+							</div>
+						</li>
+						<li>
+							<span className="lya-next-steps-num" aria-hidden="true">3</span>
+							<div>
+								<strong>Decide if we&apos;re a fit</strong>
+								<p>No pressure, no obligation — the call is yours either way.</p>
+							</div>
+						</li>
+					</ol>
+				</div>
 			</div>
 			<div className="aximo-star-shape-half2">
 				<img src={StarShapeHalfImg} alt="" loading="lazy" decoding="async" />

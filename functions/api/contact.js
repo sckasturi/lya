@@ -102,6 +102,7 @@ export async function onRequestPost(context) {
 
 		if (!resendResponse.ok) {
 			const errorBody = await resendResponse.text();
+			console.error("[contact] Resend API failed:", resendResponse.status, errorBody);
 			return jsonResponse(
 				{ error: `Email provider rejected request: ${errorBody}` },
 				500
@@ -117,11 +118,12 @@ export async function onRequestPost(context) {
 				reason: reason || "Not provided",
 				message,
 				timestamp: new Date().toISOString(),
-			}).catch(() => {}),
+			}).catch((err) => console.error("[contact] Google Sheets logging failed:", err)),
 		);
 
 		return jsonResponse({ ok: true });
 	} catch (error) {
+		console.error("[contact] Unhandled error:", error);
 		return jsonResponse(
 			{
 				error:

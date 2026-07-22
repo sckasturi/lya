@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { InlineWidget } from "react-calendly";
 import useWhenVisible from "../../../hooks/useWhenVisible";
+import { getCtaColorExperimentParams } from "../../../lib/ctaColorExperiment";
 
 const INTERACTION_EVENTS = ["scroll", "pointerdown", "pointermove", "keydown", "touchstart"];
 
@@ -32,6 +33,29 @@ function CalendlyEmbed() {
 	}, [hasInteracted]);
 
 	const showWidget = isVisible && hasInteracted;
+
+	// Calendly posts events to the parent window. A completed booking is the
+	// site's real conversion — send it to GA (with the CTA experiment variant)
+	// so CTA changes can be judged by bookings, not clicks.
+	useEffect(() => {
+		if (!showWidget) return undefined;
+		const onMessage = (e) => {
+			if (typeof e.origin !== "string" || !e.origin.endsWith("calendly.com")) return;
+			const eventName = e.data && e.data.event;
+			if (typeof window.gtag !== "function") return;
+			if (eventName === "calendly.date_and_time_selected") {
+				window.gtag("event", "calendly_time_selected", {
+					...getCtaColorExperimentParams(),
+				});
+			} else if (eventName === "calendly.event_scheduled") {
+				window.gtag("event", "calendly_booking", {
+					...getCtaColorExperimentParams(),
+				});
+			}
+		};
+		window.addEventListener("message", onMessage);
+		return () => window.removeEventListener("message", onMessage);
+	}, [showWidget]);
 
 	return (
 		<div

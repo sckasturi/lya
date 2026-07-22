@@ -15,7 +15,9 @@ export const INQUIRY_OPTIONS = [
 const siteKey = import.meta.env.VITE_RECAPTCHA_SITE_KEY || "";
 
 function scrollToCalendly() {
-	const target = document.getElementById("contact-us");
+	const target =
+		document.getElementById("lya-scheduler") ||
+		document.getElementById("contact-us");
 	if (target) {
 		target.scrollIntoView({ behavior: "smooth" });
 	}
@@ -101,14 +103,25 @@ export function ContactFormFields({ initialInquiry = "" }) {
 				recaptchaRef.current?.reset();
 			} else {
 				setStatus("error");
+				trackFormError(data?.error || `HTTP ${res.status}`);
 				recaptchaRef.current?.reset();
 				setRecaptchaToken("");
 			}
-		} catch {
+		} catch (err) {
 			setStatus("error");
+			trackFormError(err?.message || "network error");
 			recaptchaRef.current?.reset();
 			setRecaptchaToken("");
 		}
+	}
+
+	/** Surface failures in GA so silent breakage is visible as a spike. */
+	function trackFormError(message) {
+		if (typeof window.gtag !== "function") return;
+		window.gtag("event", "form_error", {
+			form_name: "contact",
+			error_message: String(message).slice(0, 100),
+		});
 	}
 
 	const showValidationError = status === "validation";
@@ -181,7 +194,7 @@ export function ContactFormFields({ initialInquiry = "" }) {
 			{isCoachingInquiry ? (
 				<div className="lya-contact-calendly-cta">
 					<p>
-						For ADHD coaching, book your free consultation using the scheduler above.
+						For ADHD coaching, book your free consultation using the scheduler below.
 					</p>
 					<button
 						type="button"

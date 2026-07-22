@@ -40,17 +40,6 @@
 		<link rel="stylesheet" href="https://use.typekit.net/meh4ylb.css" media="print" onload="this.media='all'" />
 		<noscript><link rel="stylesheet" href="https://use.typekit.net/meh4ylb.css" /></noscript>
 
-		<!-- GitHub Pages SPA redirect restore -->
-		<script>
-			(function() {
-				var p = window.location.search.slice(1).split('&')
-					.filter(function(s) { return s.startsWith('p='); })[0];
-				if (p) {
-					var path = decodeURIComponent(p.slice(2));
-					window.history.replaceState(null, null, path);
-				}
-			})();
-		</script>
 	</head>
 	<body class="light">
 		<div id="root"></div>

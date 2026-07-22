@@ -131,6 +131,7 @@ export async function onRequestPost(context) {
 
 		if (!resendResponse.ok) {
 			const errorText = await resendResponse.text();
+			console.error("[freebie] Resend API failed:", resendResponse.status, errorText);
 			return jsonResponse(
 				{ error: "Failed to send email.", details: errorText },
 				502,
@@ -144,11 +145,12 @@ export async function onRequestPost(context) {
 				email,
 				country,
 				timestamp: new Date().toISOString(),
-			}).catch(() => {}),
+			}).catch((err) => console.error("[freebie] Google Sheets logging failed:", err)),
 		);
 
 		return jsonResponse({ ok: true });
 	} catch (error) {
+		console.error("[freebie] Unhandled error:", error);
 		return jsonResponse(
 			{
 				error:
