@@ -4,6 +4,8 @@ import FadeInUp from "../components/animation/FadeInUp";
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../components/animation/FadeInStaggerTwo";
 import ACO from "../assets/images/lya/aco.webp";
 import ADDA from "../assets/images/lya/adda.webp";
+import ADHD_MONTH from "../assets/images/lya/adhd-awareness-month.png";
+import ADDITUDE from "../assets/images/lya/additude.svg";
 import CHADD from "../assets/images/lya/chadd.webp";
 import "../assets/css/resources.css";
 
@@ -58,11 +60,13 @@ const ORGANIZATIONS = [
 		name: "ADDitude",
 		fullName: "ADDitude Magazine",
 		url: "https://www.additudemag.com/",
+		logo: ADDITUDE,
 	},
 	{
-		name: "NIMH",
-		fullName: "National Institute of Mental Health",
-		url: "https://www.nimh.nih.gov/",
+		name: "AAM",
+		fullName: "ADHD Awareness Month",
+		url: "https://www.adhdawarenessmonth.org/",
+		logo: ADHD_MONTH,
 	},
 ];
 
@@ -98,6 +102,7 @@ const BOOKS = [
 			{ title: "Driven to Distraction", author: "Ned Hallowell & John Ratey" },
 			{ title: "Unraveling ADHD: How I turned my greatest deficit into my greatest asset", author: "Joyce Kubik" },
 			{ title: "Why We Sleep", author: "Matthew Walker" },
+			{ title: "Your Brain's Not Broken: Strategies for Navigating Your Emotions and Life with ADHD", author: "Tamara Rosier, PhD" },
 		],
 	},
 	{
@@ -238,7 +243,6 @@ function Resources() {
 				<div className="container">
 					<div className="lya-res-section-head">
 						<h2 id="lya-res-orgs">On the web</h2>
-						<p>Organizations and publications worth bookmarking.</p>
 					</div>
 					<FadeInStaggerTwo className="lya-res-org-grid">
 						{ORGANIZATIONS.map((org) => (

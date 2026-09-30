@@ -27,7 +27,6 @@ function About() {
 								</div>
 							</FadeInLeft>
 							<div className="lya-letter-credentials">
-								<p className="lya-letter-credentials-label">Certified &amp; credentialed by</p>
 								<div className="lya-letter-credentials-logos">
 									<img src={ICF} width="64" height="64" alt="International Coaching Federation" loading="lazy" decoding="async" />
 									<img src={ACO} width="64" height="60" alt="ADHD Coaches Organization" loading="lazy" decoding="async" />

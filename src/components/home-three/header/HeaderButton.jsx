@@ -38,7 +38,10 @@ function HeaderButton() {
 					Free Guide
 				</button>
 			</div>
-			<div className="header-btn header-btn-l1 ms-auto d-none d-lg-inline-flex">
+			<div className="header-btn header-btn-l1 ms-auto d-none d-lg-inline-flex align-items-center">
+				<NavLink to="/resources" className="lya-header-link">
+					Resources
+				</NavLink>
 				<div className="aximo-header-wrap lya-cta-row">
 					<button
 						type="button"
