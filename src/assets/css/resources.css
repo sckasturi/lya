@@ -1,0 +1,427 @@
+/* ── LYA Resources page ───────────────────────────── */
+
+.lya-resources {
+	font-family: proxima-nova, sans-serif;
+}
+
+/* Intro — top padding clears the fixed site header */
+.lya-res-intro {
+	padding: 190px 0 72px;
+}
+
+.lya-res-eyebrow {
+	font-size: 14px;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--teal);
+	margin-bottom: 16px;
+}
+
+.lya-res-title {
+	font-size: 70px;
+	line-height: 1.05;
+	letter-spacing: -0.7px;
+	max-width: 900px;
+	margin-bottom: 56px;
+}
+
+.lya-res-start {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	gap: 16px 32px;
+	padding: 32px 40px;
+	border-radius: 20px;
+	border: 2px solid var(--navy);
+	text-decoration: none;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lya-res-start:hover {
+	transform: translateY(-3px);
+	box-shadow: 6px 6px 0 var(--red);
+}
+
+.lya-res-start-label {
+	display: inline-block;
+	padding: 8px 18px;
+	border-radius: 50px;
+	background-color: var(--red);
+	color: var(--cream);
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	white-space: nowrap;
+}
+
+.lya-res-start-title {
+	font-size: 26px;
+	font-weight: 600;
+	line-height: 1.3;
+	color: var(--cream);
+}
+
+.lya-res-start-meta {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--verylightblue);
+	white-space: nowrap;
+}
+
+/* Sections */
+.lya-res-section {
+	padding: 88px 0;
+	border-top: 1px solid rgba(24, 45, 56, 0.15);
+}
+
+.lya-res-section--tinted {
+	background-color: var(--verylightblue);
+	border-top: none;
+}
+
+.lya-res-section--tinted + .lya-res-section {
+	border-top: none;
+}
+
+.lya-res-section-head {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 12px 32px;
+	margin-bottom: 48px;
+}
+
+.lya-res-section-head h2 {
+	font-size: 48px;
+	line-height: 1.1;
+}
+
+.lya-res-section-head p {
+	font-size: 18px;
+	line-height: 1.5;
+	margin: 0;
+	opacity: 0.8;
+}
+
+.lya-res-group-heading {
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	line-height: 1.4;
+	color: var(--teal);
+	margin-bottom: 20px;
+}
+
+.lya-res-arrow {
+	flex-shrink: 0;
+	transition: transform 0.2s ease;
+}
+
+a:hover .lya-res-arrow {
+	transform: translate(2px, -2px);
+}
+
+/* Organization cards */
+/* Six-column track: three cards on the first row, two wider cards on the second */
+.lya-res-org-grid {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 24px;
+}
+
+.lya-res-org-grid > div {
+	display: flex;
+	grid-column: span 2;
+}
+
+.lya-res-org-grid > div:nth-child(n + 4) {
+	grid-column: span 3;
+}
+
+.lya-res-org-card {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 28px;
+	background-color: var(--white);
+	border: 2px solid var(--navy);
+	border-radius: 20px;
+	color: var(--navy);
+	text-decoration: none;
+	transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.lya-res-org-card:hover {
+	color: var(--navy);
+	transform: translateY(-3px);
+	box-shadow: 6px 6px 0 var(--teal);
+}
+
+.lya-res-org-top {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	min-height: 64px;
+	margin-bottom: 24px;
+}
+
+.lya-res-org-logo {
+	max-height: 64px;
+	max-width: 120px;
+	width: auto;
+	height: auto;
+	object-fit: contain;
+}
+
+.lya-res-org-mark {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 64px;
+	height: 64px;
+	padding: 0 14px;
+	border-radius: 50px;
+	background-color: var(--beige);
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.lya-res-org-card h3 {
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.3;
+	margin-bottom: 8px;
+}
+
+.lya-res-org-card p {
+	font-size: 16px;
+	line-height: 1.5;
+	margin-bottom: 0;
+	opacity: 0.8;
+}
+
+.lya-res-org-domain {
+	margin-top: auto;
+	padding-top: 20px;
+	font-size: 15px;
+	font-weight: 600;
+	color: var(--teal);
+	overflow-wrap: anywhere;
+}
+
+/* Listen & watch */
+.lya-res-columns {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 48px;
+}
+
+.lya-res-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lya-res-list li {
+	border-top: 1px solid rgba(24, 45, 56, 0.15);
+}
+
+.lya-res-list li:last-child {
+	border-bottom: 1px solid rgba(24, 45, 56, 0.15);
+}
+
+.lya-res-list-link,
+.lya-res-list-static {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 20px 0;
+	color: var(--navy);
+	text-decoration: none;
+}
+
+.lya-res-list-link:hover {
+	color: var(--teal);
+}
+
+.lya-res-list-title {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.lya-res-list-title .lya-res-arrow {
+	margin-top: 3px;
+}
+
+.lya-res-list-by {
+	display: block;
+	font-size: 15px;
+	font-weight: 400;
+	line-height: 1.5;
+	color: var(--navy);
+	opacity: 0.75;
+}
+
+/* Reading list */
+.lya-res-books {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 56px 64px;
+}
+
+.lya-res-book-group:last-child {
+	grid-column: 1 / -1;
+}
+
+.lya-res-book-group:last-child .lya-res-book-list {
+	columns: 2;
+	column-gap: 64px;
+}
+
+.lya-res-book-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lya-res-book-list li {
+	display: flex;
+	gap: 20px;
+	padding: 18px 0;
+	border-bottom: 1px solid rgba(24, 45, 56, 0.15);
+	break-inside: avoid;
+}
+
+.lya-res-book-number {
+	min-width: 28px;
+	padding-top: 4px;
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.05em;
+	color: var(--teal);
+	flex-shrink: 0;
+}
+
+.lya-res-book-text cite {
+	display: block;
+	font-style: normal;
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 1.35;
+	margin-bottom: 4px;
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+	.lya-res-title {
+		font-size: 56px;
+	}
+
+	.lya-res-org-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.lya-res-org-grid > div,
+	.lya-res-org-grid > div:nth-child(n + 4) {
+		grid-column: auto;
+	}
+
+	.lya-res-org-grid > div:last-child {
+		grid-column: 1 / -1;
+	}
+
+	.lya-res-columns {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 991px) {
+	.lya-res-intro {
+		padding: 150px 0 56px;
+	}
+
+	.lya-res-start {
+		grid-template-columns: 1fr;
+		justify-items: start;
+		padding: 28px;
+	}
+
+	.lya-res-start-title {
+		font-size: 22px;
+	}
+
+	.lya-res-section {
+		padding: 64px 0;
+	}
+
+	.lya-res-books {
+		grid-template-columns: 1fr;
+	}
+
+	.lya-res-book-group:last-child .lya-res-book-list {
+		columns: 1;
+	}
+}
+
+@media (max-width: 767px) {
+	.lya-res-intro {
+		padding-top: 112px;
+	}
+
+	.lya-res-title {
+		font-size: 40px;
+		letter-spacing: -0.4px;
+		margin-bottom: 40px;
+	}
+
+	.lya-res-section-head {
+		margin-bottom: 32px;
+	}
+
+	.lya-res-section-head h2 {
+		font-size: 34px;
+	}
+
+	.lya-res-section-head p {
+		font-size: 16px;
+	}
+
+	.lya-res-org-grid,
+	.lya-res-columns {
+		grid-template-columns: 1fr;
+	}
+
+	.lya-res-org-grid > div:last-child {
+		grid-column: auto;
+	}
+
+	.lya-res-columns {
+		gap: 40px;
+	}
+
+	.lya-res-list-title,
+	.lya-res-book-text cite {
+		font-size: 17px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.lya-res-start:hover,
+	.lya-res-org-card:hover {
+		transform: none;
+	}
+}
+
+/* ── end LYA Resources ─────────────────────────────── */

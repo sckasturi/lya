@@ -6124,6 +6124,8 @@ a.aximo-service-icon:hover {
 }
 
 .lya-footer-legal {
+	display: flex;
+	gap: 16px;
 	font-family: proxima-nova, sans-serif;
 	font-size: 14px;
 }

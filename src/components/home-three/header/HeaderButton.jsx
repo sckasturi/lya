@@ -1,14 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import useFaqJourneyGlow from "../../../hooks/useFaqJourneyGlow";
 import { CTA, CTA_SECTION, trackCtaClick } from "../../../lib/ctaEvents";
 import { openFreebiePopup } from "../../../lib/openFreebiePopup";
 
 function HeaderButton() {
 	const journeyGlow = useFaqJourneyGlow();
+	const navigate = useNavigate();
 	const scrollToSection = () => {
 		trackCtaClick(CTA.START_JOURNEY, CTA_SECTION.HEADER);
 		const target = document.getElementById("contact-us");
 		if (target) {
 			target.scrollIntoView({ behavior: "smooth" }); // Smooth scroll animation
+		} else {
+			navigate("/#contact-us"); // Off the home page (e.g. /resources)
 		}
 	};
 
