@@ -1,0 +1,248 @@
+/* ── LYA Curriculum Vitae page ─────────────────────── */
+/* Intro/section layout comes from resources.css (lya-res-*). */
+
+.lya-cv-name {
+	margin-bottom: 16px;
+}
+
+.lya-cv-tagline {
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: var(--teal);
+	margin-bottom: 32px;
+}
+
+.lya-cv-summary {
+	max-width: 820px;
+	font-size: 20px;
+	line-height: 1.6;
+	margin-bottom: 32px;
+}
+
+.lya-cv-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	font-size: 16px;
+	line-height: 1.4;
+}
+
+.lya-cv-meta a,
+.lya-cv-meta span {
+	display: inline-flex;
+	align-items: center;
+	padding: 8px 18px;
+	border-radius: 50px;
+	border: 2px solid var(--navy);
+	color: var(--navy);
+	font-weight: 600;
+	text-decoration: none;
+	overflow-wrap: anywhere;
+}
+
+.lya-cv-meta a:hover {
+	background-color: var(--navy);
+	color: var(--cream);
+}
+
+.lya-cv-meta span {
+	border-color: transparent;
+	font-weight: 400;
+	opacity: 0.75;
+}
+
+/* Education & credentials cards */
+.lya-cv-cards {
+	display: grid;
+	grid-template-columns: 1.2fr 1.2fr 0.8fr;
+	gap: 24px;
+}
+
+.lya-cv-card {
+	padding: 32px;
+	background-color: var(--white);
+	border: 2px solid var(--navy);
+	border-radius: 20px;
+}
+
+.lya-cv-card--navy .lya-res-group-heading {
+	color: var(--verylightblue);
+}
+
+.lya-cv-card-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lya-cv-card-list li {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 14px 0;
+	border-top: 1px solid rgba(24, 45, 56, 0.15);
+}
+
+.lya-cv-card--navy .lya-cv-card-list li {
+	border-top-color: rgba(255, 248, 233, 0.2);
+}
+
+.lya-cv-card-list strong {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.35;
+}
+
+.lya-cv-card-list span {
+	font-size: 15px;
+	line-height: 1.5;
+	opacity: 0.75;
+}
+
+/* Dated rows: experience, volunteering, speaking */
+.lya-cv-rows {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.lya-cv-row {
+	display: grid;
+	grid-template-columns: 240px 1fr;
+	gap: 8px 48px;
+	padding: 28px 0;
+	border-top: 1px solid rgba(24, 45, 56, 0.15);
+}
+
+.lya-cv-row:last-child {
+	border-bottom: 1px solid rgba(24, 45, 56, 0.15);
+}
+
+.lya-cv-date {
+	padding-top: 3px;
+	font-size: 14px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	line-height: 1.5;
+	color: var(--teal);
+}
+
+.lya-cv-heading {
+	font-size: 21px;
+	font-weight: 600;
+	line-height: 1.35;
+	margin-bottom: 6px;
+}
+
+.lya-cv-heading cite {
+	font-style: italic;
+}
+
+.lya-cv-heading a {
+	display: inline;
+	color: var(--navy);
+	text-decoration: none;
+}
+
+.lya-cv-heading a:hover {
+	color: var(--teal);
+}
+
+.lya-cv-heading a .lya-res-arrow {
+	margin-left: 6px;
+	vertical-align: baseline;
+}
+
+.lya-cv-sub,
+.lya-cv-detail {
+	font-size: 16px;
+	line-height: 1.55;
+	margin-bottom: 0;
+}
+
+.lya-cv-sub {
+	opacity: 0.8;
+}
+
+.lya-cv-detail {
+	margin-top: 6px;
+}
+
+.lya-cv-points {
+	margin: 14px 0 0;
+	padding-left: 20px;
+	font-size: 16px;
+	line-height: 1.55;
+}
+
+.lya-cv-points li {
+	margin-bottom: 6px;
+}
+
+.lya-cv-points li::marker {
+	color: var(--red);
+}
+
+/* Responsive */
+@media (max-width: 1199px) {
+	.lya-cv-cards {
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.lya-cv-card--navy {
+		grid-column: 1 / -1;
+	}
+
+	.lya-cv-card--navy .lya-cv-card-list {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 40px;
+	}
+
+	.lya-cv-row {
+		grid-template-columns: 200px 1fr;
+		column-gap: 32px;
+	}
+}
+
+@media (max-width: 767px) {
+	.lya-cv-tagline {
+		font-size: 18px;
+		margin-bottom: 24px;
+	}
+
+	.lya-cv-summary {
+		font-size: 17px;
+	}
+
+	.lya-cv-meta {
+		font-size: 15px;
+	}
+
+	.lya-cv-cards {
+		grid-template-columns: 1fr;
+	}
+
+	.lya-cv-card {
+		padding: 24px;
+	}
+
+	.lya-cv-row {
+		grid-template-columns: 1fr;
+		padding: 22px 0;
+	}
+
+	.lya-cv-heading {
+		font-size: 18px;
+	}
+
+	.lya-cv-sub,
+	.lya-cv-detail,
+	.lya-cv-points {
+		font-size: 15px;
+	}
+}
+
+/* ── end LYA Curriculum Vitae ──────────────────────── */

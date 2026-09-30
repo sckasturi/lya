@@ -47,6 +47,7 @@ function FooterBottom() {
 				</div>
 				<nav className="lya-footer-legal" aria-label="Legal">
 					<Link to="/resources">Resources</Link>
+					<Link to="/curriculum-vitae">Curriculum Vitae</Link>
 					<Link to={PRIVACY_POLICY_PATH}>Privacy Policy</Link>
 				</nav>
 			</div>

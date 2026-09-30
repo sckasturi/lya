@@ -1,11 +1,31 @@
 /* eslint-disable react/prop-types */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import FadeInUp from "../components/animation/FadeInUp";
 import { FadeInStaggerTwo, FadeInStaggerTwoChildren } from "../components/animation/FadeInStaggerTwo";
 import ACO from "../assets/images/lya/aco.webp";
 import ADDA from "../assets/images/lya/adda.webp";
 import CHADD from "../assets/images/lya/chadd.webp";
 import "../assets/css/resources.css";
+
+// Sudhita's own podcast appearances, featured at the top of the page.
+const FEATURED_EPISODES = [
+	{
+		youtubeId: "QudRe6rNx7A",
+		title: "The Truth About ADHD That No One Talks About",
+		show: "Unmute with Priya",
+	},
+	{
+		youtubeId: "s4YybNBddQY",
+		title: "Understanding Neurodiversity",
+		show: "Chinmaya Mission Niagara",
+		guests: "with Anantya Chandra & Neelu Pandey",
+	},
+	{
+		youtubeId: "szxd0jMwcbo",
+		title: "It’s Butter Day! Time Blindness and Impulsive Responses",
+		show: "ADDA T-ADD Talk",
+	},
+];
 
 const START_HERE = {
 	source: "ADDitude",
@@ -118,6 +138,42 @@ function Arrow() {
 	);
 }
 
+// Shows the thumbnail until clicked, so YouTube's player only loads on demand.
+function YouTubeEpisode({ youtubeId, title }) {
+	const [playing, setPlaying] = useState(false);
+
+	if (playing) {
+		return (
+			<iframe
+				className="lya-res-video-frame"
+				src={`https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&rel=0`}
+				title={title}
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				referrerPolicy="strict-origin-when-cross-origin"
+				allowFullScreen
+			/>
+		);
+	}
+
+	return (
+		<button type="button" className="lya-res-video-poster" onClick={() => setPlaying(true)} aria-label={`Play: ${title}`}>
+			<img
+				src={`https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`}
+				alt=""
+				width="480"
+				height="360"
+				loading="lazy"
+				decoding="async"
+			/>
+			<span className="lya-res-video-play" aria-hidden="true">
+				<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+					<path d="M8 5.5v13l10.5-6.5z" />
+				</svg>
+			</span>
+		</button>
+	);
+}
+
 function displayDomain(url) {
 	return url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 }
@@ -149,6 +205,32 @@ function Resources() {
 							</span>
 						</ExternalLink>
 					</FadeInUp>
+					<section className="lya-res-featured" aria-labelledby="lya-res-featured-heading">
+						<h2 id="lya-res-featured-heading" className="lya-res-group-heading">
+							Listen to Sudhita
+						</h2>
+						<FadeInStaggerTwo className="lya-res-featured-grid">
+							{FEATURED_EPISODES.map((episode) => (
+								<FadeInStaggerTwoChildren key={episode.youtubeId} className="lya-res-episode">
+									<div className="lya-res-video">
+										<YouTubeEpisode youtubeId={episode.youtubeId} title={episode.title} />
+									</div>
+									<div className="lya-res-episode-body">
+										<span className="lya-res-episode-show">{episode.show}</span>
+										<h3>{episode.title}</h3>
+										{episode.guests && <p>{episode.guests}</p>}
+										<ExternalLink
+											href={`https://www.youtube.com/watch?v=${episode.youtubeId}`}
+											className="lya-res-episode-link"
+										>
+											Watch on YouTube
+											<Arrow />
+										</ExternalLink>
+									</div>
+								</FadeInStaggerTwoChildren>
+							))}
+						</FadeInStaggerTwo>
+					</section>
 				</div>
 			</section>
 

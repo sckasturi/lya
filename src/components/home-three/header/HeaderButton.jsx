@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import useFaqJourneyGlow from "../../../hooks/useFaqJourneyGlow";
 import { CTA, CTA_SECTION, trackCtaClick } from "../../../lib/ctaEvents";
 import { openFreebiePopup } from "../../../lib/openFreebiePopup";
@@ -20,6 +20,9 @@ function HeaderButton() {
 		<>
 			{/* Mobile: compact always-visible CTAs (full buttons are hidden below lg) */}
 			<div className="d-lg-none ms-auto lya-header-mobile-ctas">
+				<NavLink to="/resources" className="lya-header-link">
+					Resources
+				</NavLink>
 				<button
 					type="button"
 					className="lya-header-journey-btn-mobile"
