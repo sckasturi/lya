@@ -121,7 +121,7 @@ function Handout() {
 				</div>
 				<div className="lya-handout-qr-wrap">
 					<QRCodeSVG
-						value="https://leverageyouradhd.com"
+						value="https://leverageyouradhd.com/talk?src=handout"
 						size={90}
 						fgColor="#ffffff"
 						bgColor="#182D38"

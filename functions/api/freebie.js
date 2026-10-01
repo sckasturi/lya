@@ -3,6 +3,50 @@ import { resolveCountry } from "../lib/country.js";
 
 const DEFAULT_FROM = "sudhita@leverageyouradhd.com";
 
+// Extra questions asked on the /talk page (people arriving from a QR code
+// at one of Sudhita's talks). Keys come from the form; labels go to the sheet.
+const COACHING_INTERESTS = {
+	one_on_one: "One-on-one coaching",
+	cohort: "Group coaching cohort",
+	speaking: "Talk or workshop for my organization",
+	exploring: "Just exploring",
+};
+
+function parseSource(value) {
+	return value === "talk" ? "talk" : "website";
+}
+
+// QR-code tags arrive from the page URL (/talk?src=handout), so keep them to
+// a short slug — they are written straight into the spreadsheet.
+function parseQrCode(value) {
+	if (typeof value !== "string") return "";
+	return value
+		.toLowerCase()
+		.replace(/[^a-z0-9-]+/g, "-")
+		.replace(/^-+|-+$/g, "")
+		.slice(0, 60);
+}
+
+function parseCoachingInterest(value) {
+	if (!Array.isArray(value)) return [];
+	return [...new Set(value)]
+		.filter((key) => Object.prototype.hasOwnProperty.call(COACHING_INTERESTS, key))
+		.map((key) => COACHING_INTERESTS[key]);
+}
+
+function parseTalkRating(value) {
+	const n = Number(value);
+	return Number.isInteger(n) && n >= 1 && n <= 5 ? n : "";
+}
+
+function escapeHtml(value) {
+	return value
+		.replace(/&/g, "&amp;")
+		.replace(/</g, "&lt;")
+		.replace(/>/g, "&gt;")
+		.replace(/"/g, "&quot;");
+}
+
 async function verifyTurnstile(secret, token, remoteIp) {
 	const body = new URLSearchParams();
 	body.set("secret", secret);
@@ -72,13 +116,18 @@ export async function onRequestPost(context) {
 		const country = resolveCountry(request, body.country);
 		const turnstileToken =
 			typeof body.turnstileToken === "string" ? body.turnstileToken.trim() : "";
+		const source = parseSource(body.source);
+		const qrCode = source === "talk" ? parseQrCode(body.qrCode) : "";
+		const coachingInterest = parseCoachingInterest(body.coachingInterest);
+		const talkRating = source === "talk" ? parseTalkRating(body.talkRating) : "";
 
-		if (!name) {
+		// On the talk page the email is what matters; name is optional there.
+		if (!name && source !== "talk") {
 			return jsonResponse({ error: "Name is required." }, 400);
 		}
 
-		if (!email) {
-			return jsonResponse({ error: "Email is required." }, 400);
+		if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+			return jsonResponse({ error: "Please enter a valid email." }, 400);
 		}
 
 		const secretKey = env.TURNSTILE_SECRET_KEY;
@@ -114,12 +163,21 @@ export async function onRequestPost(context) {
 
 		const pdfBase64 = arrayBufferToBase64(await pdfRes.arrayBuffer());
 
+		const resourcesUrl = new URL("/resources", request.url).toString();
+		const greeting = name ? `Hi ${name},` : "Hi there,";
+		const intro =
+			source === "talk"
+				? "Thank you for coming to my talk! Here is the free guide I mentioned. The PDF is attached."
+				: "Thanks for requesting the free guide. The PDF is attached.";
+		const resourcesLine =
+			"For more reliable information about ADHD, including podcasts, organizations, and my reading list, visit my resources page:";
+
 		const resendPayload = {
 			from: `Sudhita Kasturi <${from}>`,
 			to: [email],
 			subject: "Your FREE Un-Overwhelm Guide",
-			html: `<p>Hi ${name},</p><p>Thanks for requesting the free guide. The PDF is attached.</p><p>— Sudhita</p>`,
-			text: `Hi ${name},\n\nThanks for requesting the free guide. The PDF is attached.\n\n— Sudhita`,
+			html: `<p>${escapeHtml(greeting)}</p><p>${intro}</p><p>${resourcesLine} <a href="${resourcesUrl}">${resourcesUrl}</a></p><p>— Sudhita</p>`,
+			text: `${greeting}\n\n${intro}\n\n${resourcesLine}\n${resourcesUrl}\n\n— Sudhita`,
 			attachments: [
 				{
 					filename: "LYA-Un-Overwhelm-Guide.pdf",
@@ -152,6 +210,10 @@ export async function onRequestPost(context) {
 				name,
 				email,
 				country,
+				source,
+				qrCode,
+				coachingInterest: coachingInterest.join(", "),
+				talkRating,
 				timestamp: new Date().toISOString(),
 			}).catch((err) => console.error("[freebie] Google Sheets logging failed:", err)),
 		);

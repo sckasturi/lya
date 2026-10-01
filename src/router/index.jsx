@@ -9,6 +9,7 @@ const HomeThree = lazy(() => import("../page/home/HomeThree.jsx"));
 const PrivacyPolicy = lazy(() => import("../page/PrivacyPolicy.jsx"));
 const Resources = lazy(() => import("../page/Resources.jsx"));
 const CurriculumVitae = lazy(() => import("../page/CurriculumVitae.jsx"));
+const Talk = lazy(() => import("../page/Talk.jsx"));
 const ErrorPage = lazy(() => import("../error-page"));
 
 function RouteFallback() {
@@ -36,6 +37,15 @@ export const router = createBrowserRouter([
 		path: "/",
 		element: <Layout />,
 		children: [
+			{
+				// QR-code landing page for talks: no site header/footer or auto popup.
+				path: "/talk",
+				element: (
+					<Suspense fallback={<RouteFallback />}>
+						<Talk />
+					</Suspense>
+				),
+			},
 			{
 				path: "/",
 				element: <LayoutThree />,

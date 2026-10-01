@@ -11,13 +11,28 @@ function doPost(e) {
     const ss = SpreadsheetApp.getActiveSpreadsheet();
 
     if (payload.type === "freebie") {
-      const headers = ["Timestamp", "Name", "Email", "Country"];
+      // Source is "talk" for sign-ups from the /talk QR-code page, "website" otherwise.
+      // QR Code is the ?src= tag on the scanned code (e.g. handout, real-estate-talk).
+      const headers = [
+        "Timestamp",
+        "Name",
+        "Email",
+        "Country",
+        "Source",
+        "QR Code",
+        "Coaching Interest",
+        "Talk Rating",
+      ];
       const sheet = getOrCreateSheet(ss, "Freebies", headers);
       sheet.appendRow([
         payload.timestamp,
         payload.name,
         payload.email,
         payload.country || "Unknown",
+        payload.source || "website",
+        payload.qrCode || "",
+        payload.coachingInterest || "",
+        payload.talkRating || "",
       ]);
 
     } else if (payload.type === "contact") {
