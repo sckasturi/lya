@@ -12100,63 +12100,6 @@ button#aximo-notified-btn {
 	}
 }
 
-/* Plain text link in the header (not a pill button) */
-.lya-header-link {
-	color: var(--cream);
-	font-family: proxima-nova, sans-serif;
-	font-size: 17px;
-	font-weight: 600;
-	text-decoration: underline;
-	text-decoration-color: transparent;
-	text-decoration-thickness: 2px;
-	text-underline-offset: 6px;
-	white-space: nowrap;
-	transition: text-decoration-color 0.2s ease;
-}
-.lya-header-link:hover,
-.lya-header-link:focus-visible,
-.lya-header-link.active {
-	color: var(--cream);
-	text-decoration-color: var(--cream);
-}
-@media (min-width: 992px) {
-	.header-btn .lya-header-link {
-		margin-right: 28px;
-	}
-}
-@media (max-width: 991.98px) {
-	.lya-header-mobile-ctas .lya-header-link {
-		font-size: 13px;
-		font-weight: 700;
-		text-underline-offset: 4px;
-		margin-right: 2px;
-	}
-}
-/* Keep logo + Resources + both CTAs on one row on small phones */
-@media (max-width: 575.98px) {
-	.aximo-header3 .brand-logo {
-		margin-right: 8px;
-	}
-	.lya-header-mobile-ctas {
-		gap: 6px !important;
-	}
-	.lya-header-mobile-ctas .lya-header-journey-btn-mobile,
-	.lya-header-mobile-ctas .lya-header-freebie-btn-mobile {
-		padding: 9px 11px;
-	}
-}
-@media (max-width: 374.98px) {
-	.lya-header-mobile-ctas .lya-header-link,
-	.lya-header-mobile-ctas .lya-header-journey-btn-mobile,
-	.lya-header-mobile-ctas .lya-header-freebie-btn-mobile {
-		font-size: 12px;
-	}
-	.lya-header-mobile-ctas .lya-header-journey-btn-mobile,
-	.lya-header-mobile-ctas .lya-header-freebie-btn-mobile {
-		padding: 8px 9px;
-	}
-}
-
 /* Fade-in animations start translated ±50px, which briefly widens the page
    and allows a horizontal wiggle on mobile. Clip it at the root. */
 body {
